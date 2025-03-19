@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventario {
-    protected Jogador jogador;
+    private Jogador jogador;
     private List<Item> itens;
     private double pesoMaximo;
     private double pesoAtual;
