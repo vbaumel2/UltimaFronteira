@@ -3,22 +3,25 @@ package jogo.ClassesDoJogo;
 import jogo.ClassesDoJogo.itens.Item;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Inventario {
-    private Jogador jogador;
+    private Personagem personagem;
     private List<Item> itens;
+    private Map<Class<? extends Item>, List<? extends Item>> teste;
     private double pesoMaximo;
     private double pesoAtual;
 
-    public Inventario(Jogador jogador, double pesoMaximo) {
-        this.jogador = jogador;
+    public Inventario(Personagem personagem, double pesoMaximo) {
+        this.personagem = personagem;
         this.itens = new ArrayList<>();
         this.pesoMaximo = pesoMaximo;
         this.pesoAtual = 0;
     }
 
-    public Jogador getJogador() {
-        return jogador;
+    public Personagem getJogador() {
+        return personagem;
     }
 
     public boolean adicionarItem(Item item) {

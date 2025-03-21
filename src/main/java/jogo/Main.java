@@ -1,6 +1,5 @@
 package jogo;
-import jogo.ClassesDoJogo.Jogador;
-import jogo.ClassesDoJogo.itens.*;
+import jogo.ClassesDoJogo.Personagem;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,20 +22,20 @@ public class Main extends Application {
     public static void main(String[] args) {
         //launch();
 
-        Jogador jogador = new Jogador("Aventureiro", 100, 10);
+        Personagem personagem = new Personagem("Aventureiro", 100, 10);
 
         Alimento maca = new Alimento("Maçã", 0.2, 10);
         Alimento pao = new Alimento("Pão", 0.5, 20);
 
-        jogador.getInventario().adicionarItem(maca);
-        jogador.getInventario().adicionarItem(pao);
+        personagem.getInventario().adicionarItem(maca);
+        personagem.getInventario().adicionarItem(pao);
 
-        jogador.getInventario().listarItens();
+        personagem.getInventario().listarItens();
 
         maca.comer();
-        jogador.getInventario().listarItens();
+        personagem.getInventario().listarItens();
 
-        jogador.exibirStatus();
+        personagem.exibirStatus();
 
     }
 }

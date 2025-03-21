@@ -1,6 +1,6 @@
 package jogo.ClassesDoJogo;
 
-public class Jogador {
+public class Personagem {
     private String nome;
     private int vida;
     private int fome;
@@ -8,7 +8,7 @@ public class Jogador {
     private int sanidade;
     private Inventario inventario;
 
-    public Jogador(String nome, int vida, double capacidadeInventario) {
+    public Personagem(String nome, int vida, double capacidadeInventario) {
         this.nome = nome;
         this.vida = vida;
         this.inventario = new Inventario(this, capacidadeInventario);
