@@ -26,4 +26,6 @@ public class Jogador {
     public void addFome(int energia){
         fome += energia;
     }
+
+    public void addSede(int valorSede){ sede += valorSede; }
 }
