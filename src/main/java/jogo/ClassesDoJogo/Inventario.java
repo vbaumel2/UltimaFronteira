@@ -4,7 +4,6 @@ import jogo.ClassesDoJogo.itens.Item;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 public class Inventario {
     private Personagem personagem;
@@ -45,7 +44,7 @@ public class Inventario {
             itemRemovido.atualizarInventario(null, 0);
             System.out.println("Item " + itemRemovido.getNome() + " removido do inventario!");
             for(int i = pos; i < itens.size(); i++){
-                itens.get(i).atualizarPosicao(i);
+                itens.get(i).setPosicao(i);
             }
             return true;
         }
