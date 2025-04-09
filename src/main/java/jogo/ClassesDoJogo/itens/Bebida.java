@@ -21,8 +21,8 @@ public class Bebida extends Item{
 
     private static Data pegarData(String nome){
         return switch (nome){
-            case "Maçã" ->  new Data("Maçã", 0.2, 1, 10);
-            case "Pão" -> new Data("Pão", 0.5, 1,20);
+            case "Garrafa de agua" ->  new Data("Garrafa", 0.2, 1, 10);
+            case "Garrafa de agua grande" -> new Data("Garrafa grande", 0.5, 1,20);
             default -> new Data("Vazio",0,1,0);
         };
     };

@@ -1,14 +1,17 @@
 package jogo.ClassesDoJogo;
 
-public class Personagem {
+public class Jogador {
     private String nome;
     private int vida;
     private int fome;
     private int sede;
     private int sanidade;
-    private Inventario inventario;
+    private final Inventario inventario;
+    private int posX;
+    private int posY;
+    private final Mapa mapa = new Mapa(this);
 
-    public Personagem(String nome, int vida, double capacidadeInventario, int fome, int sede) {
+    public Jogador(String nome, int vida, double capacidadeInventario, int fome, int sede) {
         this.nome = nome;
         this.vida = vida;
         this.fome = fome;
@@ -33,4 +36,15 @@ public class Personagem {
     }
 
     public void addSede(int valorSede){ sede += valorSede; }
+
+    public int getPosX(){return posX; }
+    public int getPosY(){return posY; }
+
+    public void setPos(int posX, int posY){
+        this.posX = posX;
+        this.posY = posY;
+    }
+
+    public Mapa getMapa(){return mapa;}
+
 }

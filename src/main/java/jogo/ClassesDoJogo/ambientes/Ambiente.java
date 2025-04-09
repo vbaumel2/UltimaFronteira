@@ -1,5 +1,7 @@
 package jogo.ClassesDoJogo.ambientes;
 
+import jogo.ClassesDoJogo.Jogador;
+
 public abstract class Ambiente {
     private String nome;
     private String descricao;
@@ -17,5 +19,5 @@ public abstract class Ambiente {
         return descricao;
     }
 
-    public abstract void interagir();
+    public abstract void explorar(Jogador jogador);
 }
