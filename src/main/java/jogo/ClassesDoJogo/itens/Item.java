@@ -46,6 +46,8 @@ public abstract class Item {
         durabilidade -= usos;
     }
 
+    public abstract void integarir();
+
     @Override
     public String toString() {
         return nome + " (Peso: " + peso + ")";

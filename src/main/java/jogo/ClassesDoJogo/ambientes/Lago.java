@@ -16,6 +16,15 @@ public class Lago extends Ambiente {
     public void explorar(Jogador jogador) {
         System.out.println("Você explora o lago: " + getDescricao());
         Random rand = new Random();
+
+        int c = 4+rand.nextInt(5);
+        jogador.addFome(-c);
+        System.out.println("Você perde "+c+" pontos de fome");
+
+        int b = 2+rand.nextInt(3);
+        jogador.addSede(-b);
+        System.out.println("Você perde "+b+" pontos de sede");
+
         int a =  rand.nextInt(6);
         Scanner scann = new Scanner(System.in);
         String ans;
@@ -32,8 +41,9 @@ public class Lago extends Ambiente {
             System.out.println("Você encontra bastante agua potável, digite F se deseja adiciona-la a seu inventario. Digite outra coisa caso contrario");
             ans = scann.nextLine();
             if (ans.equals("F")) {
-                jogador.getInventario().adicionarItem(new Bebida("Garrafa de agua"));
+                jogador.getInventario().adicionarItem(new Bebida("Garrafa de agua grande"));
             }
         }
+
     }
 }

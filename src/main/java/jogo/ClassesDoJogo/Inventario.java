@@ -56,8 +56,24 @@ public class Inventario {
         } else {
             System.out.println("Itens no Inventário:");
             for(int i = 0; i< itens.size(); i++){
-                System.out.println(i+" - " + itens.get(i).getNome());
+                System.out.println((i+1)+" - " + itens.get(i).getNome());
             }
         }
+    }
+
+    public Item getItem(int pos){
+        return itens.get(pos);
+    }
+
+    public int getSize(){
+        return itens.size();
+    }
+
+    public double getPesoMaximo(){
+        return pesoMaximo;
+    }
+
+    public double getPesoAtual(){
+        return pesoAtual;
     }
 }

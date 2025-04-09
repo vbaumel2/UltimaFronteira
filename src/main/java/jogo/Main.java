@@ -1,4 +1,5 @@
 package jogo;
+import jogo.ClassesDoJogo.Inventario;
 import jogo.ClassesDoJogo.Jogador;
 
 import javafx.application.Application;
@@ -22,14 +23,28 @@ public class Main extends Application {
         stage.show();
     }
 
+    public static int askForIntInput(String message) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(message);
+        String input = scanner.nextLine();
+
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+    }
+
     public static void main(String[] args) {
         //launch();
 
-        Jogador jogador = new Jogador("Aventureiro", 100, 10, 100, 100);
+        Jogador jogador = new Jogador("Aventureiro", 100, 25, 100, 100);
 
         Mapa mapa = jogador.getMapa();
 
-        /*
+        Inventario inventario = jogador.getInventario();
+
+
         Alimento maca = new Alimento("Maçã");
 
         Alimento pao = new Alimento("Pão");
@@ -37,32 +52,31 @@ public class Main extends Application {
         jogador.getInventario().adicionarItem(maca);
         jogador.getInventario().adicionarItem(pao);
 
-        jogador.getInventario().listarItens();
-
-        maca.consumir();
-        jogador.getInventario().listarItens();
-
-        jogador.exibirStatus();
-
-        jogador.getMapa().exibirMapa();
-        */
+        System.out.println("Bem vindo ao jogo!");
         while (true){
             System.out.println("----------------------------------");
-            System.out.print("Digite:\n" +
+            int n = askForIntInput("Digite:\n" +
                     "1 Para ver o seu Status \n" +
                     "2 Para ver seu Inventario \n" +
                     "3 Para ver o mapa\n" +
                     "4 para se mover\n");
-            Scanner scann = new Scanner(System.in);
-            int n = Integer.parseInt(scann.nextLine());
             System.out.println("----------------------------------");
+            Scanner scann = new Scanner(System.in);
             switch (n) {
                 case 1: {
                     jogador.exibirStatus();
                     break;
                 }
                 case 2: {
-                    jogador.getInventario().listarItens();
+                    inventario.listarItens();
+                    int a = askForIntInput("Digite o numero do objeto que você quer usar/olhar, ou digite outra coisa para sair.\n");
+                    if(a>0 && a <= inventario.getSize()){
+                        inventario.getItem(a-1).integarir();
+                    } else if(a!=-1) {
+                        System.out.println("Posição não existe no inventario.");
+                    }
+
+
                     break;
                 }
                 case 3: {
@@ -74,7 +88,9 @@ public class Main extends Application {
                             "W Para se mover para cima \n" +
                             "S Para se mover para baixo \n" +
                             "A Para se mover para esquerda\n" +
-                            "D Para se mover para direita \n");
+                            "D Para se mover para direita \n" +
+                            "Q Para explorar o mesmo lugar novamente \n" +
+                            "Qualquer outra coisa para sair \n");
                     String k = scann.nextLine();
                     int x = jogador.getPosX();
                     int y = jogador.getPosY();
@@ -95,7 +111,15 @@ public class Main extends Application {
                             mapa.explorar(x, y+1);
                             break;
                         }
+                        case "Q":{
+                            mapa.explorar(x,y);
+                            break;
+                        }
+                        default:{
+                            System.out.println("Comando Invalido!");
+                        }
                     }
+                    break;
                 }
                 default: {
                     System.out.print("Comando Invalido");
