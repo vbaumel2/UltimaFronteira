@@ -1,5 +1,7 @@
 package jogo.ClassesDoJogo;
 
+import jogo.ClassesDaInterface.janelas.MainWindow;
+
 public class Jogador {
     private String nome;
     private int vida;
@@ -12,7 +14,6 @@ public class Jogador {
     private final Inventario inventario;
     private int posX;
     private int posY;
-    private final Mapa mapa = new Mapa(this);
 
     public Jogador(String nome, int vida, double capacidadeInventario, int fome, int sede) {
         this.nome = nome;
@@ -51,7 +52,6 @@ public class Jogador {
         this.posY = posY;
     }
 
-    public Mapa getMapa(){return mapa;}
 
     public int getFome(){
         return fome;

@@ -20,4 +20,6 @@ public abstract class Ambiente {
     }
 
     public abstract void explorar(Jogador jogador);
+
+    public abstract String getAparencia();
 }

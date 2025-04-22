@@ -13,6 +13,11 @@ public class Lago extends Ambiente {
     }
 
     @Override
+    public String getAparencia(){
+        return "-fx-background-color: deepskyblue; -fx-border-color: navy; -fx-border-width: 2;";
+    }
+
+    @Override
     public void explorar(Jogador jogador) {
         System.out.println("Você explora o lago: " + getDescricao());
         Random rand = new Random();

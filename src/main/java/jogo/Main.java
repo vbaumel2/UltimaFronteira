@@ -1,5 +1,4 @@
 package jogo;
-import jogo.ClassesDoJogo.Inventario;
 import jogo.ClassesDoJogo.Jogador;
 
 import javafx.application.Application;
@@ -7,8 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import jogo.ClassesDoJogo.Mapa;
-import jogo.ClassesDoJogo.itens.Alimento;
-import java.util.Random;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -16,12 +13,26 @@ import java.util.Scanner;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        System.out.println("oi");
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainWindow.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Ultima Fronteira");
         stage.setScene(scene);
         stage.show();
+
+        Jogador jogador = new Jogador("Aventureiro", 100, 25, 100, 100);
+        Mapa mapa = new Mapa();
+        mapa.posicionarJogador(jogador);
+        Globals.init(jogador, mapa, loader.getController());
+
+        mapa.gerarMapa();
+
     }
+
+
+
+
+
 
     public static int askForIntInput(String message) {
         Scanner scanner = new Scanner(System.in);
@@ -36,8 +47,10 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        //launch();
 
+        launch(args);
+
+        /*
         Jogador jogador = new Jogador("Aventureiro", 100, 25, 100, 100);
 
         Mapa mapa = jogador.getMapa();
@@ -127,5 +140,6 @@ public class Main extends Application {
                 }
             }
         }
+        */
     }
 }

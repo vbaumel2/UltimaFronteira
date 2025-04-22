@@ -13,6 +13,11 @@ public class Montanha extends Ambiente {
     }
 
     @Override
+    public String getAparencia(){
+        return "-fx-background-color: slategray; -fx-border-color: dimgray; -fx-border-width: 2;";
+    }
+
+    @Override
     public void explorar(Jogador jogador) {
         System.out.println("Você explora a montanha: " + getDescricao());
         Random rand = new Random();

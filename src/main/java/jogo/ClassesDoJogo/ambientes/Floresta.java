@@ -13,6 +13,11 @@ public class Floresta extends Ambiente {
     }
 
     @Override
+    public String getAparencia(){
+        return "-fx-background-color: forestgreen; -fx-border-color: darkgreen; -fx-border-width: 2;";
+    }
+
+    @Override
     public void explorar(Jogador jogador) {
         System.out.println("Você explora a floresta: " + getDescricao());
         Random rand = new Random();

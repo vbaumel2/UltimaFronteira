@@ -13,6 +13,11 @@ public class Deserto extends Ambiente {
     }
 
     @Override
+    public String getAparencia(){
+        return "-fx-background-color: sandybrown; -fx-border-color: peru; -fx-border-width: 2;";
+    }
+
+    @Override
     public void explorar(Jogador jogador) {
         System.out.println("Você explora o deserto: " + getDescricao());
         Random rand = new Random();
