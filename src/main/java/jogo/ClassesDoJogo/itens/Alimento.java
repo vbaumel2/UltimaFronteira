@@ -40,21 +40,10 @@ public class Alimento extends Item {
         valorFome = pegarData(nome).valorFome;
     }
 
-    public void verStatus(){
-        System.out.println(getNome());
-        System.out.println("-Peso: "+getPeso());
-        System.out.println("-Durabilidade: "+getDurabilidade());
-        System.out.println("-Valor de fome: "+valorFome);
-    }
 
-    public void integarir() {
-        verStatus();
-        System.out.println("Digite S caso deseje consumir esse Alimento, digite outra coisa caso contrario");
-        Scanner scann = new Scanner(System.in);
-        String a = scann.nextLine();
-        if (a.equals("S")) {
-            consumir();
-        }
+    @Override
+    public String exibir(){
+        return new String(getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de fome: "+ valorFome);
     }
 
 

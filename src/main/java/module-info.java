@@ -7,6 +7,6 @@ module com.example.ultimafronteira {
     exports jogo;
     exports jogo.ClassesDaInterface;
     opens jogo.ClassesDaInterface to javafx.fxml;
-    exports jogo.ClassesDaInterface.janelas;
-    opens jogo.ClassesDaInterface.janelas to javafx.fxml;
+    exports jogo.ClassesDaInterface.janelaPrincipal;
+    opens jogo.ClassesDaInterface.janelaPrincipal to javafx.fxml;
 }

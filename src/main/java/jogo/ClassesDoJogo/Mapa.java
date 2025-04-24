@@ -4,12 +4,13 @@ import jogo.ClassesDoJogo.ambientes.*;
 
 import java.util.Random;
 
-import jogo.ClassesDaInterface.MapManager;
+import jogo.ClassesDaInterface.janelaPrincipal.MapManager;
 
 public class Mapa {
     final int maxX = 9;
     final int maxY = 9;
     final private Ambiente[][] matrizAmbientes = new Ambiente[maxX][maxY];
+    final private Boolean[][] ambientesVisitados = new Boolean[maxX][maxY];
     private double visao = 3;
     private  MapManager mapManager;
 
@@ -17,7 +18,7 @@ public class Mapa {
         this.mapManager = new MapManager(this);
     }
 
-    public void posicionarJogador(Jogador jogador){
+    public void centrarJogador(Jogador jogador){
         int xf = (int) Math.floor(((double) maxX -1)/2);
         int yf = (int) Math.floor(((double) maxY -1)/2);
         jogador.setPos(xf, yf);
@@ -54,6 +55,7 @@ public class Mapa {
         mapManager.gerarMapa();
     }
 
+
     public Ambiente getAmbienteAtPos(int x, int y){
         return matrizAmbientes[x][y];
     }
@@ -62,13 +64,23 @@ public class Mapa {
         return matrizAmbientes;
     }
 
+    public void addTextoExploracao(String texto){
+        mapManager.addTextoExploracao(texto);
+    }
+
     public void explorar(Jogador jogador, int x, int y){
-        if(x <= maxX && 0<= x && 0 <= y && y <= maxY){
+        if(x < maxX && 0<= x && 0 <= y && y < maxY){
             jogador.setPos(x,y);
             matrizAmbientes[x][y].explorar(jogador);
+            System.out.println(x+" "+y);
+            exibirMapa(x, y);
         } else {
             System.out.println("Posição fora do mapa!");
         }
+    }
+
+    public void exibirMapa(int x, int y){
+        mapManager.exibirMapa(x,y);
     }
 
 }

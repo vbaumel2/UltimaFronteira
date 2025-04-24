@@ -42,13 +42,8 @@ public class Bebida extends Item{
     }
 
     @Override
-    public void integarir() {
-        verStatus();
-        System.out.println("Digite S caso deseje beber essa Bebida, digite outra coisa caso contrario");
-        Scanner scann = new Scanner(System.in);
-        String a = scann.nextLine();
-        if (a.equals("S")) {
-            beber();
-        }
+    public String exibir(){
+        return new String(getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de sede: "+ valorSede);
     }
+
 }

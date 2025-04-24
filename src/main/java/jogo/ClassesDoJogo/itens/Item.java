@@ -46,7 +46,7 @@ public abstract class Item {
         durabilidade -= usos;
     }
 
-    public abstract void integarir();
+    public abstract String exibir();
 
     @Override
     public String toString() {

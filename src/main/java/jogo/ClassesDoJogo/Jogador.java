@@ -1,6 +1,6 @@
 package jogo.ClassesDoJogo;
 
-import jogo.ClassesDaInterface.janelas.MainWindow;
+import jogo.Globals;
 
 public class Jogador {
     private String nome;
@@ -37,11 +37,15 @@ public class Jogador {
     }
 
     public void addFome(int valorFome){
+
         fome = (int)  Math.min(maxFome, fome+valorFome);
+        Globals.getMainWindow().getTextoFome().setText("PONTOS DE FOME: "+ fome);
     }
 
     public void addSede(int valorSede){
+
         sede = (int)  Math.min( maxSede, sede+valorSede);
+        Globals.getMainWindow().getTextoSede().setText("PONTOS DE SEDE: "+ sede);
     }
 
     public int getPosX(){return posX; }

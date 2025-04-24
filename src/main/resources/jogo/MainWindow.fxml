@@ -1,20 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo.ClassesDaInterface.janelas.MainWindow">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-   <GridPane fx:id="gridMap" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: black; -fx-border-width: 1; -fx-border-color: black;">
-     <rowConstraints>
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-     </rowConstraints>
-   </GridPane>
 
-    <Label fx:id="welcomeText" />
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo.ClassesDaInterface.janelaPrincipal.MainWindow">
+   <children>
+      <GridPane fx:id="gridMap" alignment="CENTER" layoutX="401.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: black; -fx-border-width: 1; -fx-border-color: black;">
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <ScrollPane fitToWidth="true" layoutX="403.0" layoutY="418.0" prefHeight="200.0" prefWidth="350.0">
+         <content>
+            <VBox fx:id="caixaTextosExploracao" alignment="TOP_CENTER" prefHeight="199.0" prefWidth="335.0" spacing="3.0" />
+         </content>
+      </ScrollPane>
+      <ScrollPane fitToWidth="true" layoutX="817.0" layoutY="54.0" prefHeight="337.0" prefWidth="432.0">
+         <content>
+            <VBox fx:id="caixaItens" alignment="TOP_CENTER" prefHeight="199.0" prefWidth="388.0" spacing="3.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Button" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Button layoutX="144.0" layoutY="440.0" mnemonicParsing="false" onAction="#moveDown" prefHeight="69.0" prefWidth="80.0" rotate="90.0" text="&gt;">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="223.0" layoutY="360.0" mnemonicParsing="false" onAction="#moveRight" prefHeight="69.0" prefWidth="80.0" text="&gt;">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="144.0" layoutY="283.0" mnemonicParsing="false" onAction="#moveUp" prefHeight="69.0" prefWidth="80.0" rotate="270.0" text="&gt;">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="66.0" layoutY="360.0" mnemonicParsing="false" onAction="#moveLeft" prefHeight="69.0" prefWidth="80.0" rotate="180.0" text="&gt;">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Text fx:id="textoFome" layoutX="50.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE FOME: " wrappingWidth="239.13671875" />
+      <Text fx:id="textoSede" layoutX="50.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE SEDE: " wrappingWidth="239.13671875" />
+   </children>
+</AnchorPane>
