@@ -6,16 +6,12 @@ import java.util.Scanner;
 public class Alimento extends Item {
     private int valorFome;
 
-    public Alimento(String nome, double peso, int durabilidade, int valorFome) {
-        super(nome, peso, durabilidade);
-        this.valorFome = valorFome;
-    }
-
     public int getValorFome() {
         return valorFome;
     }
 
-    public void consumir() {
+    @Override
+    public void usar() {
         System.out.println("Consumindo " + getNome() + ", restaurando " + valorFome + " pontos de fome.");
         getInventario().getJogador().addFome(valorFome);
         removeDurabilidade(1);
@@ -38,15 +34,17 @@ public class Alimento extends Item {
     public Alimento(String nome){
         super(pegarData(nome).nome(), pegarData(nome).peso(), pegarData(nome).durabilidade());
         valorFome = pegarData(nome).valorFome;
+        this.getButtonActions().put("Comer", this::usar);
     }
-
+    public Alimento(String nome, double peso, int durabilidade, int valorFome) {
+        super(nome, peso, durabilidade);
+        this.valorFome = valorFome;
+        this.getButtonActions().put("Comer", this::usar);
+    }
 
     @Override
-    public String exibir(){
+    public String toString(){
         return new String(getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de fome: "+ valorFome);
     }
-
-
-
 
 }

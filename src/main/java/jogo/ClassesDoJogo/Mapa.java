@@ -7,8 +7,8 @@ import java.util.Random;
 import jogo.ClassesDaInterface.janelaPrincipal.MapManager;
 
 public class Mapa {
-    final int maxX = 9;
-    final int maxY = 9;
+    public final int maxX = 9;
+    public final int maxY = 9;
     final private Ambiente[][] matrizAmbientes = new Ambiente[maxX][maxY];
     final private Boolean[][] ambientesVisitados = new Boolean[maxX][maxY];
     private double visao = 3;

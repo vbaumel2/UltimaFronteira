@@ -44,13 +44,12 @@ public class MapManager {
     public void exibirMapa(int posX, int posY){
         int offX = (int) Math.floor(((double) gridX-1)/2);
         int offY = (int) Math.floor(((double) gridY-1)/2);
-        boolean isOff = false;
         Ambiente[][] matrizAmbientes = mapa.getMatrizAmbientes();
         for(int y = 0; y < gridY; y++){
             for(int x = 0; x < gridX; x++){
                 int realY = y-offY+posY;
                 int realX = x-offX+posX;
-                if(0<= realX && realX < 9 && 0<= realY && realY <= 9){
+                if(0<= realX && realX < mapa.maxX && 0<= realY && realY < mapa.maxY){
                     matrizPanes[y][x].setStyle(matrizAmbientes[realX][realY].getAparencia());
                 } else{
                     matrizPanes[y][x].setStyle("-fx-background-color: black");

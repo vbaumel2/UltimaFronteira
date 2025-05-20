@@ -2,6 +2,8 @@ package jogo.ClassesDaInterface.janelaPrincipal;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -10,6 +12,22 @@ import jogo.ClassesDoJogo.Mapa;
 import jogo.Globals;
 
 public class MainWindow {
+
+    @FXML
+    private AnchorPane mainPane;
+    @FXML
+    public AnchorPane getMainPane(){ return mainPane; }
+
+    private Node popup;
+    public void setPopup(Node newPop){
+        if(popup != null){
+            mainPane.getChildren().remove(popup);
+        }
+        popup = newPop;
+        if(popup != null){
+            mainPane.getChildren().add(popup);
+        }
+    }
 
     @FXML
     private GridPane gridMap;
@@ -21,6 +39,13 @@ public class MainWindow {
     @FXML
     public VBox getCaixaTextosExploracao(){
         return caixaTextosExploracao;
+    }
+
+    @FXML
+    private VBox caixaInventario;
+    @FXML
+    public VBox getCaixaInventario(){
+        return caixaInventario;
     }
 
     @FXML

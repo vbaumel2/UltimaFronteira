@@ -5,12 +5,8 @@ import java.util.Scanner;
 public class Bebida extends Item{
     private int valorSede;
 
-    public Bebida(String nome, double peso, int durabilidade, int valorSede){
-        super(nome, peso, durabilidade);
-        this.valorSede = valorSede;
-    }
-
-    public void beber(){
+    @Override
+    public void usar(){
         getInventario().getJogador().addSede(this.valorSede);
         removeDurabilidade(1);
         if(getDurabilidade() < 1){
@@ -32,17 +28,18 @@ public class Bebida extends Item{
     public Bebida(String nome){
         super(pegarData(nome).nome(), pegarData(nome).peso(), pegarData(nome).durabilidade());
         valorSede = pegarData(nome).valorSede;
+        this.getButtonActions().put("Beber", this::usar);
     }
 
-    public void verStatus(){
-        System.out.println(getNome());
-        System.out.println("-Peso: "+getPeso());
-        System.out.println("-Durabilidade: "+getDurabilidade());
-        System.out.println("-Valor de sede: "+valorSede);
+    public Bebida(String nome, double peso, int durabilidade, int valorSede){
+        super(nome, peso, durabilidade);
+        this.valorSede = valorSede;
+        this.getButtonActions().put("Beber", this::usar);
     }
+
 
     @Override
-    public String exibir(){
+    public String toString(){
         return new String(getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de sede: "+ valorSede);
     }
 

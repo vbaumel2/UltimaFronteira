@@ -65,6 +65,8 @@ public abstract class Ambiente {
         jogador.addFome(-danoFome);
         Globals.getMapa().addTextoExploracao(danoSede+" pontos de sede");
         jogador.addSede(-danoSede);
+
+        jogador.getInventario().adicionarItem(new Alimento("Maçã"));
     }
 
     public abstract String getAparencia();

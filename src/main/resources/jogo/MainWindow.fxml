@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo.ClassesDaInterface.janelaPrincipal.MainWindow">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo.ClassesDaInterface.janelaPrincipal.MainWindow">
    <children>
       <GridPane fx:id="gridMap" alignment="CENTER" layoutX="401.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: black; -fx-border-width: 1; -fx-border-color: black;">
         <rowConstraints>
@@ -24,11 +23,7 @@
       </ScrollPane>
       <ScrollPane fitToWidth="true" layoutX="817.0" layoutY="54.0" prefHeight="337.0" prefWidth="432.0">
          <content>
-            <VBox fx:id="caixaItens" alignment="TOP_CENTER" prefHeight="199.0" prefWidth="388.0" spacing="3.0">
-               <children>
-                  <Button mnemonicParsing="false" text="Button" />
-               </children>
-            </VBox>
+            <VBox fx:id="caixaInventario" alignment="TOP_CENTER" prefHeight="199.0" prefWidth="388.0" spacing="3.0" />
          </content>
       </ScrollPane>
       <Button layoutX="144.0" layoutY="440.0" mnemonicParsing="false" onAction="#moveDown" prefHeight="69.0" prefWidth="80.0" rotate="90.0" text="&gt;">
@@ -53,5 +48,10 @@
       </Button>
       <Text fx:id="textoFome" layoutX="50.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE FOME: " wrappingWidth="239.13671875" />
       <Text fx:id="textoSede" layoutX="50.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE SEDE: " wrappingWidth="239.13671875" />
+      <Text layoutX="954.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVENTARIO">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

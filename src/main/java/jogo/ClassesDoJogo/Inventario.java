@@ -1,5 +1,6 @@
 package jogo.ClassesDoJogo;
 
+import jogo.ClassesDaInterface.janelaPrincipal.InventoryManager;
 import jogo.ClassesDoJogo.itens.Item;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +10,14 @@ public class Inventario {
     private List<Item> itens;
     private double pesoMaximo;
     private double pesoAtual;
+    private InventoryManager inventoryManager;
 
     public Inventario(Jogador jogador, double pesoMaximo) {
         this.jogador = jogador;
         this.itens = new ArrayList<>();
         this.pesoMaximo = pesoMaximo;
         this.pesoAtual = 0;
+        this.inventoryManager = new InventoryManager(this);
     }
 
     public Jogador getJogador() {
@@ -27,6 +30,7 @@ public class Inventario {
             itens.add(item);
             pesoAtual += item.getPeso();
             System.out.println(item.getNome() + " adicionado ao inventário.");
+            inventoryManager.adicionarItem(item);
             return true;
         } else {
             System.out.println("Inventário cheio! Não é possível adicionar " + item.getNome());
@@ -37,6 +41,7 @@ public class Inventario {
     public boolean removerItem(int pos) {
         if(itens.size() > pos){
             Item itemRemovido = itens.get(pos);
+            inventoryManager.removerItem(itemRemovido);
             pesoAtual -= itemRemovido.getPeso();
             itens.remove(pos);
             itemRemovido.atualizarInventario(null, 0);

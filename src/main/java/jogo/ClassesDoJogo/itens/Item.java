@@ -2,17 +2,22 @@ package jogo.ClassesDoJogo.itens;
 
 import jogo.ClassesDoJogo.Inventario;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Item {
     private Inventario inventario;
     private int posicao;
     private String nome;
     private double peso;
     private int durabilidade;
+    private Map<String, Runnable> buttonActions = new HashMap<>();
 
     public Item(String nome, double peso, int durabilidade) {
         this.nome = nome;
         this.peso = peso;
         this.durabilidade = durabilidade;
+        buttonActions.put("Destruir", this::selfDestruir);
     }
 
     public void atualizarInventario(Inventario inventario, int posicao){
@@ -42,14 +47,16 @@ public abstract class Item {
 
     public int getDurabilidade() {return durabilidade; }
 
+    public Map<String, Runnable> getButtonActions(){ return  buttonActions;}
+
     public void removeDurabilidade(int usos){
         durabilidade -= usos;
     }
 
-    public abstract String exibir();
+    public abstract void usar();
 
     @Override
     public String toString() {
-        return nome + " (Peso: " + peso + ")";
+        return new String(getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade());
     }
 }
