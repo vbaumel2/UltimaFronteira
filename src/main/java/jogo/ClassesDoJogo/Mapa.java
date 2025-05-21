@@ -5,6 +5,7 @@ import jogo.ClassesDoJogo.ambientes.*;
 import java.util.Random;
 
 import jogo.ClassesDaInterface.janelaPrincipal.MapManager;
+import jogo.Globals;
 
 public class Mapa {
     public final int maxX = 9;
@@ -64,18 +65,15 @@ public class Mapa {
         return matrizAmbientes;
     }
 
-    public void addTextoExploracao(String texto){
-        mapManager.addTextoExploracao(texto);
-    }
-
     public void explorar(Jogador jogador, int x, int y){
         if(x < maxX && 0<= x && 0 <= y && y < maxY){
             jogador.setPos(x,y);
             matrizAmbientes[x][y].explorar(jogador);
-            System.out.println(x+" "+y);
             exibirMapa(x, y);
+            mapManager.explorar( matrizAmbientes[x][y]);
         } else {
             System.out.println("Posição fora do mapa!");
+            Globals.getMainWindow().addTexto("Local fora do mapa!", "red");
         }
     }
 

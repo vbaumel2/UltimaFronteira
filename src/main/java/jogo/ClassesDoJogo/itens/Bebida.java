@@ -3,7 +3,7 @@ package jogo.ClassesDoJogo.itens;
 import java.util.Scanner;
 
 public class Bebida extends Item{
-    private int valorSede;
+    private double valorSede;
 
     @Override
     public void usar(){
@@ -15,7 +15,7 @@ public class Bebida extends Item{
         System.out.println("Consumindo " + getNome() + ", restaurando " + valorSede + " pontos de sede.");
     }
 
-    private record Data (String nome, double peso, int durabilidade, int valorSede){};
+    private record Data (String nome, double peso, int durabilidade, double valorSede){};
 
     private static Data pegarData(String nome){
         return switch (nome){
@@ -31,7 +31,7 @@ public class Bebida extends Item{
         this.getButtonActions().put("Beber", this::usar);
     }
 
-    public Bebida(String nome, double peso, int durabilidade, int valorSede){
+    public Bebida(String nome, double peso, int durabilidade, double valorSede){
         super(nome, peso, durabilidade);
         this.valorSede = valorSede;
         this.getButtonActions().put("Beber", this::usar);

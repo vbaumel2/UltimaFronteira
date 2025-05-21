@@ -1,12 +1,19 @@
 package jogo.ClassesDaInterface.janelaPrincipal;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
+import javafx.scene.layout.VBox;
 import jogo.ClassesDoJogo.Mapa;
 import jogo.ClassesDoJogo.ambientes.Ambiente;
+import jogo.ClassesDoJogo.itens.Item;
 import jogo.Globals;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapManager {
     final private Mapa mapa;
@@ -55,26 +62,39 @@ public class MapManager {
                     matrizPanes[y][x].setStyle("-fx-background-color: black");
                 }
 
-
             }
 
         }
 
-
-
     }
 
-    public void addTextoExploracao(String texto){
-        Label line = new Label(texto);
-        line.setStyle(
-                "-fx-border-color: black;" +
-                        "-fx-border-width: 1;" +
-                        "-fx-padding: 5;" +
-                        "-fx-background-color: white;"
-        );
-        line.setPrefWidth(4096);
-        line.setAlignment(Pos.CENTER);
-        Globals.getMainWindow().getCaixaTextosExploracao().getChildren().addFirst(line);
+    public void explorar(Ambiente ambiente){
+
+        VBox caixaItens = Globals.getMainWindow().getCaixaAmbienteItens();
+        caixaItens.getChildren().clear();
+        for(Item item: ambiente.getItems()){
+            Button line = new Button();
+            line.setPrefWidth(4096);
+            line.setPrefHeight(30);
+            line.setAlignment(Pos.CENTER);
+            line.setText(item.toString());
+            line.setStyle(
+                    "-fx-border-color: black;" +
+                            "-fx-border-width: 1;" +
+                            "-fx-padding: 5;" +
+                            "-fx-background-color: white;"
+            );
+            caixaItens.getChildren().add(line);
+            Map<String, Runnable> actions = new HashMap<>();
+            actions.put("Coletar", ()->{
+                caixaItens.getChildren().remove(line);
+                ambiente.getItems().remove(item);
+                Globals.getJogador().getInventario().adicionarItem(item);
+            });
+            line.setOnMouseClicked(event -> {
+                Globals.getMainWindow().makeOptionsPopup(actions, event);
+            });
+        }
     }
 
 }

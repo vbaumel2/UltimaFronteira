@@ -2,6 +2,8 @@ package jogo.ClassesDoJogo;
 
 import jogo.ClassesDaInterface.janelaPrincipal.InventoryManager;
 import jogo.ClassesDoJogo.itens.Item;
+import jogo.Globals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,7 @@ public class Inventario {
             return true;
         } else {
             System.out.println("Inventário cheio! Não é possível adicionar " + item.getNome());
+            Globals.getMainWindow().addTexto("Inventário cheio! Não é possível adicionar " + item.getNome(), "red");
             return false;
         }
     }

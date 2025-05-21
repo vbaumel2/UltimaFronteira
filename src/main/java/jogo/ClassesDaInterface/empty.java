@@ -1,4 +1,4 @@
 package jogo.ClassesDaInterface;
 
-public class poop {
+public class empty {
 }

@@ -4,19 +4,18 @@ import jogo.ClassesDoJogo.ambientes.Ambiente;
 
 public abstract class Evento {
     private String descricao;
-    private int impacto;
-
-    public Evento(String descricao, int impacto) {
+    private double peso;
+    public Evento(String descricao, double peso) {
         this.descricao = descricao;
-        this.impacto = impacto;
+        this.peso = peso;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public int getImpacto() {
-        return impacto;
+    public double getPeso(){
+        return peso;
     }
 
     public abstract void aplicarEvento(Ambiente ambiente);

@@ -1,6 +1,8 @@
 package jogo.ClassesDoJogo.ambientes;
 
 import jogo.ClassesDoJogo.Jogador;
+import jogo.ClassesDoJogo.eventos.Evento;
+import jogo.ClassesDoJogo.eventos.GerenciadorEventos;
 import jogo.ClassesDoJogo.itens.Alimento;
 import jogo.ClassesDoJogo.itens.Bebida;
 import jogo.ClassesDoJogo.itens.Item;
@@ -14,13 +16,18 @@ public abstract class Ambiente {
     private String nome;
     private String descricao;
     private List<Item> items;
-    private int danoSede;
-    private int danoFome;
+    private double danoSede;
+    private double danoFome;
+    private boolean visitado = false;
+    private GerenciadorEventos gerenciador;
+    private List<Evento> eventos = new ArrayList<>();
+
 
     public Ambiente(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
         this.items = new ArrayList<>();
+        this.gerenciador = new GerenciadorEventos(this, 0.25);
 
         Random rand = new Random();
         if(rand.nextInt(3) == 1){
@@ -51,22 +58,23 @@ public abstract class Ambiente {
         return descricao;
     }
 
+    public List<Evento> getEventos(){return eventos;}
+
+    public boolean isVisitado(){return visitado;}
     public List<Item> getItems() { return  items;}
 
     public void descrever(){
-        Globals.getMapa().addTextoExploracao("Você explora o " + nome + " - " + descricao);
-        Globals.getMapa().addTextoExploracao("Aqui, você encontra "+items.size()+" itens.");
     }
 
     public void explorar(Jogador jogador){
-        descrever();
-        Globals.getMapa().addTextoExploracao("Ao atravessar o terreno, você perde:");
-        Globals.getMapa().addTextoExploracao(danoFome+" pontos de fome");
+        this.visitado = true;
+        Globals.getMainWindow().addTexto("Você explora o " + nome + " - " + descricao+"\n"+
+                "Aqui, você encontra "+items.size()+" itens.\n"+
+                "Ao atravessar o terreno, você perde:\n"+
+                danoFome+" pontos de fome\n"+
+                danoSede+" pontos de sede");
         jogador.addFome(-danoFome);
-        Globals.getMapa().addTextoExploracao(danoSede+" pontos de sede");
         jogador.addSede(-danoSede);
-
-        jogador.getInventario().adicionarItem(new Alimento("Maçã"));
     }
 
     public abstract String getAparencia();

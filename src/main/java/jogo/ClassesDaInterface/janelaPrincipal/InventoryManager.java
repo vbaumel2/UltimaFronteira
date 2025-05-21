@@ -36,38 +36,21 @@ public class InventoryManager {
                         "-fx-padding: 5;" +
                         "-fx-background-color: white;"
         );
-        Globals.getMainWindow().getCaixaInventario().getChildren().add(line);
+        MainWindow mainWindow = Globals.getMainWindow();
+        mainWindow.getCaixaInventario().getChildren().add(line);
         line.setOnMouseClicked( event ->{
-            AnchorPane mainPane = Globals.getMainWindow().getMainPane();
-            Point2D localPoint = mainPane.sceneToLocal(event.getSceneX(), event.getSceneY());
-            VBox vbox = new VBox(5); // spacing 5
-            vbox.setLayoutX(localPoint.getX());
-            vbox.setLayoutY(localPoint.getY() + 10);
-            for (Map.Entry<String, Runnable> entry : item.getButtonActions().entrySet()) {
-                System.out.println(entry.getKey());
-                Button b = new Button(entry.getKey());
-                b.setOnAction(e -> {
-                    entry.getValue().run();
-                    Globals.getMainWindow().setPopup(null);
-                });
-                vbox.getChildren().add(b);
-            }
-            vbox.setStyle(
-                    "-fx-border-color: black;" +
-                            "-fx-border-width: 1;" +
-                            "-fx-padding: 5;" +
-                            "-fx-background-color: white;"
-            );
-
-            Globals.getMainWindow().setPopup(vbox);
-
-
+            mainWindow.makeOptionsPopup(item.getButtonActions(), event);
         });
+
+        mainWindow.getTextoInventario().setText(String.format("Inventario | Capacidade: %.1f/%.1f",
+                inventario.getPesoAtual(), inventario.getPesoMaximo()));
     }
 
     public void removerItem(Item item){
         Globals.getMainWindow().getCaixaInventario().getChildren().remove(buttonMap.get(item));
         buttonMap.remove(item);
+        Globals.getMainWindow().getTextoInventario().setText(String.format("Inventario | Capacidade: %.1f/%.1f",
+                inventario.getPesoAtual(), inventario.getPesoMaximo()));
     }
 
 

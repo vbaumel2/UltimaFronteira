@@ -4,11 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Alimento extends Item {
-    private int valorFome;
-
-    public int getValorFome() {
-        return valorFome;
-    }
+    private double valorFome;
 
     @Override
     public void usar() {
@@ -20,7 +16,7 @@ public class Alimento extends Item {
         }
     }
 
-    private record Data (String nome, double peso, int durabilidade, int valorFome){};
+    private record Data (String nome, double peso, int durabilidade, double valorFome){};
 
     private static Data pegarData(String nome){
         return switch (nome){
@@ -36,7 +32,7 @@ public class Alimento extends Item {
         valorFome = pegarData(nome).valorFome;
         this.getButtonActions().put("Comer", this::usar);
     }
-    public Alimento(String nome, double peso, int durabilidade, int valorFome) {
+    public Alimento(String nome, double peso, int durabilidade, double valorFome) {
         super(nome, peso, durabilidade);
         this.valorFome = valorFome;
         this.getButtonActions().put("Comer", this::usar);
