@@ -41,9 +41,9 @@
             <Font size="36.0" />
          </font>
       </Button>
-      <Text fx:id="textoFome" layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE FOME: " wrappingWidth="179.8466796875" />
-      <Text fx:id="textoSede" layoutX="14.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE SEDE: " wrappingWidth="179.8466796875" />
-      <Text fx:id="textoInventario" layoutX="140.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventario | Capacidade: 0/20">
+      <Text fx:id="textoFome" layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE FOME: 100/100" wrappingWidth="179.8466796875" />
+      <Text fx:id="textoSede" layoutX="14.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE SEDE: 100/100" wrappingWidth="179.8466796875" />
+      <Text fx:id="textoInventario" layoutX="140.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventario | Capacidade: 0/25">
          <font>
             <Font size="14.0" />
          </font>
@@ -73,6 +73,6 @@
             <Font size="36.0" />
          </font>
       </Button>
-      <Text fx:id="textoVida" layoutX="14.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE VIDA: " wrappingWidth="219.13671875" />
+      <Text fx:id="textoVida" layoutX="14.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE VIDA: 100/100" wrappingWidth="219.13671875" />
    </children>
 </AnchorPane>

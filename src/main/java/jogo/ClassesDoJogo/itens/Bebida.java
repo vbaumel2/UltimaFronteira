@@ -1,5 +1,7 @@
 package jogo.ClassesDoJogo.itens;
 
+import jogo.Globals;
+
 import java.util.Scanner;
 
 public class Bebida extends Item{
@@ -12,7 +14,7 @@ public class Bebida extends Item{
         if(getDurabilidade() < 1){
             selfDestruir();
         }
-        System.out.println("Consumindo " + getNome() + ", restaurando " + valorSede + " pontos de sede.");
+        Globals.getMainWindow().addTexto("Bebendo " + getNome() + ", restaurando " + valorSede + " pontos de sede.", "green");
     }
 
     private record Data (String nome, double peso, int durabilidade, double valorSede){};
@@ -40,7 +42,7 @@ public class Bebida extends Item{
 
     @Override
     public String toString(){
-        return new String(getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de sede: "+ valorSede);
+        return new String("Bebida: "+getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de sede: "+ valorSede);
     }
 
 }

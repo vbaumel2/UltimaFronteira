@@ -16,7 +16,6 @@ import jogo.ClassesDoJogo.Jogador;
 import jogo.ClassesDoJogo.Mapa;
 import jogo.Globals;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class MainWindow {
@@ -35,7 +34,7 @@ public class MainWindow {
     private GridPane gridMap; public GridPane getGridMap(){ return gridMap; }
 
     @FXML
-    private Text textoVida; public Text getTextoVida(){ return textoSede; }
+    private Text textoVida; public Text getTextoVida(){ return textoVida; }
 
     @FXML
     private Text textoSede; public Text getTextoSede(){ return textoSede; }
@@ -49,7 +48,12 @@ public class MainWindow {
     private Node popup;
     public void setPopup(Node newPop){
         if(popup != null){
-            mainPane.getChildren().remove(popup);
+            try {
+                mainPane.getChildren().remove(popup);
+            } catch (Error e){
+                System.out.println("erro criando o popup!");
+                return;
+            }
         }
         popup = newPop;
         if(popup != null){
@@ -104,7 +108,7 @@ public class MainWindow {
         setPopup(null);
         Mapa mapa = Globals.getMapa();
         Jogador jogador = Globals.getJogador();
-        mapa.explorar(jogador, jogador.getPosX()-1, jogador.getPosY() );
+        mapa.iniciarRodada(jogador, jogador.getPosX()-1, jogador.getPosY() );
     }
 
     @FXML
@@ -112,7 +116,7 @@ public class MainWindow {
         setPopup(null);
         Mapa mapa = Globals.getMapa();
         Jogador jogador = Globals.getJogador();
-        mapa.explorar(jogador, jogador.getPosX()+1, jogador.getPosY() );
+        mapa.iniciarRodada(jogador, jogador.getPosX()+1, jogador.getPosY() );
 
     }
 
@@ -121,7 +125,7 @@ public class MainWindow {
         setPopup(null);
         Mapa mapa = Globals.getMapa();
         Jogador jogador = Globals.getJogador();
-        mapa.explorar(jogador, jogador.getPosX(), jogador.getPosY()-1 );
+        mapa.iniciarRodada(jogador, jogador.getPosX(), jogador.getPosY()-1 );
     }
 
     @FXML
@@ -129,7 +133,7 @@ public class MainWindow {
         setPopup(null);
         Mapa mapa = Globals.getMapa();
         Jogador jogador = Globals.getJogador();
-        mapa.explorar(jogador, jogador.getPosX(), jogador.getPosY()+1 );
+        mapa.iniciarRodada(jogador, jogador.getPosX(), jogador.getPosY()+1 );
 
     }
 
@@ -138,7 +142,7 @@ public class MainWindow {
         setPopup(null);
         Mapa mapa = Globals.getMapa();
         Jogador jogador = Globals.getJogador();
-        mapa.explorar(jogador, jogador.getPosX(), jogador.getPosY() );
+        mapa.iniciarRodada(jogador, jogador.getPosX(), jogador.getPosY() );
     }
 
     public void initialize(){

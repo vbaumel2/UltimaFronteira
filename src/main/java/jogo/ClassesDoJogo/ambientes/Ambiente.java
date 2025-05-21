@@ -6,6 +6,7 @@ import jogo.ClassesDoJogo.eventos.GerenciadorEventos;
 import jogo.ClassesDoJogo.itens.Alimento;
 import jogo.ClassesDoJogo.itens.Bebida;
 import jogo.ClassesDoJogo.itens.Item;
+import jogo.ClassesDoJogo.itens.Remedio;
 import jogo.Globals;
 
 import java.util.ArrayList;
@@ -42,6 +43,9 @@ public abstract class Ambiente {
         if(rand.nextInt(3)  == 1){
             items.add(new Bebida("Garrafa de agua grande"));
         }
+        if(rand.nextInt(4) == 1){
+            items.add(new Remedio("Bandagem"));
+        }
 
         this.danoFome = 1+ rand.nextInt(7);
         this.danoSede = 1+ rand.nextInt( 7);
@@ -61,6 +65,8 @@ public abstract class Ambiente {
     public List<Evento> getEventos(){return eventos;}
 
     public boolean isVisitado(){return visitado;}
+    public void setVisitado(boolean b){visitado = b;}
+
     public List<Item> getItems() { return  items;}
 
     public void descrever(){
@@ -75,6 +81,7 @@ public abstract class Ambiente {
                 danoSede+" pontos de sede");
         jogador.addFome(-danoFome);
         jogador.addSede(-danoSede);
+        gerenciador.tentarEventos();
     }
 
     public abstract String getAparencia();

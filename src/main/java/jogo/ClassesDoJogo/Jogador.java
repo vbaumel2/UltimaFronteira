@@ -47,7 +47,7 @@ public class Jogador {
     public void addFome(double valorFome){
 
         fome =  Math.min(maxFome, fome+valorFome);
-        Globals.getMainWindow().getTextoFome().setText(String.format("PONTOS DE VIDA: %.1f/%.1f",fome, maxFome));
+        Globals.getMainWindow().getTextoFome().setText(String.format("PONTOS DE FOME: %.1f/%.1f",fome, maxFome));
         if(fome<=0) acabarJogo();
     }
 

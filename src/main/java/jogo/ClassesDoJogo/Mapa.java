@@ -65,7 +65,7 @@ public class Mapa {
         return matrizAmbientes;
     }
 
-    public void explorar(Jogador jogador, int x, int y){
+    public void iniciarRodada(Jogador jogador, int x, int y){
         if(x < maxX && 0<= x && 0 <= y && y < maxY){
             jogador.setPos(x,y);
             matrizAmbientes[x][y].explorar(jogador);

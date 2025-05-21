@@ -1,5 +1,7 @@
 package jogo.ClassesDoJogo.itens;
 
+import jogo.Globals;
+
 import java.util.Map;
 import java.util.Scanner;
 
@@ -8,12 +10,12 @@ public class Alimento extends Item {
 
     @Override
     public void usar() {
-        System.out.println("Consumindo " + getNome() + ", restaurando " + valorFome + " pontos de fome.");
         getInventario().getJogador().addFome(valorFome);
         removeDurabilidade(1);
         if(getDurabilidade() < 1){
             selfDestruir();
         }
+        Globals.getMainWindow().addTexto("Comendo " + getNome() + ", restaurando " + valorFome + " pontos de fome.", "green");
     }
 
     private record Data (String nome, double peso, int durabilidade, double valorFome){};
@@ -40,7 +42,7 @@ public class Alimento extends Item {
 
     @Override
     public String toString(){
-        return new String(getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de fome: "+ valorFome);
+        return new String("Alimento: "+getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de fome: "+ valorFome);
     }
 
 }

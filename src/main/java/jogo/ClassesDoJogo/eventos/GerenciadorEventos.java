@@ -14,7 +14,8 @@ public class GerenciadorEventos {
         this.probabilidade = probabilidade;
     }
 
-    public Evento escolherEvento(List<Evento> eventos){
+    private Evento escolherEvento(List<Evento> eventos){
+
         double pesoTotal = 0;
         for(Evento e:eventos){
             pesoTotal+= e.getPeso();
@@ -30,7 +31,8 @@ public class GerenciadorEventos {
     }
 
     public void tentarEventos(){
-        if (Math.random()>=probabilidade){return;}
+        if (Math.random()>=probabilidade) return;
+        if (ambiente.getEventos() == null || ambiente.getEventos().isEmpty()) return;
 
         escolherEvento(ambiente.getEventos()).aplicarEvento(ambiente);
     }

@@ -1,5 +1,7 @@
 package jogo.ClassesDoJogo.itens;
 
+import jogo.Globals;
+
 public class Remedio extends Item{
     private double valorCura;
 
@@ -10,7 +12,8 @@ public class Remedio extends Item{
         if(getDurabilidade() < 1){
             selfDestruir();
         }
-        System.out.println("Usando " + getNome() + ", restaurando " + valorCura + " pontos de vida.");
+        Globals.getMainWindow().addTexto("Usando " + getNome() + ", restaurando " + valorCura + " pontos de vida.", "green");
+
     }
 
     private record Data (String nome, double peso, int durabilidade, double valorCura){};
@@ -37,6 +40,6 @@ public class Remedio extends Item{
 
     @Override
     public String toString(){
-        return new String(getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de cura: "+ valorCura);
+        return new String("Remédio: "+ getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade()+" | Valor de cura: "+ valorCura);
     }
 }
