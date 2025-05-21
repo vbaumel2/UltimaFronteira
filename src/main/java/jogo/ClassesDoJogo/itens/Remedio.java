@@ -7,7 +7,7 @@ public class Remedio extends Item{
 
     @Override
     public void usar(){
-        getInventario().getJogador().addSede(this.valorCura);
+        getInventario().getJogador().addVida(this.valorCura);
         removeDurabilidade(1);
         if(getDurabilidade() < 1){
             selfDestruir();
