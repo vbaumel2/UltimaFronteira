@@ -27,6 +27,7 @@ public class Jogador {
     }
 
     private void acabarJogo(){
+        System.out.println("acabando jogo!");
        Stage stage = (Stage) Globals.getMainWindow().getMainPane().getScene().getWindow();
        stage.close();
     }
