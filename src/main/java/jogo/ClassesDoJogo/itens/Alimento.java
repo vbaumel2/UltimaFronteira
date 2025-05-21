@@ -5,10 +5,9 @@ import jogo.Globals;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Alimento extends Item {
+public class Alimento extends Item implements Usavel{
     private double valorFome;
 
-    @Override
     public void usar() {
         getInventario().getJogador().addFome(valorFome);
         removeDurabilidade(1);

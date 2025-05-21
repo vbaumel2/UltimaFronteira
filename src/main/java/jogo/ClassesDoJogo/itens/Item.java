@@ -53,8 +53,6 @@ public abstract class Item {
         durabilidade -= usos;
     }
 
-    public abstract void usar();
-
     @Override
     public String toString() {
         return new String(getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade());

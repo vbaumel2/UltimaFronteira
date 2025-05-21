@@ -4,10 +4,9 @@ import jogo.Globals;
 
 import java.util.Scanner;
 
-public class Bebida extends Item{
+public class Bebida extends Item implements  Usavel{
     private double valorSede;
 
-    @Override
     public void usar(){
         getInventario().getJogador().addSede(this.valorSede);
         removeDurabilidade(1);

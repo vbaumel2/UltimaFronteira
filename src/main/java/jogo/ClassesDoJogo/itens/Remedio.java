@@ -2,10 +2,9 @@ package jogo.ClassesDoJogo.itens;
 
 import jogo.Globals;
 
-public class Remedio extends Item{
+public class Remedio extends Item implements Usavel{
     private double valorCura;
 
-    @Override
     public void usar(){
         getInventario().getJogador().addVida(this.valorCura);
         removeDurabilidade(1);
