@@ -20,7 +20,6 @@ public abstract class Ambiente {
     private double danoSede;
     private double danoFome;
     private boolean visitado = false;
-    private GerenciadorEventos gerenciador;
     private List<Evento> eventos = new ArrayList<>();
 
 
@@ -28,7 +27,6 @@ public abstract class Ambiente {
         this.nome = nome;
         this.descricao = descricao;
         this.items = new ArrayList<>();
-        this.gerenciador = new GerenciadorEventos(this, 0.25);
 
         Random rand = new Random();
         if(rand.nextInt(3) == 1){
@@ -81,7 +79,6 @@ public abstract class Ambiente {
                 danoSede+" pontos de sede");
         jogador.addFome(-danoFome);
         jogador.addSede(-danoSede);
-        gerenciador.tentarEventos();
     }
 
     public abstract String getAparencia();

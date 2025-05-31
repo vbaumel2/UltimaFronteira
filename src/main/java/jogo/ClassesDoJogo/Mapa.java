@@ -5,18 +5,28 @@ import jogo.ClassesDoJogo.ambientes.*;
 import java.util.Random;
 
 import jogo.ClassesDaInterface.janelaPrincipal.MapManager;
+import jogo.ClassesDoJogo.eventos.GerenciadorEventos;
 import jogo.Globals;
 
 public class Mapa {
+    private Jogador jogador;
     public final int maxX = 9;
     public final int maxY = 9;
     final private Ambiente[][] matrizAmbientes = new Ambiente[maxX][maxY];
     final private Boolean[][] ambientesVisitados = new Boolean[maxX][maxY];
     private double visao = 3;
     private  MapManager mapManager;
+    public GerenciadorEventos gerenciadorEventos;
 
-    public Mapa(){
+
+    public Mapa(Jogador jogador){
         this.mapManager = new MapManager(this);
+        this.jogador = jogador;
+        this.gerenciadorEventos = new GerenciadorEventos(this, 0.25);
+    }
+
+    public Jogador getJogador() {
+        return jogador;
     }
 
     public void centrarJogador(Jogador jogador){
@@ -65,12 +75,13 @@ public class Mapa {
         return matrizAmbientes;
     }
 
-    public void iniciarRodada(Jogador jogador, int x, int y){
+    public void iniciarRodada(int x, int y){
         if(x < maxX && 0<= x && 0 <= y && y < maxY){
             jogador.setPos(x,y);
             matrizAmbientes[x][y].explorar(jogador);
             exibirMapa(x, y);
-            mapManager.explorar( matrizAmbientes[x][y]);
+            mapManager.onAmbienteExplorado( matrizAmbientes[x][y]);
+            gerenciadorEventos.tentarEventos( matrizAmbientes[x][y]);
         } else {
             System.out.println("Posição fora do mapa!");
             Globals.getMainWindow().addTexto("Local fora do mapa!", "red");

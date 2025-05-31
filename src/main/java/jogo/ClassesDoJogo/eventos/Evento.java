@@ -1,5 +1,6 @@
 package jogo.ClassesDoJogo.eventos;
 
+import jogo.ClassesDoJogo.Jogador;
 import jogo.ClassesDoJogo.ambientes.Ambiente;
 
 public abstract class Evento {
@@ -18,5 +19,5 @@ public abstract class Evento {
         return peso;
     }
 
-    public abstract void aplicarEvento(Ambiente ambiente);
+    public abstract void aplicarEvento(Ambiente ambiente, Jogador jogador);
 }

@@ -1,5 +1,6 @@
 package jogo.ClassesDoJogo.eventos.EventoClimatico;
 
+import jogo.ClassesDoJogo.Jogador;
 import jogo.ClassesDoJogo.ambientes.Ambiente;
 import jogo.ClassesDoJogo.eventos.Evento;
 import jogo.Globals;
@@ -10,10 +11,10 @@ public class Terremoto extends Evento {
     }
 
     @Override
-    public void aplicarEvento(Ambiente ambiente) {
+    public void aplicarEvento(Ambiente ambiente, Jogador jogador) {
         Globals.getMainWindow().addTexto( getDescricao()+" atinge o "+ambiente.getNome()+"!\n"+
                 "Você toma 3 de dano.", "yellow");
-        Globals.getJogador().addVida(-3);
+        jogador.addVida(-3);
     }
 }
 

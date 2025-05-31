@@ -1,16 +1,17 @@
 package jogo.ClassesDoJogo.eventos;
 
+import jogo.ClassesDoJogo.Mapa;
 import jogo.ClassesDoJogo.ambientes.Ambiente;
 
 import java.util.List;
 import java.util.Random;
 
 public class GerenciadorEventos {
-    private Ambiente ambiente;
+    private Mapa mapa;
     private double probabilidade;
 
-    public GerenciadorEventos(Ambiente ambiente, double probabilidade){
-        this.ambiente = ambiente;
+    public GerenciadorEventos(Mapa mapa, double probabilidade){
+        this.mapa = mapa;
         this.probabilidade = probabilidade;
     }
 
@@ -30,11 +31,11 @@ public class GerenciadorEventos {
         return eventos.getLast();
     }
 
-    public void tentarEventos(){
+    public void tentarEventos(Ambiente ambiente){
         if (Math.random()>=probabilidade) return;
         if (ambiente.getEventos() == null || ambiente.getEventos().isEmpty()) return;
 
-        escolherEvento(ambiente.getEventos()).aplicarEvento(ambiente);
+        escolherEvento(ambiente.getEventos()).aplicarEvento(ambiente, mapa.getJogador());
     }
 
 

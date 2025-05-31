@@ -20,6 +20,9 @@ import java.util.Map;
 
 public class MainWindow {
 
+    private Mapa mapa;
+    private Jogador jogador;
+
     @FXML
     private AnchorPane mainPane;
     public AnchorPane getMainPane(){ return mainPane; }
@@ -106,52 +109,42 @@ public class MainWindow {
     @FXML
     private void moveUp(ActionEvent event){
         setPopup(null);
-        Mapa mapa = Globals.getMapa();
-        Jogador jogador = Globals.getJogador();
-        mapa.iniciarRodada(jogador, jogador.getPosX()-1, jogador.getPosY() );
+        mapa.iniciarRodada(jogador.getPosX()-1, jogador.getPosY() );
     }
 
     @FXML
     private void moveDown(ActionEvent event){
         setPopup(null);
-        Mapa mapa = Globals.getMapa();
-        Jogador jogador = Globals.getJogador();
-        mapa.iniciarRodada(jogador, jogador.getPosX()+1, jogador.getPosY() );
+        mapa.iniciarRodada( jogador.getPosX()+1, jogador.getPosY() );
 
     }
 
     @FXML
     private void moveLeft(ActionEvent event){
         setPopup(null);
-        Mapa mapa = Globals.getMapa();
-        Jogador jogador = Globals.getJogador();
-        mapa.iniciarRodada(jogador, jogador.getPosX(), jogador.getPosY()-1 );
+        mapa.iniciarRodada( jogador.getPosX(), jogador.getPosY()-1 );
     }
 
     @FXML
     private void moveRight(ActionEvent event){
         setPopup(null);
-        Mapa mapa = Globals.getMapa();
-        Jogador jogador = Globals.getJogador();
-        mapa.iniciarRodada(jogador, jogador.getPosX(), jogador.getPosY()+1 );
+        mapa.iniciarRodada( jogador.getPosX(), jogador.getPosY()+1 );
 
     }
 
     @FXML
     private void moveNowhere(ActionEvent event){
         setPopup(null);
-        Mapa mapa = Globals.getMapa();
-        Jogador jogador = Globals.getJogador();
-        mapa.iniciarRodada(jogador, jogador.getPosX(), jogador.getPosY() );
+        mapa.iniciarRodada( jogador.getPosX(), jogador.getPosY() );
     }
 
     public void initialize(){
         System.out.println("init");
         Globals.setMainWindow(this);
         Jogador jogador = new Jogador("Aventureiro", 100, 25, 100, 100);
-        Globals.setJogador(jogador);
-        Mapa mapa = new Mapa();
-        Globals.setMapa(mapa);
+        this.jogador = jogador;
+        Mapa mapa = new Mapa(jogador);
+        this.mapa = mapa;
 
         mapa.centrarJogador(jogador);
         mapa.gerarMapa();

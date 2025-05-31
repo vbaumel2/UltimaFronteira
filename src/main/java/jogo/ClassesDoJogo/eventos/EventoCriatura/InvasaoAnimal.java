@@ -1,5 +1,6 @@
 package jogo.ClassesDoJogo.eventos.EventoCriatura;
 
+import jogo.ClassesDoJogo.Jogador;
 import jogo.ClassesDoJogo.ambientes.Ambiente;
 import jogo.ClassesDoJogo.eventos.Evento;
 import jogo.Globals;
@@ -10,9 +11,9 @@ public class InvasaoAnimal extends Evento {
     }
 
     @Override
-    public void aplicarEvento(Ambiente ambiente) {
+    public void aplicarEvento(Ambiente ambiente, Jogador jogador) {
         Globals.getMainWindow().addTexto( getDescricao()+" invadem o "+ambiente.getNome()+"!\n"+
                 "Você toma 7 de dano.", "yellow");
-        Globals.getJogador().addVida(-7);
+        jogador.addVida(-7);
     }
 }

@@ -1,9 +1,7 @@
 package jogo.ClassesDaInterface.janelaPrincipal;
-import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -68,7 +66,7 @@ public class MapManager {
 
     }
 
-    public void explorar(Ambiente ambiente){
+    public void onAmbienteExplorado(Ambiente ambiente){
 
         VBox caixaItens = Globals.getMainWindow().getCaixaAmbienteItens();
         caixaItens.getChildren().clear();
@@ -89,7 +87,7 @@ public class MapManager {
             actions.put("Coletar", ()->{
                 caixaItens.getChildren().remove(line);
                 ambiente.getItems().remove(item);
-                Globals.getJogador().getInventario().adicionarItem(item);
+                mapa.getJogador().getInventario().adicionarItem(item);
             });
             line.setOnMouseClicked(event -> {
                 Globals.getMainWindow().makeOptionsPopup(actions, event);
