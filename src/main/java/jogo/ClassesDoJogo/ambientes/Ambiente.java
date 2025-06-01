@@ -30,19 +30,19 @@ public abstract class Ambiente {
 
         Random rand = new Random();
         if(rand.nextInt(3) == 1){
-            items.add(new Alimento("Pão"));
+            items.add(Globals.Alimentos.criar("Pão"));
         }
         if(rand.nextInt(3) == 1){
-            items.add(new Alimento("Maçã"));
+            items.add(Globals.Alimentos.criar("Maçã"));
         }
         if(rand.nextInt(3) == 1){
-            items.add(new Bebida("Garrafa de agua"));
+            items.add(Globals.Bebidas.criar("Garrafa de agua"));
         }
         if(rand.nextInt(3)  == 1){
-            items.add(new Bebida("Garrafa de agua grande"));
+            items.add(Globals.Bebidas.criar("Garrafa de agua grande"));
         }
         if(rand.nextInt(4) == 1){
-            items.add(new Remedio("Bandagem"));
+            items.add(Globals.Remedios.criar("Bandagem"));
         }
 
         this.danoFome = 1+ rand.nextInt(7);
