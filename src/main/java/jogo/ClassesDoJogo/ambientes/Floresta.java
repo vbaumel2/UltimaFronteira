@@ -22,6 +22,15 @@ public class Floresta extends Ambiente {
     }
 
     @Override
+    public double getMinDiff(){return  0;}
+    @Override
+    public double getMaxDiff(){return  6;}
+    @Override
+    public double getPesoFome(){return 4;}
+    @Override
+    public double getPesoSede(){return 3;}
+
+    @Override
     public String getAparencia(){
         return "-fx-background-color: forestgreen; -fx-border-color: darkgreen; -fx-border-width: 2;";
     }

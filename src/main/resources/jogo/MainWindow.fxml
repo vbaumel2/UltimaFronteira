@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo.ClassesDaInterface.janelaPrincipal.MainWindow">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo.ClassesDaInterface.janelaPrincipal.MainWindow">
    <children>
-      <GridPane fx:id="gridMap" alignment="CENTER" layoutX="478.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: black; -fx-border-width: 1; -fx-border-color: black;">
+      <GridPane fx:id="gridMap" alignment="CENTER" layoutX="511.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-width: 1; -fx-border-color: black;">
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
@@ -21,22 +21,22 @@
             <VBox fx:id="caixaInventario" alignment="TOP_CENTER" prefHeight="199.0" prefWidth="388.0" spacing="3.0" />
          </content>
       </ScrollPane>
-      <Button layoutX="92.0" layoutY="627.0" mnemonicParsing="false" onAction="#moveDown" prefHeight="69.0" prefWidth="80.0" rotate="90.0" text="&gt;">
+      <Button layoutX="1368.0" layoutY="699.0" mnemonicParsing="false" onAction="#moveDown" prefHeight="69.0" prefWidth="80.0" rotate="90.0" text="&gt;">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="171.0" layoutY="548.0" mnemonicParsing="false" onAction="#moveRight" prefHeight="69.0" prefWidth="80.0" text="&gt;">
+      <Button layoutX="1447.0" layoutY="620.0" mnemonicParsing="false" onAction="#moveRight" prefHeight="69.0" prefWidth="80.0" text="&gt;">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="92.0" layoutY="470.0" mnemonicParsing="false" onAction="#moveUp" prefHeight="69.0" prefWidth="80.0" rotate="270.0" text="&gt;">
+      <Button layoutX="1368.0" layoutY="542.0" mnemonicParsing="false" onAction="#moveUp" prefHeight="69.0" prefWidth="80.0" rotate="270.0" text="&gt;">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="12.0" layoutY="548.0" mnemonicParsing="false" onAction="#moveLeft" prefHeight="69.0" prefWidth="80.0" rotate="180.0" text="&gt;">
+      <Button layoutX="1288.0" layoutY="620.0" mnemonicParsing="false" onAction="#moveLeft" prefHeight="69.0" prefWidth="80.0" rotate="180.0" text="&gt;">
          <font>
             <Font size="36.0" />
          </font>
@@ -48,27 +48,27 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="453.0" layoutY="405.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="400.0">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="611.0" layoutY="583.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="400.0">
          <content>
             <VBox fx:id="caixaTextos" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="400.0" />
          </content>
       </ScrollPane>
-      <Text layoutX="998.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Items no ambiente">
+      <Text layoutX="1328.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Items no ambiente">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <ScrollPane fitToWidth="true" layoutX="840.0" layoutY="75.0" prefHeight="200.0" prefWidth="432.0">
+      <ScrollPane fitToWidth="true" layoutX="1152.0" layoutY="124.0" prefHeight="200.0" prefWidth="432.0">
          <content>
             <VBox fx:id="caixaAmbienteItens" alignment="TOP_CENTER" prefHeight="199.0" prefWidth="388.0" spacing="3.0" />
          </content>
       </ScrollPane>
-      <Text layoutX="574.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jornal de acontecimentos">
+      <Text layoutX="732.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jornal de acontecimentos">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="92.0" layoutY="548.0" mnemonicParsing="false" onAction="#moveNowhere" prefHeight="69.0" prefWidth="80.0" text="X">
+      <Button layoutX="1368.0" layoutY="620.0" mnemonicParsing="false" onAction="#moveNowhere" prefHeight="69.0" prefWidth="80.0" text="X">
          <font>
             <Font size="36.0" />
          </font>

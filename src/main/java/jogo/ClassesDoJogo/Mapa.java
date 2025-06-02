@@ -10,8 +10,8 @@ import jogo.Globals;
 
 public class Mapa {
     private Jogador jogador;
-    public final int maxX = 9;
-    public final int maxY = 9;
+    public final int maxX = 36;
+    public final int maxY = 36;
     final private Ambiente[][] matrizAmbientes = new Ambiente[maxX][maxY];
     final private Boolean[][] ambientesVisitados = new Boolean[maxX][maxY];
     private double visao = 3;

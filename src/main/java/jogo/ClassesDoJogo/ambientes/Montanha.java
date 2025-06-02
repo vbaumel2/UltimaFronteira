@@ -12,6 +12,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Montanha extends Ambiente {
+
+    @Override
+    public double getMinDiff(){return  4;}
+    @Override
+    public double getMaxDiff(){return  10;}
+    @Override
+    public double getPesoFome(){return 5;}
+    @Override
+    public double getPesoSede(){return 2;}
+
     public Montanha(String nome, String descricao) {
 
         super(nome, descricao);

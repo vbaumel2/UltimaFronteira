@@ -13,6 +13,17 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Deserto extends Ambiente {
+
+    @Override
+    public double getMinDiff(){return  2;}
+    @Override
+    public double getMaxDiff(){return  6;}
+    @Override
+    public double getPesoFome(){return 1;}
+    @Override
+    public double getPesoSede(){return 4;}
+
+
     public Deserto(String nome, String descricao) {
         super(nome, descricao);
         List<Evento> eventos = this.getEventos();
@@ -20,6 +31,7 @@ public class Deserto extends Ambiente {
         eventos.add(new Terremoto("Terremoto de areia movediça", 2));
 
     }
+
 
     @Override
     public String getAparencia(){

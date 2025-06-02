@@ -2,6 +2,8 @@ package jogo.ClassesDoJogo;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import jogo.ClassesDoJogo.itens.Arma;
+import jogo.ClassesDoJogo.itens.Ferramenta;
 import jogo.Globals;
 
 public class Jogador {
@@ -13,9 +15,14 @@ public class Jogador {
     private double sede;
     private double maxSede = 100;
     private double sanidade;
-    private final Inventario inventario;
+    private double visao = 3.5;
     private int posX;
     private int posY;
+
+    private final Inventario inventario;
+
+    private Ferramenta ferramentaEquipada;
+    private Arma armaEquipada;
 
     public Jogador(String nome, double vida, double capacidadeInventario, double fome, double sede) {
         this.nome = nome;
@@ -38,10 +45,6 @@ public class Jogador {
                 "\n-Fome: " + fome + "/" + maxFome +
                 "\n-Sede: " + sede + "/" + maxSede +
                 "\n-Inventario: " + inventario.getPesoAtual() + "/" + inventario.getPesoMaximo());
-    }
-
-    public Inventario getInventario() {
-        return inventario;
     }
 
     public void addFome(double valorFome){
@@ -72,9 +75,33 @@ public class Jogador {
         this.posY = posY;
     }
 
+    public void setFerramentaEquipada(Ferramenta ferramenta){
+        ferramentaEquipada.setEquipado(false);
+        ferramentaEquipada = ferramenta;
+        if(ferramentaEquipada != null){
+            ferramentaEquipada.setEquipado(true);
+        }
+    }
+
+    public void setArmaEquipada(Arma arma){
+        armaEquipada.setEquipado(false);
+        armaEquipada = arma;
+        if(arma != null){
+            arma.setEquipado(true);
+        }
+    }
 
     public double getFome(){
         return fome;
     }
 
+    public double getVisao() { return visao;}
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public Ferramenta getFerramentaEquipada() {return  ferramentaEquipada;}
+
+    public Arma getArmaEquipada() {return  armaEquipada;}
 }

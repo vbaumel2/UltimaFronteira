@@ -1,5 +1,6 @@
 package jogo.ClassesDaInterface.janelaPrincipal;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
@@ -76,7 +77,7 @@ public class MainWindow {
                 entry.getValue().run();
                 setPopup(null);
             });
-            vbox.getChildren().addLast(b);
+            vbox.getChildren().addFirst(b);
             b.setAlignment(Pos.CENTER);
         }
         vbox.setStyle(
@@ -109,26 +110,26 @@ public class MainWindow {
     @FXML
     private void moveUp(ActionEvent event){
         setPopup(null);
-        mapa.iniciarRodada(jogador.getPosX()-1, jogador.getPosY() );
+        mapa.iniciarRodada(jogador.getPosX(), jogador.getPosY()-1);
     }
 
     @FXML
     private void moveDown(ActionEvent event){
         setPopup(null);
-        mapa.iniciarRodada( jogador.getPosX()+1, jogador.getPosY() );
+        mapa.iniciarRodada( jogador.getPosX(), jogador.getPosY()+1);
 
     }
 
     @FXML
     private void moveLeft(ActionEvent event){
         setPopup(null);
-        mapa.iniciarRodada( jogador.getPosX(), jogador.getPosY()-1 );
+        mapa.iniciarRodada( jogador.getPosX()-1, jogador.getPosY());
     }
 
     @FXML
     private void moveRight(ActionEvent event){
         setPopup(null);
-        mapa.iniciarRodada( jogador.getPosX(), jogador.getPosY()+1 );
+        mapa.iniciarRodada( jogador.getPosX()+1, jogador.getPosY());
 
     }
 
@@ -151,7 +152,9 @@ public class MainWindow {
 
         addTexto("Bem vindo ao jogo!");
 
-        mapa.exibirMapa(jogador.getPosX(), jogador.getPosY());
+        Platform.runLater(()->{
+            mapa.exibirMapa(jogador.getPosX(), jogador.getPosY());
+        });
     }
 
 }

@@ -12,6 +12,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Lago extends Ambiente {
+
+    @Override
+    public double getMinDiff(){return  1;}
+    @Override
+    public double getMaxDiff(){return  7;}
+    @Override
+    public double getPesoFome(){return 1;}
+    @Override
+    public double getPesoSede(){return 0;}
+
     public Lago(String nome, String descricao) {
         super(nome, descricao);
         List<Evento> eventos = this.getEventos();
