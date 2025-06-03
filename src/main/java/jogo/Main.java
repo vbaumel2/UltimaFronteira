@@ -22,7 +22,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        System.out.println("start pronto");
+        System.out.println("start pronto"); 
     }
 
     public static void main(String[] args) {

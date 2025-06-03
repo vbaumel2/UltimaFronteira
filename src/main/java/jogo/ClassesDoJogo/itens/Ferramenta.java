@@ -1,10 +1,12 @@
 package jogo.ClassesDoJogo.itens;
 
-public class Ferramenta extends Item {
+public class Ferramenta extends Item implements Usavel {
+    public final String tipo;
     private boolean equipado = false;
 
-    public Ferramenta(String nome, double peso, int durabilidade){
+    public Ferramenta(String nome, double peso, int durabilidade, String tipo){
         super(nome, peso, durabilidade);
+        this.tipo = tipo;
     }
 
     public boolean isEquipado() {
@@ -15,11 +17,12 @@ public class Ferramenta extends Item {
         this.equipado = equipado;
     }
 
+    public void usar(){
+
+    }
+
     @Override
-    public void selfDestruir(){
-        super.selfDestruir();
-        if(equipado){
-            getInventario().getJogador().setFerramentaEquipada(null);
-        }
+    public String toString(){
+        return "Ferramenta: "+getNome()+ " | Peso: " + getPeso() + " | Usos: " + getDurabilidade()+ " | Tipo: "+tipo;
     }
 }

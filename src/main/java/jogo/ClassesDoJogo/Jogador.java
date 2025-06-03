@@ -15,22 +15,25 @@ public class Jogador {
     private double sede;
     private double maxSede = 100;
     private double sanidade;
-    private double visao = 3.5;
+    private double visao;
     private int posX;
     private int posY;
+
+    private double multiplicadorSobrevivencia;
 
     private final Inventario inventario;
 
     private Ferramenta ferramentaEquipada;
     private Arma armaEquipada;
 
-    public Jogador(String nome, double vida, double capacidadeInventario, double fome, double sede) {
+    public Jogador(String nome, double vida, double capacidadeInventario, double fome, double sede, double multiplicadorSobrevivencia, double visao) {
         this.nome = nome;
         this.vida = vida;
         this.fome = fome;
         this.sede = sede;
         this.inventario = new Inventario(this, capacidadeInventario);
-
+        this.multiplicadorSobrevivencia = multiplicadorSobrevivencia;
+        this.visao = visao;
     }
 
     private void acabarJogo(){
@@ -48,14 +51,14 @@ public class Jogador {
     }
 
     public void addFome(double valorFome){
-
+        if(valorFome < 0 ) valorFome*=multiplicadorSobrevivencia;
         fome =  Math.min(maxFome, fome+valorFome);
         Globals.getMainWindow().getTextoFome().setText(String.format("PONTOS DE FOME: %.1f/%.1f",fome, maxFome));
         if(fome<=0) acabarJogo();
     }
 
     public void addSede(double valorSede){
-
+        if(valorSede < 0 ) valorSede*=multiplicadorSobrevivencia;
         sede =  Math.min( maxSede, sede+valorSede);
         Globals.getMainWindow().getTextoSede().setText(String.format("PONTOS DE SEDE: %.1f/%.1f",sede, maxSede));
         if(sede<=0) acabarJogo();

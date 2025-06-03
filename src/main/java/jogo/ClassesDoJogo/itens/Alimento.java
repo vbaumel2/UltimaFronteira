@@ -11,9 +11,6 @@ public class Alimento extends Item implements Usavel{
     public void usar() {
         getInventario().getJogador().addFome(valorFome);
         removeDurabilidade(1);
-        if(getDurabilidade() < 1){
-            selfDestruir();
-        }
         Globals.getMainWindow().addTexto("Comendo " + getNome() + ", restaurando " + valorFome + " pontos de fome.", "green");
     }
 

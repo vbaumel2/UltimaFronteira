@@ -7,7 +7,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import jogo.ClassesDoJogo.Mapa;
 import jogo.ClassesDoJogo.ambientes.Ambiente;
+import jogo.ClassesDoJogo.itens.Ferramenta;
 import jogo.ClassesDoJogo.itens.Item;
+import jogo.ClassesDoJogo.itens.Recurso;
 import jogo.Globals;
 
 import java.util.HashMap;
@@ -68,21 +70,27 @@ public class MapManager {
                 int realY = row-offY+posY;
                 int realX = col-offX+posX;
                 if(0<= realX && realX < mapa.maxX && 0<= realY && realY < mapa.maxY){
+                    Ambiente ambiente = matrizAmbientes[realX][realY];
                     if (Math.pow(row-offY, 2) + Math.pow(col - offX, 2) <= Math.pow(visao, 2)){
-                        pane.setStyle(matrizAmbientes[realX][realY].getAparencia());
+                        pane.setStyle(ambiente.getAparencia());
 
                         if(row == offY && col == offX){
                             label.setText(" @");
                         } else {
-                            if (matrizAmbientes[realX][realY].isVisitado()){
+                            if (ambiente.isVisitado()){
                                 label.setText("");
                             } else {
                                 label.setText(" ?");
                             }
                         }
                     } else {
-                        pane.setStyle("-fx-background-color: black");
-                        label.setText("");
+                        if(ambiente.isVisitado()){
+                            pane.setStyle(ambiente.getAparencia());
+                            label.setText("");
+                        } else {
+                            pane.setStyle("-fx-background-color: black");
+                            label.setText("");
+                        }
                     }
                 }
                 else{
@@ -116,14 +124,27 @@ public class MapManager {
             );
             caixaItens.getChildren().add(line);
             Map<String, Runnable> actions = new HashMap<>();
-            actions.put("Coletar", ()->{
-                caixaItens.getChildren().remove(line);
-                ambiente.getItems().remove(item);
-                mapa.getJogador().getInventario().adicionarItem(item);
-            });
-            line.setOnMouseClicked(event -> {
-                Globals.getMainWindow().makeOptionsPopup(actions, event);
-            });
+            if(item instanceof Recurso && ((Recurso) item).tipoFerramenta != null){
+                actions.put("Coletar | Requer "+((Recurso) item).tipoFerramenta, ()->{
+                    if(mapa.getJogador().getFerramentaEquipada().tipo.equals(((Recurso) item).tipoFerramenta)){
+                        caixaItens.getChildren().remove(line);
+                        ambiente.getItems().remove(item);
+                        mapa.getJogador().getInventario().adicionarItem(item);
+                    }
+                });
+                line.setOnMouseClicked(event -> {
+                    Globals.getMainWindow().makeOptionsPopup(actions, event);
+                });
+            } else {
+                actions.put("Coletar", ()->{
+                    caixaItens.getChildren().remove(line);
+                    ambiente.getItems().remove(item);
+                    mapa.getJogador().getInventario().adicionarItem(item);
+                });
+                line.setOnMouseClicked(event -> {
+                    Globals.getMainWindow().makeOptionsPopup(actions, event);
+                });
+            }
         }
     }
 

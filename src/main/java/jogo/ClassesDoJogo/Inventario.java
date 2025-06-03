@@ -9,17 +9,19 @@ import java.util.List;
 
 public class Inventario {
     private Jogador jogador;
-    private List<Item> itens;
+    private List<Item> arrayItens;
     private double pesoMaximo;
     private double pesoAtual;
-    private InventoryManager inventoryManager;
+    final InventoryManager inventoryManager;
+    final Crafter crafter;
 
     public Inventario(Jogador jogador, double pesoMaximo) {
         this.jogador = jogador;
-        this.itens = new ArrayList<>();
+        this.arrayItens = new ArrayList<>();
         this.pesoMaximo = pesoMaximo;
         this.pesoAtual = 0;
         this.inventoryManager = new InventoryManager(this);
+        this.crafter = new Crafter(this);
     }
 
     public Jogador getJogador() {
@@ -28,8 +30,8 @@ public class Inventario {
 
     public boolean adicionarItem(Item item) {
         if (pesoAtual + item.getPeso() <= pesoMaximo) {
-            item.atualizarInventario(this, this.itens.size());
-            itens.add(item);
+            item.atualizarInventario(this, this.arrayItens.size());
+            arrayItens.add(item);
             pesoAtual += item.getPeso();
             System.out.println(item.getNome() + " adicionado ao inventário.");
             inventoryManager.adicionarItem(item);
@@ -42,16 +44,18 @@ public class Inventario {
     }
 
     public boolean removerItem(int pos) {
-        if(itens.size() > pos){
-            Item itemRemovido = itens.get(pos);
+        if(arrayItens.size() > pos){
+            Item itemRemovido = arrayItens.get(pos);
             inventoryManager.removerItem(itemRemovido);
             pesoAtual -= itemRemovido.getPeso();
-            itens.remove(pos);
+            arrayItens.remove(pos);
             itemRemovido.atualizarInventario(null, 0);
             System.out.println("Item " + itemRemovido.getNome() + " removido do inventario!");
-            for(int i = pos; i < itens.size(); i++){
-                itens.get(i).setPosicao(i);
+            for(int i = pos; i < arrayItens.size(); i++){
+                arrayItens.get(i).setPosicao(i);
             }
+            if(itemRemovido == jogador.getArmaEquipada()) jogador.setArmaEquipada(null);
+            if(itemRemovido == jogador.getFerramentaEquipada()) jogador.setFerramentaEquipada(null);
             return true;
         }
         System.out.println("Indice do inventario invalido!");
@@ -59,22 +63,39 @@ public class Inventario {
     }
 
     public void listarItens() {
-        if (itens.isEmpty()) {
+        if (arrayItens.isEmpty()) {
             System.out.println("Inventário vazio.");
         } else {
             System.out.println("Itens no Inventário:");
-            for(int i = 0; i< itens.size(); i++){
-                System.out.println((i+1)+" - " + itens.get(i).getNome());
+            for(int i = 0; i< arrayItens.size(); i++){
+                System.out.println((i+1)+" - " + arrayItens.get(i).getNome());
             }
         }
     }
 
+    public List<Item> procurarItensPorNome(String nome, int quantidade){
+        int n = 0;
+        List<Item> retList = new ArrayList<Item>();
+        for(Item item:arrayItens){
+            if(item.getNome().equals(nome)){
+                n++;
+                retList.add(item);
+                if(n>= quantidade) break;
+            }
+        }
+        return retList;
+    }
+
+    public void gerarCrafts(){
+        crafter.craftManager.gerarCrafts();
+    }
+
     public Item getItem(int pos){
-        return itens.get(pos);
+        return arrayItens.get(pos);
     }
 
     public int getSize(){
-        return itens.size();
+        return arrayItens.size();
     }
 
     public double getPesoMaximo(){
@@ -84,4 +105,5 @@ public class Inventario {
     public double getPesoAtual(){
         return pesoAtual;
     }
+
 }

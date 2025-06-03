@@ -1,10 +1,12 @@
 package jogo.ClassesDoJogo.itens;
 
 public class Arma extends Item {
+    private double dano;
     private boolean equipado = false;
 
-    public Arma(String nome, double peso, int durabilidade){
+    public Arma(String nome, double peso, int durabilidade, double dano){
         super(nome, peso, durabilidade);
+        this.dano = dano;
     }
 
     public boolean isEquipado() {
@@ -15,11 +17,7 @@ public class Arma extends Item {
         this.equipado = equipado;
     }
 
-    @Override
-    public void selfDestruir(){
-        super.selfDestruir();
-        if(equipado){
-            getInventario().getJogador().setArmaEquipada(null);
-        }
+    public String toString(){
+        return "Ferramenta: "+getNome()+ " | Peso: " + getPeso() + " | Usos: " + getDurabilidade()+ " | Dano: "+dano;
     }
 }

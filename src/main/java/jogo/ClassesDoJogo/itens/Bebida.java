@@ -10,9 +10,6 @@ public class Bebida extends Item implements  Usavel{
     public void usar(){
         getInventario().getJogador().addSede(this.valorSede);
         removeDurabilidade(1);
-        if(getDurabilidade() < 1){
-            selfDestruir();
-        }
         Globals.getMainWindow().addTexto("Bebendo " + getNome() + ", restaurando " + valorSede + " pontos de sede.", "green");
     }
 
