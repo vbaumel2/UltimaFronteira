@@ -7,9 +7,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import jogo.ClassesDoJogo.Mapa;
 import jogo.ClassesDoJogo.ambientes.Ambiente;
-import jogo.ClassesDoJogo.itens.Ferramenta;
 import jogo.ClassesDoJogo.itens.Item;
-import jogo.ClassesDoJogo.itens.Recurso;
+import jogo.ClassesDoJogo.itens.Material;
 import jogo.Globals;
 
 import java.util.HashMap;
@@ -124,12 +123,13 @@ public class MapManager {
             );
             caixaItens.getChildren().add(line);
             Map<String, Runnable> actions = new HashMap<>();
-            if(item instanceof Recurso && ((Recurso) item).tipoFerramenta != null){
-                actions.put("Coletar | Requer "+((Recurso) item).tipoFerramenta, ()->{
-                    if(mapa.getJogador().getFerramentaEquipada().tipo.equals(((Recurso) item).tipoFerramenta)){
+            if(item instanceof Material && ((Material) item).tipoFerramenta != null){
+                actions.put("Coletar | Requer "+((Material) item).tipoFerramenta, ()->{
+                    if(mapa.getJogador().getFerramentaEquipada().tipo.equals(((Material) item).tipoFerramenta)){
                         caixaItens.getChildren().remove(line);
                         ambiente.getItems().remove(item);
                         mapa.getJogador().getInventario().adicionarItem(item);
+                        mapa.getJogador().getFerramentaEquipada().usar();
                     }
                 });
                 line.setOnMouseClicked(event -> {

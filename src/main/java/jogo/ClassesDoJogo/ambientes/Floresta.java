@@ -1,25 +1,13 @@
 package jogo.ClassesDoJogo.ambientes;
 
-import jogo.ClassesDoJogo.Jogador;
 import jogo.ClassesDoJogo.eventos.Evento;
-import jogo.ClassesDoJogo.eventos.EventoClimatico.Tempestade;
-import jogo.ClassesDoJogo.eventos.EventoClimatico.Terremoto;
-import jogo.ClassesDoJogo.eventos.EventoCriatura.InvasaoAnimal;
-import jogo.ClassesDoJogo.itens.Alimento;
-import jogo.ClassesDoJogo.itens.Bebida;
+import jogo.ClassesDoJogo.itens.Item;
+import jogo.Globals;
 
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.Map;
 
 public class Floresta extends Ambiente {
-    public Floresta(String nome, String descricao) {
-        super(nome, descricao);
-        List<Evento> eventos = this.getEventos();
-        eventos.add(new Tempestade("Tempestade de chuva", 3));
-        eventos.add(new InvasaoAnimal("Animais da floresta", 2));
-        eventos.add(new Terremoto("Terremoto", 1));
-    }
 
     @Override
     public double getMinDiff(){return  0;}
@@ -31,8 +19,28 @@ public class Floresta extends Ambiente {
     public double getPesoSede(){return 3;}
 
     @Override
+    public List<Item> getNewItems(){
+        return getItemsFromProbability(Map.of(
+
+        ));
+    }
+
+    @Override
+    public List<Evento> getNewEventos(){
+        return getEventsFromProbability(Map.of(
+                Globals.EventosClimaticos.criar("Chuva intensa"), 0.7,
+                Globals.EventosClimaticos.criar("Armardilhas"), 0.05
+        ));
+    }
+
+    @Override
     public String getAparencia(){
         return "-fx-background-color: forestgreen; -fx-border-color: darkgreen; -fx-border-width: 2;";
     }
+
+    public Floresta(String nome, String descricao) {
+        super(nome, descricao);
+    }
+
 
 }

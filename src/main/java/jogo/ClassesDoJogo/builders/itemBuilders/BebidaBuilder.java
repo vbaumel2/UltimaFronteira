@@ -1,8 +1,7 @@
-package jogo.ClassesDoJogo.Builders.itemBuilders;
+package jogo.ClassesDoJogo.builders.itemBuilders;
 
-import jogo.ClassesDoJogo.Builders.ItemBuilder;
+import jogo.ClassesDoJogo.builders.ItemBuilder;
 import jogo.ClassesDoJogo.itens.Bebida;
-import jogo.ClassesDoJogo.itens.Item;
 
 public class BebidaBuilder implements ItemBuilder {
     @Override

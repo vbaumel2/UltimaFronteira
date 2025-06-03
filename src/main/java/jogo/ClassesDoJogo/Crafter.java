@@ -31,7 +31,7 @@ public class Crafter {
         switch (nomeClasse){
             case "Ferramenta": listaReceitas = listaFerramentas; break;
             case "Arma": listaReceitas = listaArmas; break;
-            case "Recurso": listaReceitas = listaRecursos; break;
+            case "Material": listaReceitas = listaRecursos; break;
             default: return false;
         }
         Map<String,Integer> receita = listaReceitas.get(nome);
@@ -59,7 +59,7 @@ public class Crafter {
             switch (nomeClasse){
                 case "Ferramenta": inventario.adicionarItem(Globals.Ferramentas.criar(nome)); break;
                 case "Arma": inventario.adicionarItem(Globals.Armas.criar(nome)); break;
-                case "Recurso": inventario.adicionarItem(Globals.Recursos.criar(nome)); break;
+                case "Material": inventario.adicionarItem(Globals.Recursos.criar(nome)); break;
                 default: return false;
             }
         }
@@ -70,7 +70,7 @@ public class Crafter {
 
     public boolean craftFerramenta(String nome){return craftItem(nome, "Ferramenta");}
     public boolean craftArma(String nome){return craftItem(nome, "Arma");}
-    public boolean craftRecurso(String nome){return craftItem(nome, "Recurso");}
+    public boolean craftRecurso(String nome){return craftItem(nome, "Material");}
 
     public Crafter(Inventario inventario){
         this.inventario = inventario;

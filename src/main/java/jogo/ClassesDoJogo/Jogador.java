@@ -51,23 +51,44 @@ public class Jogador {
     }
 
     public void addFome(double valorFome){
-        if(valorFome < 0 ) valorFome*=multiplicadorSobrevivencia;
         fome =  Math.min(maxFome, fome+valorFome);
         Globals.getMainWindow().getTextoFome().setText(String.format("PONTOS DE FOME: %.1f/%.1f",fome, maxFome));
         if(fome<=0) acabarJogo();
     }
 
+    public void addFome(double valor, String mensagem){
+        addFome(valor);
+        String color = "green";
+        if(valor <0) color = "red";
+        Globals.getMainWindow().addTexto(mensagem, color);
+    }
+
+
     public void addSede(double valorSede){
-        if(valorSede < 0 ) valorSede*=multiplicadorSobrevivencia;
+
         sede =  Math.min( maxSede, sede+valorSede);
         Globals.getMainWindow().getTextoSede().setText(String.format("PONTOS DE SEDE: %.1f/%.1f",sede, maxSede));
         if(sede<=0) acabarJogo();
+    }
+
+    public void addSede(double valor, String mensagem){
+        addSede(valor);
+        String color = "green";
+        if(valor <0) color = "red";
+        Globals.getMainWindow().addTexto(mensagem, color);
     }
 
     public void addVida(double valorVida){
         vida = Math.min(maxVida, vida+valorVida);
         Globals.getMainWindow().getTextoVida().setText(String.format("PONTOS DE VIDA: %.1f/%.1f",vida, maxVida));
         if(vida<=0) acabarJogo();
+    }
+
+    public void addVida(double valor, String mensagem){
+        addVida(valor);
+        String color = "green";
+        if(valor <0) color = "red";
+        Globals.getMainWindow().addTexto(mensagem, color);
     }
 
     public int getPosX(){return posX; }

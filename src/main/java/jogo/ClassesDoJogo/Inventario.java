@@ -46,8 +46,8 @@ public class Inventario {
     public boolean removerItem(int pos) {
         if(arrayItens.size() > pos){
             Item itemRemovido = arrayItens.get(pos);
-            inventoryManager.removerItem(itemRemovido);
             pesoAtual -= itemRemovido.getPeso();
+            inventoryManager.removerItem(itemRemovido);
             arrayItens.remove(pos);
             itemRemovido.atualizarInventario(null, 0);
             System.out.println("Item " + itemRemovido.getNome() + " removido do inventario!");
@@ -84,6 +84,13 @@ public class Inventario {
             }
         }
         return retList;
+    }
+
+    public Item procurarPorClasse(Class<?> classe){
+        for(Item item: arrayItens){
+            if(classe.isInstance(item)) return item;
+        }
+        return null;
     }
 
     public void gerarCrafts(){

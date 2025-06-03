@@ -182,7 +182,7 @@ public class MainWindow {
         toggleCraftScreen();
     }
 
-    public void addAcao(String texto, Runnable runnable){
+    public Button addAcao(String texto, Runnable runnable){
         Button line = new Button();
         line.setPrefWidth(4096);
         line.setPrefHeight(30);
@@ -199,6 +199,7 @@ public class MainWindow {
         line.setOnMouseClicked( event ->{
             runnable.run();
         });
+        return line;
     }
 
     @FXML private void medicoCurar(ActionEvent event){
@@ -245,9 +246,11 @@ public class MainWindow {
 
     public void initialize(){
         System.out.println("init");
-        currentPane = selectPane;
         Globals.setMainWindow(this);
-        Jogador jogador = new Jogador("Aventureiro", 100, 25, 100, 100, 1, 3.5);
+        mainPane.setVisible(false);
+        craftPane.setVisible(false);
+        selectPane.setVisible(true);
+        currentPane = selectPane;
     }
 
 }

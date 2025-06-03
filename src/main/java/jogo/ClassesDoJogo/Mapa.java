@@ -2,6 +2,8 @@ package jogo.ClassesDoJogo;
 
 import jogo.ClassesDoJogo.ambientes.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import jogo.ClassesDaInterface.janelaPrincipal.MapManager;
@@ -14,19 +16,30 @@ public class Mapa {
     public final int maxY = 36;
     final private Ambiente[][] matrizAmbientes = new Ambiente[maxX][maxY];
     final private Boolean[][] ambientesVisitados = new Boolean[maxX][maxY];
-    private double visao = 3;
+    private double pesoSede = 5;
+    private double pesoFome = 5;
     private  MapManager mapManager;
     public GerenciadorEventos gerenciadorEventos;
+    private List<Runnable> runnables;
 
 
     public Mapa(Jogador jogador){
         this.mapManager = new MapManager(this);
         this.jogador = jogador;
-        this.gerenciadorEventos = new GerenciadorEventos(this, 0.25);
+        this.gerenciadorEventos = new GerenciadorEventos(this);
+        runnables = new ArrayList<>();
     }
 
     public Jogador getJogador() {
         return jogador;
+    }
+
+    private void mudarClima(){
+       double d = Math.random()-0.5;
+       d = Math.max(pesoSede-3, d);
+       d = Math.min(3-pesoFome, d);
+       pesoFome+=d;
+       pesoSede-=d;
     }
 
     public void centrarJogador(Jogador jogador){
@@ -67,21 +80,16 @@ public class Mapa {
     }
 
 
-    public Ambiente getAmbienteAtPos(int x, int y){
-        return matrizAmbientes[x][y];
-    }
-
-    public Ambiente[][] getMatrizAmbientes(){
-        return matrizAmbientes;
-    }
-
     public void iniciarRodada(int x, int y){
         if(x < maxX && 0<= x && 0 <= y && y < maxY){
             jogador.setPos(x,y);
-            matrizAmbientes[x][y].explorar(jogador);
+            Ambiente ambiente = getAmbienteAtual();
+            gerenciadorEventos.tentarEventos(ambiente);
+            for(Runnable r:new ArrayList<>(runnables)) r.run();
+            ambiente.explorar(jogador, this);
             exibirMapa(x, y);
             mapManager.onAmbienteExplorado( matrizAmbientes[x][y]);
-            gerenciadorEventos.tentarEventos( matrizAmbientes[x][y]);
+            mudarClima();
         } else {
             System.out.println("Posição fora do mapa!");
             Globals.getMainWindow().addTexto("Local fora do mapa!", "red");
@@ -91,5 +99,37 @@ public class Mapa {
     public void exibirMapa(int x, int y){
         mapManager.exibirMapa(x,y);
     }
+
+    public Ambiente getAmbienteAtual(){
+        return matrizAmbientes[jogador.getPosX()][jogador.getPosY()];
+    }
+
+    public Ambiente[][] getMatrizAmbientes(){
+        return matrizAmbientes;
+    }
+
+    public void addCappedRunnable(int runLimit, Runnable task, Runnable onEnd) {
+        runnables.add(new Runnable(){
+            int runCount = 0;
+            @Override
+            public void run() {
+                if (runCount < runLimit) {
+                    task.run();
+                    runCount++;
+                    if (runCount >= runLimit) {
+                        runnables.remove(this);
+                        onEnd.run();
+                    }
+                }
+            }
+        });
+    }
+
+    public boolean removeRunnable(Runnable runnable){
+        return runnables.remove(runnable);
+    }
+
+    public double getPesoSede(){return pesoSede;}
+    public double getPesoFome(){return pesoFome;}
 
 }

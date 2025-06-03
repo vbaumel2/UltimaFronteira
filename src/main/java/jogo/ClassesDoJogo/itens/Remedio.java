@@ -7,11 +7,8 @@ public class Remedio extends Item implements Usavel{
 
     public void usar(){
         getInventario().getJogador().addVida(this.valorCura);
-        removeDurabilidade(1);
-        if(getDurabilidade() < 1){
-            selfDestruir();
-        }
         Globals.getMainWindow().addTexto("Usando " + getNome() + ", restaurando " + valorCura + " pontos de vida.", "green");
+        removeDurabilidade(1);
 
     }
 

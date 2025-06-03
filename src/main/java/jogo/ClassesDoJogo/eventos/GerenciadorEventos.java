@@ -8,11 +8,14 @@ import java.util.Random;
 
 public class GerenciadorEventos {
     private Mapa mapa;
-    private double probabilidade;
 
-    public GerenciadorEventos(Mapa mapa, double probabilidade){
+    public GerenciadorEventos(Mapa mapa){
         this.mapa = mapa;
-        this.probabilidade = probabilidade;
+    }
+
+    private double probabilidadeEventos(Ambiente ambiente){
+        double q = ambiente.getEventos().size();
+        return q/(q+3);
     }
 
     private Evento escolherEvento(List<Evento> eventos){
@@ -32,10 +35,11 @@ public class GerenciadorEventos {
     }
 
     public void tentarEventos(Ambiente ambiente){
-        if (Math.random()>=probabilidade) return;
+
+        if (Math.random()>probabilidadeEventos(ambiente)) return;
         if (ambiente.getEventos() == null || ambiente.getEventos().isEmpty()) return;
 
-        escolherEvento(ambiente.getEventos()).aplicarEvento(ambiente, mapa.getJogador());
+        escolherEvento(ambiente.getEventos()).aplicarEvento(ambiente, mapa.getJogador(), mapa);
     }
 
 

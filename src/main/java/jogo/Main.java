@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import jogo.ClassesDoJogo.Mapa;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.util.Map;
 import java.util.Scanner;
 
@@ -22,7 +22,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        System.out.println("start pronto"); 
+        System.out.println("start pronto");
     }
 
     public static void main(String[] args) {

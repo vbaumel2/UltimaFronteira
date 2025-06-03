@@ -1,9 +1,7 @@
-package jogo.ClassesDoJogo.Builders.itemBuilders;
+package jogo.ClassesDoJogo.builders.itemBuilders;
 
-import jogo.ClassesDoJogo.Builders.ItemBuilder;
+import jogo.ClassesDoJogo.builders.ItemBuilder;
 import jogo.ClassesDoJogo.itens.Arma;
-import jogo.ClassesDoJogo.itens.Bebida;
-import jogo.ClassesDoJogo.itens.Ferramenta;
 
 public class ArmaBuilder implements ItemBuilder {
 

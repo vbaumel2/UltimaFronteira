@@ -1,15 +1,11 @@
 package jogo.ClassesDoJogo.ambientes;
 
-import jogo.ClassesDoJogo.Jogador;
 import jogo.ClassesDoJogo.eventos.Evento;
-import jogo.ClassesDoJogo.eventos.EventoClimatico.Tempestade;
-import jogo.ClassesDoJogo.eventos.EventoCriatura.InvasaoAnimal;
-import jogo.ClassesDoJogo.itens.Alimento;
-import jogo.ClassesDoJogo.itens.Bebida;
+import jogo.ClassesDoJogo.itens.Item;
+import jogo.Globals;
 
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.Map;
 
 public class Lago extends Ambiente {
 
@@ -18,19 +14,32 @@ public class Lago extends Ambiente {
     @Override
     public double getMaxDiff(){return  7;}
     @Override
-    public double getPesoFome(){return 1;}
+    public double getPesoFome(){return 6;}
     @Override
     public double getPesoSede(){return 0;}
 
-    public Lago(String nome, String descricao) {
-        super(nome, descricao);
-        List<Evento> eventos = this.getEventos();
-        eventos.add(new InvasaoAnimal("Piranhas", 5));
+    @Override
+    public List<Item> getNewItems(){
+        return getItemsFromProbability(Map.of(
+                Globals.Alimentos.criar("Peixe"), 0.75,
+                Globals.Alimentos.criar("Peixe"), 0.75
+        ));
+    }
+
+    @Override
+    public List<Evento> getNewEventos(){
+        return getEventsFromProbability(Map.of(
+                Globals.EventosClimaticos.criar("Tempestade"), 0.4
+        ));
     }
 
     @Override
     public String getAparencia(){
         return "-fx-background-color: deepskyblue; -fx-border-color: navy; -fx-border-width: 2;";
+    }
+
+    public Lago(String nome, String descricao) {
+        super(nome, descricao);
     }
 
 

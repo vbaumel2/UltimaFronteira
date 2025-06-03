@@ -9,7 +9,7 @@ public class Alimento extends Item implements Usavel{
     private double valorFome;
 
     public void usar() {
-        getInventario().getJogador().addFome(valorFome);
+        getInventario().getJogador().addFome(valorFome, "Você ganha "+valorFome+" pontos de fome.");
         removeDurabilidade(1);
         Globals.getMainWindow().addTexto("Comendo " + getNome() + ", restaurando " + valorFome + " pontos de fome.", "green");
     }

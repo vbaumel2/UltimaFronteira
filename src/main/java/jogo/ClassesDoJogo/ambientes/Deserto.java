@@ -1,16 +1,11 @@
 package jogo.ClassesDoJogo.ambientes;
 
-import jogo.ClassesDoJogo.Jogador;
 import jogo.ClassesDoJogo.eventos.Evento;
-import jogo.ClassesDoJogo.eventos.EventoClimatico.Tempestade;
-import jogo.ClassesDoJogo.eventos.EventoClimatico.Terremoto;
-import jogo.ClassesDoJogo.itens.Alimento;
-import jogo.ClassesDoJogo.itens.Bebida;
+import jogo.ClassesDoJogo.itens.Item;
 import jogo.Globals;
 
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.Map;
 
 public class Deserto extends Ambiente {
 
@@ -23,20 +18,30 @@ public class Deserto extends Ambiente {
     @Override
     public double getPesoSede(){return 4;}
 
+    @Override
+    public List<Item> getNewItems(){
+        return getItemsFromProbability(Map.of(
 
-    public Deserto(String nome, String descricao) {
-        super(nome, descricao);
-        List<Evento> eventos = this.getEventos();
-        eventos.add(new Tempestade("Tempestade de areia", 4));
-        eventos.add(new Terremoto("Terremoto de areia movediça", 2));
-
+        ));
     }
 
+    @Override
+    public List<Evento> getNewEventos(){
+        return getEventsFromProbability(Map.of(
+                Globals.EventosClimaticos.criar("Tempestade de areia"), 0.6
+        ));
+    }
 
     @Override
     public String getAparencia(){
         return "-fx-background-color: sandybrown; -fx-border-color: peru; -fx-border-width: 2;";
     }
+
+    public Deserto(String nome, String descricao) {
+        super(nome, descricao);
+    }
+
+
 
 
 }

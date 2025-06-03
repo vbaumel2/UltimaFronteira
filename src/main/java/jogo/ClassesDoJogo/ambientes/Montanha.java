@@ -1,15 +1,11 @@
 package jogo.ClassesDoJogo.ambientes;
 
-import jogo.ClassesDoJogo.Jogador;
 import jogo.ClassesDoJogo.eventos.Evento;
-import jogo.ClassesDoJogo.eventos.EventoClimatico.Tempestade;
-import jogo.ClassesDoJogo.eventos.EventoCriatura.InvasaoAnimal;
-import jogo.ClassesDoJogo.itens.Alimento;
-import jogo.ClassesDoJogo.itens.Bebida;
+import jogo.ClassesDoJogo.itens.Item;
+import jogo.Globals;
 
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.Map;
 
 public class Montanha extends Ambiente {
 
@@ -22,17 +18,28 @@ public class Montanha extends Ambiente {
     @Override
     public double getPesoSede(){return 2;}
 
-    public Montanha(String nome, String descricao) {
+    @Override
+    public List<Item> getNewItems(){
+        return getItemsFromProbability(Map.of(
 
-        super(nome, descricao);
-        List<Evento> eventos = this.getEventos();
-        eventos.add(new Tempestade("Tempestade", 3));
-        eventos.add(new InvasaoAnimal("Cabras da montanha ", 2));
+        ));
+    }
+
+    @Override
+    public List<Evento> getNewEventos(){
+        return getEventsFromProbability(Map.of(
+                Globals.EventosClimaticos.criar("Nevasca"), 0.8,
+                Globals.EventosClimaticos.criar("Deslizamento"), 0.2
+        ));
     }
 
     @Override
     public String getAparencia(){
         return "-fx-background-color: slategray; -fx-border-color: dimgray; -fx-border-width: 2;";
+    }
+
+    public Montanha(String nome, String descricao) {
+        super(nome, descricao);
     }
 
 }

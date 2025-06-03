@@ -1,7 +1,6 @@
-package jogo.ClassesDoJogo.Builders.itemBuilders;
+package jogo.ClassesDoJogo.builders.itemBuilders;
 
-import jogo.ClassesDoJogo.Builders.ItemBuilder;
-import jogo.ClassesDoJogo.itens.Item;
+import jogo.ClassesDoJogo.builders.ItemBuilder;
 import jogo.ClassesDoJogo.itens.Remedio;
 
 public class RemedioBuilder implements ItemBuilder {

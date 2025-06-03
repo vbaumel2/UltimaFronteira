@@ -1,4 +1,4 @@
-package jogo.ClassesDoJogo.Builders;
+package jogo.ClassesDoJogo.builders;
 
 import jogo.ClassesDoJogo.itens.Item;
 

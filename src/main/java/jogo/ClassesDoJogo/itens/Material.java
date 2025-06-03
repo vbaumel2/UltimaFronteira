@@ -1,10 +1,10 @@
 package jogo.ClassesDoJogo.itens;
 
-public class Recurso  extends  Item {
+public class Material extends  Item {
     final public String tipoFerramenta;
     private String tipoDeFerramentaRequirido;
 
-    public Recurso(String nome, double peso, int durabilidade, String tipoFerramenta){
+    public Material(String nome, double peso, int durabilidade, String tipoFerramenta){
         super(nome, peso, durabilidade);
         this.tipoFerramenta = tipoFerramenta;
         this.tipoDeFerramentaRequirido = tipoFerramenta;
@@ -12,7 +12,7 @@ public class Recurso  extends  Item {
 
     @Override
     public String toString(){
-        return "Recurso: "+getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade();
+        return "Material: "+getNome()+ " | Peso: " + getPeso() + " | Usos: "+ getDurabilidade();
     }
 
 }
