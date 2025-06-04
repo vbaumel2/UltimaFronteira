@@ -1,0 +1,563 @@
+@startuml
+' Project: UltimaFronteira - Full Class Diagram
+' Start with Globals and MainWindow
+
+package jogo {
+  class Globals {
+    - mainWindow: MainWindow
+    + getMainWindow(): MainWindow
+    + setMainWindow(MainWindow): void
+    + Alimentos: AlimentoBuilder
+    + Bebidas: BebidaBuilder
+    + Remedios: RemedioBuilder
+    + Recursos: RecursoBuilder
+    + Ferramentas: FerramentaBuilder
+    + Armas: ArmaBuilder
+    + EventosClimaticos: EventoClimaticoBuilder
+    + EventosDoencas: EventoDoencaFerimentoBuilder
+    + EventosExploracao: EventoExploracaoBuilder
+    + EventosCriatura: EventoCriaturaBuilder
+  }
+
+}
+
+
+package jogo.ClassesDaInterface.janelaPrincipal {
+  class MainWindow {
+    - mapa: Mapa
+    - jogador: Jogador
+    - currentPane: Pane
+    - mainPane: AnchorPane
+    - craftPane: AnchorPane
+    - selectPane: AnchorPane
+    - caixaInventario: VBox
+    - scroll_inv: ScrollPane
+    - caixaAmbienteItens: VBox
+    - caixaAcoes: VBox
+    - caixaCraftFerramentas: VBox
+    - caixaCraftArmas: VBox
+    - caixaCraftRecursos: VBox
+    - caixaTextos: VBox
+    - gridMap: GridPane
+    - textoVida: Text
+    - textoSede: Text
+    - textoFome: Text
+    - textoInventario: Text
+    - textoFerramenta: Text
+    - textoArma: Text
+    - textoRodada: Text
+    - botaoMedico: Button
+    - popup: Node
+    + setPopup(Node): void
+    + makeOptionsPopup(Map<String, Runnable>, MouseEvent): void
+    + addTexto(String, String): void
+    + addTexto(String): void
+    + addAcao(String, Runnable): Button
+    + initialize(): void
+    + getMainPane(): AnchorPane
+    + getCraftPane(): AnchorPane
+    + getSelectPane(): AnchorPane
+    + getCaixaInventario(): VBox
+    + getCaixaAmbienteItens(): VBox
+    + getCaixaAcoes(): VBox
+    + getCaixaCraftFerramentas(): VBox
+    + getCaixaCraftArmas(): VBox
+    + getCaixaCraftRecursos(): VBox
+    + getCaixaTextos(): VBox
+    + getGridMap(): GridPane
+    + getTextoVida(): Text
+    + getTextoSede(): Text
+    + getTextoFome(): Text
+    + getTextoInventario(): Text
+    + getTextoFerramenta(): Text
+    + getTextoArma(): Text
+    + getTextoRodada(): Text
+    + getBotaoMedico(): Button
+  }
+}
+
+package jogo.ClassesDoJogo {
+  class Mapa {
+    - jogador: Jogador
+    - rodada: int
+    - maxX: int
+    - maxY: int
+    - matrizAmbientes: Ambiente[][]
+    - ambientesVisitados: Boolean[][]
+    - pesoSede: double
+    - pesoFome: double
+    - mapManager: MapManager
+    - gerenciadorEventos: GerenciadorEventos
+    - runnables: List<Runnable>
+    + Mapa(Jogador)
+    + getJogador(): Jogador
+    + gerarMapa(): void
+    + iniciarRodada(int, int): void
+    + carregarAmbiente(): void
+    + exibirMapa(int, int): void
+    + getAmbienteAtual(): Ambiente
+    + getMatrizAmbientes(): Ambiente[][]
+    + addCappedRunnable(int, Runnable, Runnable): void
+    + addRunnable(Runnable): void
+    + removeRunnable(Runnable): boolean
+    + getPesoSede(): double
+    + getPesoFome(): double
+  }
+
+
+
+  package jogo.ClassesDoJogo.ambientes {
+    class Ambiente {
+      - nome: String
+      - descricao: String
+      - difficuldade: double
+      - visitado: boolean
+      - items: List<Item>
+      - eventos: List<Evento>
+      + getMinDiff(): double
+      + getMaxDiff(): double
+      + getPesoFome(): double
+      + getPesoSede(): double
+      + getNewItems(): List<Item>
+      + getNewEventos(): List<Evento>
+      + getNome(): String
+      + isVisitado(): boolean
+      + setVisitado(boolean): void
+      + descrever(): void
+      + explorar(Jogador, Mapa): void
+      + addDifficuldade(double): void
+      + addItems(List<Item>): void
+      + getAparencia(): String
+      + getItems(): List<Item>
+      + getDescricao(): String
+      + addEvento(Evento): void
+      + removeEvento(Evento): boolean
+      + getEventos(): List<Evento>
+    }
+
+    class Caverna extends Ambiente {
+      + Caverna()
+      + getMinDiff(): double
+      + getMaxDiff(): double
+      + getPesoFome(): double
+      + getPesoSede(): double
+      + getNewItems(): List<Item>
+      + getNewEventos(): List<Evento>
+      + getAparencia(): String
+      + explorar(Jogador, Mapa): void
+    }
+    class Deserto extends Ambiente {
+      + Deserto()
+      + getMinDiff(): double
+      + getMaxDiff(): double
+      + getPesoFome(): double
+      + getPesoSede(): double
+      + getNewItems(): List<Item>
+      + getNewEventos(): List<Evento>
+      + getAparencia(): String
+    }
+    class Floresta extends Ambiente {
+      + Floresta()
+      + getMinDiff(): double
+      + getMaxDiff(): double
+      + getPesoFome(): double
+      + getPesoSede(): double
+      + getNewItems(): List<Item>
+      + getNewEventos(): List<Evento>
+      + getAparencia(): String
+    }
+    class Inicio extends Ambiente {
+      + Inicio()
+      + getMinDiff(): double
+      + getMaxDiff(): double
+      + getPesoFome(): double
+      + getPesoSede(): double
+      + getNewItems(): List<Item>
+      + getNewEventos(): List<Evento>
+      + getAparencia(): String
+      + explorar(Jogador, Mapa): void
+    }
+    class Lago extends Ambiente {
+      + Lago()
+      + getMinDiff(): double
+      + getMaxDiff(): double
+      + getPesoFome(): double
+      + getPesoSede(): double
+      + getNewItems(): List<Item>
+      + getNewEventos(): List<Evento>
+      + getAparencia(): String
+    }
+    class Montanha extends Ambiente {
+      + Montanha()
+      + getMinDiff(): double
+      + getMaxDiff(): double
+      + getPesoFome(): double
+      + getPesoSede(): double
+      + getNewItems(): List<Item>
+      + getNewEventos(): List<Evento>
+      + getAparencia(): String
+    }
+    class Ruinas extends Ambiente {
+      + Ruinas()
+      + getMinDiff(): double
+      + getMaxDiff(): double
+      + getPesoFome(): double
+      + getPesoSede(): double
+      + getNewItems(): List<Item>
+      + getNewEventos(): List<Evento>
+      + getAparencia(): String
+    }
+  }
+
+  package jogo.ClassesDoJogo.eventos {
+    class GerenciadorEventos{
+     - mapa : Mapa
+     + GerenciadorEventos()
+     - probabilidadeEventos() : double
+     - escolherEvento() : Evento
+     + tentarEventos() : void
+    }
+
+    class Evento {
+      - nome: String
+      - peso: double
+      - ambiente: Ambiente
+      + Evento()
+      + setAmbiente(): void
+      + getAmbiente(): Ambiente
+      + getNome(): String
+      + getPeso(): double
+      + aplicarEvento(): void
+    }
+
+    class EventoClimatico extends Evento {
+        - duracao : int
+        - difficuldade : double
+        - dano : double
+        --
+        + EventoClimatico()
+        + aplicarEvento() : void
+    }
+
+    class EventoCriatura extends Evento{
+        - duracao : int
+        - vida : double
+        - dano : double
+        - drop : Item
+        - runnable : Runnable
+        --
+        + EventoCriatura()
+        + getDrop() : Item
+        - checkMorrer() : boolean
+        - receberAtaque() : void
+        + aplicarEvento() : void
+    }
+
+    class EventoDescoberta extends Evento {
+        - items : List<Item>
+        --
+        + EventoDescoberta()
+        + aplicarEvento() : void
+    }
+
+    class EventoDoencaFerimento extends Evento {
+        - duracao : int
+        - dano : double
+        - button : Button
+        --
+        + EventoDoencaFerimento()
+        + aplicarEvento() : void
+    }
+
+
+
+  }
+
+  class Jogador {
+    - nome: String
+    - vida: double
+    - maxVida: double
+    - fome: double
+    - maxFome: double
+    - sede: double
+    - maxSede: double
+    - sanidade: double
+    - visao: double
+    - posX: int
+    - posY: int
+    - multiplicadorSobrevivencia: double
+    - inventario: Inventario
+    - ferramentaEquipada: Ferramenta
+    - armaEquipada: Arma
+    + Jogador(String, double, double, double, double, double, double)
+    + exibirStatus(): void
+    + addFome(double): void
+    + addFome(double, String): void
+    + addSede(double): void
+    + addSede(double, String): void
+    + addVida(double): void
+    + addVida(double, String): void
+    + getPosX(): int
+    + getPosY(): int
+    + setPos(int, int): void
+    + setFerramentaEquipada(Ferramenta): void
+    + setArmaEquipada(Arma): void
+    + getFome(): double
+    + getVisao(): double
+    + getInventario(): Inventario
+    + getFerramentaEquipada(): Ferramenta
+    + getArmaEquipada(): Arma
+  }
+
+  class Inventario {
+    - jogador: Jogador
+    - arrayItens: List<Item>
+    - pesoMaximo: double
+    - pesoAtual: double
+    - inventoryManager: InventoryManager
+    - crafter: Crafter
+    + Inventario(Jogador, double)
+    + getJogador(): Jogador
+    + adicionarItem(Item): boolean
+    + removerItem(int): boolean
+    + listarItens(): void
+    + procurarItensPorNome(String, int): List<Item>
+    + procurarPorClasse(Class<?>): Item
+    + gerarCrafts(): void
+    + getItem(int): Item
+    + getSize(): int
+    + getPesoMaximo(): double
+    + getPesoAtual(): double
+  }
+
+  package jogo.ClassesDoJogo.itens {
+    class Item {
+      - inventario: Inventario
+      - posicao: int
+      - nome: String
+      - peso: double
+      - durabilidade: int
+      - buttonActions: Map<String, Runnable>
+      + Item(String, double, int)
+      + atualizarInventario(Inventario, int): void
+      + selfDestruir(): void
+      + setPosicao(int): void
+      + getInventario(): Inventario
+      + getPosicao(): int
+      + getNome(): String
+      + getPeso(): double
+      + getDurabilidade(): int
+      + getButtonActions(): Map<String, Runnable>
+      + removeDurabilidade(int): void
+      + toString(): String
+    }
+
+    class Alimento extends Item {
+      - valorFome: double
+      + usar(): void
+      + Alimento(String, double, int, double)
+      + toString(): String
+    }
+
+    class Antidoto extends Item {
+      + usar(): void
+      + Antidoto()
+      + toString(): String
+    }
+
+    class Arma extends Item {
+      - dano: double
+      - equipado: boolean
+      + Arma(String, double, int, double)
+      + isEquipado(): boolean
+      + setEquipado(boolean): void
+      + getDano(): double
+      + toString(): String
+    }
+
+    class Bebida extends Item {
+      - valorSede: double
+      + usar(): void
+      + Bebida(String, double, int, double)
+      + toString(): String
+    }
+
+    class Ferramenta extends Item {
+      + tipo: String
+      - equipado: boolean
+      - eficiencia: double
+      + Ferramenta(String, double, int, String, double)
+      + isEquipado(): boolean
+      + setEquipado(boolean): void
+      + usar(): void
+      + toString(): String
+    }
+
+    class Material extends Item {
+      + tipoFerramenta: String
+      - tipoDeFerramentaRequirido: String
+      + Material(String, double, int, String)
+      + toString(): String
+    }
+
+    class Remedio extends Item {
+      - valorCura: double
+      + usar(): void
+      + Remedio(String, double, int, int)
+      + toString(): String
+    }
+
+    interface Usavel {
+      + usar(): void
+    }
+  }
+
+  class Crafter {
+    - inventario: Inventario
+    - craftManager: CraftManager
+    + listaFerramentas: Map<String, Map<String, Integer>>
+    + listaArmas: Map<String, Map<String, Integer>>
+    + listaRecursos: Map<String, Map<String, Integer>>
+    + Crafter(Inventario)
+    + craftFerramenta(String): boolean
+    + craftArma(String): boolean
+    + craftRecurso(String): boolean
+  }
+}
+
+package jogo.builders{
+  class EventoBuilder{
+        +construir() : Evento
+  }
+  class ItemBuilder{
+          +construir() : Item
+    }
+
+package jogo.builders.eventoBuilder{
+    class EventoCriaturaBuilder {
+        + EventoCriaturaBuilder()
+        + construir() : EventoCriatura
+    }
+    class EventoClimaticoBuilder {
+        + EventoClimaticoBuilder()
+        + construir() : EventoClimatico
+    }
+    class EventoDoencaFerimentoBuilder {
+        + EventoDoencaFerimentoBuilder()
+        + construir() : EventoDoencaFerimento
+    }
+    class EventoExploracaoBuilder {
+        + EventoExploracaoBuilder()
+        + construir() : EventoDescoberta
+    }
+}
+
+package jogo.builders.itemBuilders{
+   class AlimentoBuilder{
+   +construir() : Alimento
+   }
+   class ArmaBuilder{
+      +construir() : Arma
+      }
+   class BebidaBuilder{
+      +construir() : Bebida
+      }
+   class FerramentaBuilder{
+      +construir() : Ferramenta
+      }
+   class RecursoBuilder{
+      +construir() : Recurso
+      }
+   class RemedioBuilder{
+      +construir() : Remedio
+      }
+}
+
+package jogo.ClassesDaInterface.janelaPrincipal {
+
+    class CraftManager {
+        - Crafter crafter
+        + CraftManager()
+        - descreverReceita()
+        + gerarCrafts()
+    }
+
+    class MapManager {
+        - Mapa mapa
+        - int gridX
+        - int gridY
+        - Pane[][] matrizPanes
+        - Label[][] matrizLabels
+        + MapManager()
+        + gerarMapa()
+        + exibirMapa()
+        + onAmbienteExplorado()
+    }
+
+    class InventoryManager {
+        - Inventario inventario
+        - Map<Item, Button> buttonMap
+        + InventoryManager()
+        + adicionarItem()
+        + removerItem()
+    }
+}
+}
+package jogo{
+class Main{
+ + main()
+ + start()
+}
+}
+
+' ... (other packages and classes would follow here, in order)
+
+Globals -- MainWindow
+MainWindow --> Mapa
+MainWindow --> Jogador
+Mapa --> Jogador
+Jogador --> Inventario
+Inventario --> Crafter
+Item <-- Inventario
+Alimento ..|> Usavel
+Antidoto ..|> Usavel
+Bebida ..|> Usavel
+Ferramenta ..|> Usavel
+Remedio ..|> Usavel
+GerenciadorEventos --> Evento
+Ambiente --> GerenciadorEventos
+Mapa --> Ambiente
+EventoClimaticoBuilder <-- Globals
+EventoClimaticoBuilder ..|> EventoBuilder
+EventoCriaturaBuilder <-- Globals
+EventoCriaturaBuilder ..|> EventoBuilder
+EventoDoencaFerimentoBuilder <-- Globals
+EventoDoencaFerimentoBuilder ..|> EventoBuilder
+EventoExploracaoBuilder <-- Globals
+EventoExploracaoBuilder ..|> EventoBuilder
+
+AlimentoBuilder ..|> ItemBuilder
+ArmaBuilder ..|> ItemBuilder
+BebidaBuilder ..|> ItemBuilder
+FerramentaBuilder ..|> ItemBuilder
+RecursoBuilder ..|> ItemBuilder
+RemedioBuilder ..|> ItemBuilder
+
+AlimentoBuilder <-- Globals
+ArmaBuilder <-- Globals
+BebidaBuilder <-- Globals
+FerramentaBuilder <-- Globals
+RecursoBuilder <-- Globals
+RemedioBuilder <-- Globals
+
+MapManager <-- Mapa
+InventoryManager <-- Inventario
+CraftManager <- Crafter
+
+
+Main --> Globals
+Main --> MainWindow
+
+
+
+@enduml
