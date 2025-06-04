@@ -19,7 +19,8 @@ public class EventoDoencaFerimento extends Evento {
         this.dano = dano;
     }
 
-    public void aplicarEvento(Ambiente ambiente, Jogador jogador, Mapa mapa){
+    public void aplicarEvento(Jogador jogador, Mapa mapa){
+        Ambiente ambiente = getAmbiente();
         ambiente.removeEvento(this);
         Globals.getMainWindow().addTexto("Você está com "+getNome()+". Você perderá \n"+
                 dano+" pontos de vida por "+duracao+" rodadas \n"+

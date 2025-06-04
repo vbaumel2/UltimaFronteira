@@ -5,7 +5,6 @@ import jogo.ClassesDoJogo.ambientes.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import jogo.ClassesDaInterface.janelaPrincipal.MapManager;
 import jogo.ClassesDoJogo.eventos.GerenciadorEventos;
@@ -63,7 +62,6 @@ public class Mapa {
         double totalWeight = lista.values().stream().mapToDouble(Double::doubleValue).sum();
         if (totalWeight <= 0) throw new IllegalArgumentException("Peso tem q ser > 0");
 
-        // Generate a random value between 0 and totalWeight
         double random = Math.random() * totalWeight;
 
         double cumulative = 0.0;
@@ -122,7 +120,7 @@ public class Mapa {
         }
     }
 
-    public void carregarAmbiente(){
+    public void carregarAmbienteAtual(){
         mapManager.onAmbienteExplorado(getAmbienteAtual());
     }
 

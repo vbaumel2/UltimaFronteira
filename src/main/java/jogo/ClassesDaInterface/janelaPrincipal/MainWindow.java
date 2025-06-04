@@ -240,7 +240,7 @@ public class MainWindow {
 
         mapa.centrarJogador(jogador);
         mapa.gerarMapa();
-        mapa.carregarAmbiente();
+        mapa.carregarAmbienteAtual();
 
         jogador.getInventario().gerarCrafts();
 

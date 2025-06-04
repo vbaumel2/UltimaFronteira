@@ -39,7 +39,7 @@ public class GerenciadorEventos {
         if (Math.random()>probabilidadeEventos(ambiente)) return;
         if (ambiente.getEventos() == null || ambiente.getEventos().isEmpty()) return;
 
-        escolherEvento(ambiente.getEventos()).aplicarEvento(ambiente, mapa.getJogador(), mapa);
+        escolherEvento(ambiente.getEventos()).aplicarEvento(mapa.getJogador(), mapa);
     }
 
 

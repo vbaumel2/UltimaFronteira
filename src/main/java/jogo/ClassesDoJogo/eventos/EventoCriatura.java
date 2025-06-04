@@ -56,7 +56,8 @@ public class EventoCriatura extends Evento {
 
 
     @Override
-    public void aplicarEvento(Ambiente ambiente, Jogador jogador, Mapa mapa){
+    public void aplicarEvento(Jogador jogador, Mapa mapa){
+        Ambiente ambiente = getAmbiente();
         ambiente.removeEvento(this);
 
         receberAtaque(ambiente, jogador);

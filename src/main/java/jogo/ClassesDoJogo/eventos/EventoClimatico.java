@@ -17,7 +17,8 @@ public class EventoClimatico extends Evento {
         this.dano = dano;
     }
 
-    public void aplicarEvento(Ambiente ambiente, Jogador jogador, Mapa mapa){
+    public void aplicarEvento(Jogador jogador, Mapa mapa){
+        Ambiente ambiente = getAmbiente();
         ambiente.removeEvento(this);
         ambiente.addDifficuldade(difficuldade);
         Globals.getMainWindow().addTexto("Você encontra um(a) "+ getNome()+" que irá durar "+ duracao+" rodadas.\n"+

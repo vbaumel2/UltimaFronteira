@@ -7,9 +7,19 @@ import jogo.ClassesDoJogo.ambientes.Ambiente;
 public abstract class Evento {
     private String nome;
     private double peso;
+    private Ambiente ambiente;
+
     public Evento(String nome, double peso) {
         this.nome = nome;
         this.peso = peso;
+    }
+
+    public void setAmbiente(Ambiente ambiente) {
+        this.ambiente = ambiente;
+    }
+
+    public Ambiente getAmbiente() {
+        return ambiente;
     }
 
     public String getNome() {
@@ -21,5 +31,5 @@ public abstract class Evento {
         return peso;
     }
 
-    public abstract void aplicarEvento(Ambiente ambiente, Jogador jogador, Mapa mapa);
+    public abstract void aplicarEvento(Jogador jogador, Mapa mapa);
 }

@@ -18,7 +18,8 @@ public class EventoDescoberta extends  Evento {
     }
 
     @Override
-    public void aplicarEvento(Ambiente ambiente, Jogador jogador, Mapa mapa){
+    public void aplicarEvento(Jogador jogador, Mapa mapa){
+        Ambiente ambiente = getAmbiente();
         Globals.getMainWindow().addTexto("Você encontra "+getNome()+" no ambiente. Lá,\n"+
         "você encontra"+items.size()+" itens adicionais.", "orange");
         ambiente.addItems(items);

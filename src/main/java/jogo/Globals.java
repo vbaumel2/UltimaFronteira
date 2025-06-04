@@ -1,11 +1,11 @@
 package jogo;
 
 import jogo.ClassesDaInterface.janelaPrincipal.MainWindow;
-import jogo.ClassesDoJogo.builders.eventoBuilders.EventoClimaticoBuilder;
-import jogo.ClassesDoJogo.builders.eventoBuilders.EventoCriaturaBuilder;
-import jogo.ClassesDoJogo.builders.eventoBuilders.EventoDoencaFerimentoBuilder;
-import jogo.ClassesDoJogo.builders.eventoBuilders.EventoExploracaoBuilder;
-import jogo.ClassesDoJogo.builders.itemBuilders.*;
+import jogo.builders.eventoBuilders.EventoClimaticoBuilder;
+import jogo.builders.eventoBuilders.EventoCriaturaBuilder;
+import jogo.builders.eventoBuilders.EventoDoencaFerimentoBuilder;
+import jogo.builders.eventoBuilders.EventoExploracaoBuilder;
+import jogo.builders.itemBuilders.*;
 
 public class Globals {
     private static MainWindow mainWindow;

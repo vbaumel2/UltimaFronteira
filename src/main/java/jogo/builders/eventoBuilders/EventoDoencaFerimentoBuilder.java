@@ -1,8 +1,7 @@
-package jogo.ClassesDoJogo.builders.eventoBuilders;
+package jogo.builders.eventoBuilders;
 
-import jogo.ClassesDoJogo.builders.EventoBuilder;
+import jogo.builders.EventoBuilder;
 import jogo.ClassesDoJogo.eventos.Evento;
-import jogo.ClassesDoJogo.eventos.EventoClimatico;
 import jogo.ClassesDoJogo.eventos.EventoDoencaFerimento;
 
 public class EventoDoencaFerimentoBuilder implements EventoBuilder {

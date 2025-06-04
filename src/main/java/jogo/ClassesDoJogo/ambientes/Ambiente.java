@@ -36,7 +36,7 @@ public abstract class Ambiente {
         this.items = new ArrayList<>();
         this.difficuldade = getMinDiff() + Math.random()*(getMaxDiff()-getMinDiff());
         this.items = getNewItems();
-        this.eventos = getNewEventos();
+        this.eventos = getNewEventos(); for(Evento e:this.eventos) e.setAmbiente(this);
 
     }
 
