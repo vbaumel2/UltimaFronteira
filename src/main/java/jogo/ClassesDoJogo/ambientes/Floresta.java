@@ -21,7 +21,13 @@ public class Floresta extends Ambiente {
     @Override
     public List<Item> getNewItems(){
         return getItemsFromProbability(Map.of(
-
+                Globals.Remedios.criar("Bandagem"), 0.3,
+                Globals.Bebidas.criar("Agua"), 0.5,
+                Globals.Alimentos.criar("Maçã"), 0.5,
+                Globals.Alimentos.criar("Banana"), 0.4,
+                Globals.Recursos.criar("Madeira"), 0.9,
+                Globals.Recursos.criar("Graveto"), 0.4,
+                Globals.Recursos.criar("Graveto"), 0.4
         ));
     }
 
@@ -29,7 +35,10 @@ public class Floresta extends Ambiente {
     public List<Evento> getNewEventos(){
         return getEventsFromProbability(Map.of(
                 Globals.EventosClimaticos.criar("Chuva intensa"), 0.7,
-                Globals.EventosClimaticos.criar("Armardilhas"), 0.05
+                Globals.EventosClimaticos.criar("Armardilhas"), 0.2,
+                Globals.EventosDoencas.criar("Infecção"), 0.3,
+                Globals.EventosExploracao.criar("Explorador_morto"), 0.18
+
         ));
     }
 
@@ -38,8 +47,8 @@ public class Floresta extends Ambiente {
         return "-fx-background-color: forestgreen; -fx-border-color: darkgreen; -fx-border-width: 2;";
     }
 
-    public Floresta(String nome, String descricao) {
-        super(nome, descricao);
+    public Floresta() {
+        super("Floresta", "Uma floresta densa");
     }
 
 

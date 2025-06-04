@@ -104,6 +104,9 @@ public class Jogador {
         ferramentaEquipada = ferramenta;
         if(ferramentaEquipada != null){
             ferramentaEquipada.setEquipado(true);
+            Globals.getMainWindow().getTextoFerramenta().setText("FERRAMENTA EQUIPADA: "+ferramenta.getNome());
+        } else {
+            Globals.getMainWindow().getTextoFerramenta().setText("FERRAMENTA EQUIPADA:");
         }
     }
 
@@ -112,7 +115,8 @@ public class Jogador {
         armaEquipada = arma;
         if(arma != null){
             arma.setEquipado(true);
-        }
+            Globals.getMainWindow().getTextoFerramenta().setText("ARMA EQUIPADA: "+arma.getNome());
+        } else Globals.getMainWindow().getTextoFerramenta().setText("ARMA EQUIPADA:");
     }
 
     public double getFome(){

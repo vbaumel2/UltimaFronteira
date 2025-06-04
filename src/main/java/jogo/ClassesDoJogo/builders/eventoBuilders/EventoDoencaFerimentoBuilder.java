@@ -7,9 +7,10 @@ import jogo.ClassesDoJogo.eventos.EventoDoencaFerimento;
 
 public class EventoDoencaFerimentoBuilder implements EventoBuilder {
 
-    public EventoDoencaFerimento criar(String nome){
+    public Evento criar(String nome){
         return switch (nome){
-            case "Hipotermia" -> new EventoDoencaFerimento("Hipotermia", 3, 5, 2);
+            case "Hipotermia" -> new EventoDoencaFerimento("Hipotermia", 3, 5, 3);
+            case "Infecção" -> new EventoDoencaFerimento("Infecção", 3, 10, 2);
             default -> new EventoDoencaFerimento("Nada", 1, 1, 0);
         };
     }

@@ -59,6 +59,12 @@ public class MainWindow {
 
     @FXML private Text textoInventario; public Text getTextoInventario(){ return textoInventario; }
 
+    @FXML private Text textoFerramenta; public Text getTextoFerramenta(){ return textoFerramenta; }
+
+    @FXML private Text textoArma; public Text getTextoArma(){ return textoArma; }
+
+    @FXML private Text textoRodada; public Text getTextoRodada(){ return textoRodada; }
+
     @FXML private Button botaoMedico; public Button getBotaoMedico(){return  botaoMedico;}
 
     private Node popup;
@@ -234,6 +240,7 @@ public class MainWindow {
 
         mapa.centrarJogador(jogador);
         mapa.gerarMapa();
+        mapa.carregarAmbiente();
 
         jogador.getInventario().gerarCrafts();
 

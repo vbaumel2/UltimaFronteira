@@ -37,7 +37,7 @@ public class CraftManager {
         VBox boxRecursos = mainWindow.getCaixaCraftRecursos();
 
         for(Map.Entry<String, Map<String,Integer>> entry:crafter.listaFerramentas.entrySet()){
-            String nome = entry.getKey();
+            String nome = Globals.Ferramentas.criar(entry.getKey()).getNome();
             Map<String,Integer> receita = entry.getValue();
             String labelText = nome+" | "+descreverReceita(receita);
             Runnable runnable;
@@ -58,6 +58,54 @@ public class CraftManager {
                 crafter.craftFerramenta(nome);
             });
         }
+
+        for(Map.Entry<String, Map<String,Integer>> entry:crafter.listaArmas.entrySet()){
+            String nome = Globals.Armas.criar(entry.getKey()).getNome();
+            Map<String,Integer> receita = entry.getValue();
+            String labelText = nome+" | "+descreverReceita(receita);
+            Runnable runnable;
+
+            Button line = new Button();
+            line.setPrefWidth(4096);
+            line.setPrefHeight(30);
+            line.setAlignment(Pos.CENTER);
+            line.setText(labelText);
+            line.setStyle(
+                    "-fx-border-color: black;" +
+                            "-fx-border-width: 1;" +
+                            "-fx-padding: 5;" +
+                            "-fx-background-color: white;"
+            );
+            boxFerramentas.getChildren().add(line);
+            line.setOnMouseClicked( event ->{
+                crafter.craftArma(nome);
+            });
+        }
+
+        for(Map.Entry<String, Map<String,Integer>> entry:crafter.listaRecursos.entrySet()){
+            String nome = Globals.Recursos.criar(entry.getKey()).getNome();
+            Map<String,Integer> receita = entry.getValue();
+            String labelText = nome+" | "+descreverReceita(receita);
+            Runnable runnable;
+
+            Button line = new Button();
+            line.setPrefWidth(4096);
+            line.setPrefHeight(30);
+            line.setAlignment(Pos.CENTER);
+            line.setText(labelText);
+            line.setStyle(
+                    "-fx-border-color: black;" +
+                            "-fx-border-width: 1;" +
+                            "-fx-padding: 5;" +
+                            "-fx-background-color: white;"
+            );
+            boxFerramentas.getChildren().add(line);
+            line.setOnMouseClicked( event ->{
+                crafter.craftRecurso(nome);
+            });
+        }
     }
+
+
 
 }

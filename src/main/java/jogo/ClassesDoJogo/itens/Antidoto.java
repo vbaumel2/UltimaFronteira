@@ -9,8 +9,8 @@ public class Antidoto extends Item implements  Usavel{
         removeDurabilidade(1);
     }
 
-    public Antidoto(String nome, double peso, int durabilidade, int valorCura){
-        super(nome, peso, durabilidade);
+    public Antidoto(){
+        super("Antidoto", 0.3, 1);
         this.getButtonActions().put("Usar", this::usar);
     }
 

@@ -17,6 +17,10 @@ public class Arma extends Item {
         this.equipado = equipado;
     }
 
+    public double getDano() {
+        return dano;
+    }
+
     public String toString(){
         return "Ferramenta: "+getNome()+ " | Peso: " + getPeso() + " | Usos: " + getDurabilidade()+ " | Dano: "+dano;
     }

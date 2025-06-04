@@ -21,7 +21,12 @@ public class Montanha extends Ambiente {
     @Override
     public List<Item> getNewItems(){
         return getItemsFromProbability(Map.of(
-
+            Globals.Alimentos.criar("Nozes"), 0.3,
+            Globals.Alimentos.criar("Carne_congelada"), 0.2,
+            Globals.Bebidas.criar("Agua"), 0.5,
+            Globals.Bebidas.criar("Agua_grande"), 0.2,
+            Globals.Recursos.criar("Pedra"), 0.7,
+            Globals.Recursos.criar("Ferro"), 0.3
         ));
     }
 
@@ -38,8 +43,8 @@ public class Montanha extends Ambiente {
         return "-fx-background-color: slategray; -fx-border-color: dimgray; -fx-border-width: 2;";
     }
 
-    public Montanha(String nome, String descricao) {
-        super(nome, descricao);
+    public Montanha() {
+        super("Montanha", "Uma grande montaha");
     }
 
 }

@@ -14,8 +14,8 @@ public class Crafter {
     final CraftManager craftManager = new CraftManager(this);
 
     public final Map<String, Map<String, Integer>> listaFerramentas = Map.of(
-            "Machado de madeira", Map.of("_q", 1, "Graveto", 3),
-            "Machado de pedra", Map.of("_q", 1, "Graveto", 2, "Pedra", 2)
+            "Machado_madeira", Map.of("_q", 1, "Graveto", 3),
+            "Machado_pedra", Map.of("_q", 1, "Graveto", 2, "Pedra", 2)
     );
 
     public final Map<String, Map<String, Integer>> listaArmas = Map.of(

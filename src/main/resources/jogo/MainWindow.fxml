@@ -59,9 +59,9 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <ScrollPane fitToWidth="true" layoutX="1152.0" layoutY="124.0" prefHeight="200.0" prefWidth="432.0">
+            <ScrollPane fitToWidth="true" layoutX="1152.0" layoutY="124.0" prefHeight="385.0" prefWidth="432.0">
                <content>
-                  <VBox fx:id="caixaAmbienteItens" alignment="TOP_CENTER" prefHeight="199.0" prefWidth="388.0" spacing="3.0" />
+                  <VBox fx:id="caixaAmbienteItens" alignment="TOP_CENTER" prefHeight="321.0" prefWidth="417.0" spacing="3.0" />
                </content>
             </ScrollPane>
             <Text layoutX="732.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jornal de acontecimentos">
@@ -94,6 +94,9 @@
                   <Text fx:id="textoFome" layoutX="7.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE FOME: 100/100" wrappingWidth="179.8466796875" />
                   <Text fx:id="textoSede" layoutX="7.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE SEDE: 100/100" wrappingWidth="179.8466796875" />
                   <Text fx:id="textoVida" layoutX="7.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE VIDA: 100/100" wrappingWidth="219.13671875" />
+                  <Text fx:id="textoFerramenta" layoutX="187.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FERRAMENTA EQUIPADA:" wrappingWidth="205.8466796875" />
+                  <Text fx:id="textoArma" layoutX="187.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ARMA EQUIPADA:" wrappingWidth="205.8466796875" />
+                  <Text fx:id="textoRodada" layoutX="187.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RODADA: 0" wrappingWidth="205.8466796875" />
                </children>
             </AnchorPane>
          </children>

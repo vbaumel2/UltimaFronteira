@@ -38,25 +38,6 @@ public abstract class Ambiente {
         this.items = getNewItems();
         this.eventos = getNewEventos();
 
-        /*
-        Random rand = new Random();
-        if(rand.nextInt(3) == 1){
-            items.add(Globals.Alimentos.criar("Pão"));
-        }
-        if(rand.nextInt(3) == 1){
-            items.add(Globals.Alimentos.criar("Maçã"));
-        }
-        if(rand.nextInt(3) == 1){
-            items.add(Globals.Bebidas.criar("Garrafa de agua"));
-        }
-        if(rand.nextInt(3)  == 1){
-            items.add(Globals.Bebidas.criar("Garrafa de agua grande"));
-        }
-        if(rand.nextInt(4) == 1){
-            items.add(Globals.Remedios.criar("Bandagem"));
-        }
-
-         */
     }
 
     public List<Item> getItemsFromProbability(Map<Item, Double> lista){
@@ -80,6 +61,10 @@ public abstract class Ambiente {
     }
 
     public boolean isVisitado(){return visitado;}
+
+    public void setVisitado(boolean visitado) {
+        this.visitado = visitado;
+    }
 
     public void descrever(){
     }

@@ -2,7 +2,9 @@ package jogo;
 
 import jogo.ClassesDaInterface.janelaPrincipal.MainWindow;
 import jogo.ClassesDoJogo.builders.eventoBuilders.EventoClimaticoBuilder;
+import jogo.ClassesDoJogo.builders.eventoBuilders.EventoCriaturaBuilder;
 import jogo.ClassesDoJogo.builders.eventoBuilders.EventoDoencaFerimentoBuilder;
+import jogo.ClassesDoJogo.builders.eventoBuilders.EventoExploracaoBuilder;
 import jogo.ClassesDoJogo.builders.itemBuilders.*;
 
 public class Globals {
@@ -15,6 +17,8 @@ public class Globals {
     public static final ArmaBuilder Armas = new ArmaBuilder();
     public static final EventoClimaticoBuilder EventosClimaticos = new EventoClimaticoBuilder();
     public static final EventoDoencaFerimentoBuilder EventosDoencas = new EventoDoencaFerimentoBuilder();
+    public static final EventoExploracaoBuilder EventosExploracao = new EventoExploracaoBuilder();
+    public static final EventoCriaturaBuilder EventosCriatura = new EventoCriaturaBuilder();
 
     public static MainWindow getMainWindow() {
         return mainWindow;

@@ -4,6 +4,7 @@ import jogo.ClassesDoJogo.ambientes.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import jogo.ClassesDaInterface.janelaPrincipal.MapManager;
@@ -12,6 +13,7 @@ import jogo.Globals;
 
 public class Mapa {
     private Jogador jogador;
+    private int rodada = 0;
     public final int maxX = 36;
     public final int maxY = 36;
     final private Ambiente[][] matrizAmbientes = new Ambiente[maxX][maxY];
@@ -48,31 +50,53 @@ public class Mapa {
         jogador.setPos(xf, yf);
     }
 
+    private Ambiente ambienteAleaotorio(){
+        Map<Class<?>, Double> lista = Map.of(
+                Floresta.class,5.0,
+                Deserto.class,4.0,
+                Lago.class,4.0,
+                Montanha.class,3.0,
+                Caverna.class,2.0,
+                Ruinas.class, 1.0
+        );
+
+        double totalWeight = lista.values().stream().mapToDouble(Double::doubleValue).sum();
+        if (totalWeight <= 0) throw new IllegalArgumentException("Peso tem q ser > 0");
+
+        // Generate a random value between 0 and totalWeight
+        double random = Math.random() * totalWeight;
+
+        double cumulative = 0.0;
+        for (Map.Entry<Class<?>, Double> entry : lista.entrySet()) {
+            cumulative += entry.getValue();
+            if (random <= cumulative) {
+                try {
+                    return (Ambiente) entry.getKey().getDeclaredConstructor().newInstance();
+                } catch (Exception e) {
+                    throw new RuntimeException("Failed to instantiate " + entry.getKey().getName(), e);
+                }
+            }
+        }
+        try {
+            return (Ambiente) lista.entrySet()
+                    .iterator()
+                    .next()
+                    .getKey()
+                    .getDeclaredConstructor()
+                    .newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException("Falha em instantciar Ambiente", e);
+        }
+    }
+
     public void gerarMapa(){
+        int xf = (int) Math.floor(((double) maxX -1)/2);
+        int yf = (int) Math.floor(((double) maxY -1)/2);
+        matrizAmbientes[xf][yf] = new Inicio();
+
         for(int i = 0; i < maxX; i++){
             for(int j = 0; j < maxY; j++){
-                Random rand = new Random();
-                int a =  rand.nextInt(4);
-                switch (a){
-                    case 0 :{
-                        matrizAmbientes[i][j] = new Deserto("Deserto Normal", "Um deserto normal");
-                        break;
-                    }
-                    case 1 :{
-                        matrizAmbientes[i][j] = new Floresta("Floresta Normal", "Uma floresta normal");
-                        break;
-                    }
-                    case 2 :{
-                        matrizAmbientes[i][j] = new Montanha("Montahna Normal", "Uma Montahna normal");
-                        break;
-                    }
-                    case 3 :{
-                        matrizAmbientes[i][j] = new Lago("Lago Normal", "Um Lago normal");
-                        break;
-                    }
-                    default:{System.out.println("algum erro ai sla");}
-
-                }
+                if(matrizAmbientes[i][j] == null) matrizAmbientes[i][j] = ambienteAleaotorio();
             }
         }
 
@@ -90,10 +114,16 @@ public class Mapa {
             exibirMapa(x, y);
             mapManager.onAmbienteExplorado( matrizAmbientes[x][y]);
             mudarClima();
+            rodada++;
+            Globals.getMainWindow().getTextoRodada().setText("RODADA: "+rodada);
         } else {
             System.out.println("Posição fora do mapa!");
             Globals.getMainWindow().addTexto("Local fora do mapa!", "red");
         }
+    }
+
+    public void carregarAmbiente(){
+        mapManager.onAmbienteExplorado(getAmbienteAtual());
     }
 
     public void exibirMapa(int x, int y){
@@ -123,6 +153,10 @@ public class Mapa {
                 }
             }
         });
+    }
+
+    public void addRunnable(Runnable runnable){
+        runnables.add(runnable);
     }
 
     public boolean removeRunnable(Runnable runnable){

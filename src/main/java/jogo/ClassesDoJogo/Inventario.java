@@ -1,6 +1,8 @@
 package jogo.ClassesDoJogo;
 
 import jogo.ClassesDaInterface.janelaPrincipal.InventoryManager;
+import jogo.ClassesDoJogo.itens.Arma;
+import jogo.ClassesDoJogo.itens.Ferramenta;
 import jogo.ClassesDoJogo.itens.Item;
 import jogo.Globals;
 
@@ -34,6 +36,11 @@ public class Inventario {
             arrayItens.add(item);
             pesoAtual += item.getPeso();
             System.out.println(item.getNome() + " adicionado ao inventário.");
+            if(item instanceof Ferramenta){
+                item.getButtonActions().put("Equipar", ()->jogador.setFerramentaEquipada((Ferramenta) item));
+            } else if (item instanceof Arma) {
+                item.getButtonActions().put("Equipar", ()->jogador.setArmaEquipada((Arma) item));
+            }
             inventoryManager.adicionarItem(item);
             return true;
         } else {

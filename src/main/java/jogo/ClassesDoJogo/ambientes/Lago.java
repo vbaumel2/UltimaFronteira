@@ -21,8 +21,12 @@ public class Lago extends Ambiente {
     @Override
     public List<Item> getNewItems(){
         return getItemsFromProbability(Map.of(
-                Globals.Alimentos.criar("Peixe"), 0.75,
-                Globals.Alimentos.criar("Peixe"), 0.75
+            Globals.Alimentos.criar("Peixe"), 0.7,
+            Globals.Alimentos.criar("Frutas_Silvestres"), 0.2,
+            Globals.Bebidas.criar("Agua"), 0.8,
+            Globals.Bebidas.criar("Coco"), 0.3,
+            Globals.Recursos.criar("Areia"), 0.5,
+            Globals.Recursos.criar("Graveto"), 0.3
         ));
     }
 
@@ -38,8 +42,8 @@ public class Lago extends Ambiente {
         return "-fx-background-color: deepskyblue; -fx-border-color: navy; -fx-border-width: 2;";
     }
 
-    public Lago(String nome, String descricao) {
-        super(nome, descricao);
+    public Lago() {
+        super("Lago", "Um lago comum");
     }
 
 

@@ -125,6 +125,7 @@ public class MapManager {
             Map<String, Runnable> actions = new HashMap<>();
             if(item instanceof Material && ((Material) item).tipoFerramenta != null){
                 actions.put("Coletar | Requer "+((Material) item).tipoFerramenta, ()->{
+                    if(mapa.getJogador().getFerramentaEquipada()==null) return;
                     if(mapa.getJogador().getFerramentaEquipada().tipo.equals(((Material) item).tipoFerramenta)){
                         caixaItens.getChildren().remove(line);
                         ambiente.getItems().remove(item);
