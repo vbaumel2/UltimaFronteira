@@ -39,7 +39,8 @@ public class CraftManager {
         for(Map.Entry<String, Map<String,Integer>> entry:crafter.listaFerramentas.entrySet()){
             String nome = entry.getKey();
             Map<String,Integer> receita = entry.getValue();
-            String labelText = Globals.Ferramentas.criar(nome).getNome()+" | "+descreverReceita(receita);
+            int q = receita.getOrDefault("_q", 1);
+            String labelText = nome+ " (x" + q + ") | "+descreverReceita(receita);
 
             Button line = new Button();
             line.setPrefWidth(4096);
@@ -59,10 +60,10 @@ public class CraftManager {
         }
 
         for(Map.Entry<String, Map<String,Integer>> entry:crafter.listaArmas.entrySet()){
-            String nome = Globals.Armas.criar(entry.getKey()).getNome();
+            String nome = entry.getKey();
             Map<String,Integer> receita = entry.getValue();
-            String labelText = nome+" | "+descreverReceita(receita);
-            Runnable runnable;
+            int q = receita.getOrDefault("_q", 1);
+            String labelText = nome+ " (x" + q + ") | "+descreverReceita(receita);
 
             Button line = new Button();
             line.setPrefWidth(4096);
@@ -75,17 +76,17 @@ public class CraftManager {
                             "-fx-padding: 5;" +
                             "-fx-background-color: white;"
             );
-            boxFerramentas.getChildren().add(line);
+            boxArmas.getChildren().add(line);
             line.setOnMouseClicked( event ->{
                 crafter.craftArma(nome);
             });
         }
 
         for(Map.Entry<String, Map<String,Integer>> entry:crafter.listaRecursos.entrySet()){
-            String nome = Globals.Recursos.criar(entry.getKey()).getNome();
+            String nome = entry.getKey();
             Map<String,Integer> receita = entry.getValue();
-            String labelText = nome+" | "+descreverReceita(receita);
-            Runnable runnable;
+            int q = receita.getOrDefault("_q", 1);
+            String labelText = nome+ " (x" + q + ") | "+descreverReceita(receita);
 
             Button line = new Button();
             line.setPrefWidth(4096);
@@ -98,7 +99,7 @@ public class CraftManager {
                             "-fx-padding: 5;" +
                             "-fx-background-color: white;"
             );
-            boxFerramentas.getChildren().add(line);
+            boxRecursos.getChildren().add(line);
             line.setOnMouseClicked( event ->{
                 crafter.craftRecurso(nome);
             });

@@ -13,8 +13,9 @@ public class RecursoBuilder implements ItemBuilder {
             case "Rocha" -> new Material("Rocha", 4, 1, "picareta");
             case "Areia" -> new Material("Areia", 0.3, 1, null);
             case "Ferro" -> new Material("Ferro", 3, 1, "picareta");
-            case "Plantas" -> new Material("Plantas", 0.7, 1, null);
-            case "Vegetação" -> new Material("Vegetação", 1.0, 1, "pá");
+            case "Carvão" -> new Material("Carvão", 1, 1, "picareta");
+            case "Vegetação" -> new Material("Vegetação", 1.0, 1, null);
+            case "Vegetação densa" -> new Material("Vegetação densa", 3.0, 1, "pá");
             default -> new Material("Vazio",0,1,null);
         };
     }

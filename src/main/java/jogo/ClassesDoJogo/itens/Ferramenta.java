@@ -25,10 +25,10 @@ public class Ferramenta extends Item implements Usavel {
     @Override
     public void usar(){
         Jogador jogador = getInventario().getJogador();
-        jogador.addFome(5/eficiencia);
-        jogador.addSede(5/eficiencia);
-
+        jogador.addFome(7/eficiencia);
+        jogador.addSede(7/eficiencia);
         this.removeDurabilidade(1);
+        if(getInventario()!=null) getInventario().atualizarItem(this);
     }
 
     @Override

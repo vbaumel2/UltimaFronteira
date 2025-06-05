@@ -22,10 +22,11 @@ public class Deserto extends Ambiente {
     public List<Item> getNewItems(){
         return getItemsFromProbability(Map.of(
             Globals.Alimentos.criar("Rações"), 0.3,
-            Globals.Alimentos.criar("Frutas_Silvestres"), 0.2,
-            Globals.Bebidas.criar("Agua"), 0.6,
+            Globals.Alimentos.criar("Frutas Silvestres"), 0.2,
+            Globals.Bebidas.criar("Agua"), 0.1,
             Globals.Bebidas.criar("Seiva"), 0.3,
-            Globals.Recursos.criar("Areia"), 0.8
+            Globals.Recursos.criar("Areia"), 0.8,
+                Globals.Recursos.criar("Vegetação"), 0.4
         ));
     }
 

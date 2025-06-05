@@ -23,5 +23,6 @@ public class EventoDescoberta extends  Evento {
         Globals.getMainWindow().addTexto("Você encontra "+getNome()+" no ambiente. Lá,\n"+
         "você encontra"+items.size()+" itens adicionais.", "orange");
         ambiente.addItems(items);
+        ambiente.removeEvento(this);
     }
 }

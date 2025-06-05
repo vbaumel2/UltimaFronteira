@@ -1,5 +1,7 @@
 package jogo.builders.eventoBuilders;
 
+import jogo.ClassesDoJogo.itens.Antidoto;
+import jogo.Globals;
 import jogo.builders.EventoBuilder;
 import jogo.ClassesDoJogo.eventos.Evento;
 import jogo.ClassesDoJogo.eventos.EventoCriatura;
@@ -8,12 +10,12 @@ public class EventoCriaturaBuilder implements EventoBuilder {
 
     public Evento criar(String nome){
         return switch (nome){
-            //String nome, double peso, int duracao, double vida, double dano, Item drop
-            case "Lobo" -> new EventoCriatura("Lobo", 0.8, 2, 8, 2, null);
-            case "Urso" -> new EventoCriatura("Urso", 1.5, 3, 20, 5, null);
-            case "Morcego" -> new EventoCriatura("Morcego", 0.3, 1, 3, 1, null);
-            case "Sobrevivente_Hostil" -> new EventoCriatura("Sobrevivente Hostil", 1.0, 2, 10, 3, null);
-            default -> new EventoCriatura("Nada", 1, 1, 1, 0, null);
+            case "Lobo" -> new EventoCriatura("Lobo", 5, 6, 6, Globals.Alimentos.criar("Carne pequena"));
+            case "Urso" -> new EventoCriatura("Urso", 3, 10, 12, Globals.Alimentos.criar("Carne grande"));
+            case "Morcego" -> new EventoCriatura("Morcego", 2, 2, 3, null);
+            case "Sobrevivente Hostil" -> new EventoCriatura("Sobrevivente Hostil", 10, 6, 10, new Antidoto());
+            case "Jacaré" -> new EventoCriatura("Jacaré", 8, 8, 10, Globals.Alimentos.criar("Carne grande"));
+            default -> new EventoCriatura("Nada", 1, 1, 1, null);
         };
     }
 }

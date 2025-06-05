@@ -72,7 +72,7 @@ public abstract class Ambiente {
 
     public void explorar(Jogador jogador, Mapa mapa){
         this.visitado = true;
-        double m = 1.5;
+        double m = 2;
         double s1 = mapa.getPesoSede()+getPesoSede();
         double s2 = mapa.getPesoFome()+getPesoFome();
         double danoSede = m*difficuldade*s1/(s1+s2);

@@ -14,16 +14,39 @@ public class Crafter {
     final CraftManager craftManager = new CraftManager(this);
 
     public final Map<String, Map<String, Integer>> listaFerramentas = Map.of(
-            "Machado_madeira", Map.of("_q", 1, "Graveto", 3),
-            "Machado_pedra", Map.of("_q", 1, "Graveto", 2, "Pedra", 2)
+            "Machado improvisado", Map.of("_q", 1, "Graveto", 2, "Pedra", 2, "Vegetação", 1),
+            "Machado", Map.of("_q", 1, "Graveto", 2, "Ferro", 1, "Vegetação", 1),
+
+            "Pá improvisada", Map.of("_q", 1, "Graveto", 2, "Pedra", 2, "Vegetação", 1),
+            "Pá", Map.of("_q", 1, "Graveto", 2, "Ferro", 1, "Vegetação", 1),
+
+            "Picareta improvisada", Map.of("_q", 1, "Graveto", 2, "Pedra", 2, "Vegetação", 1),
+            "Picareta", Map.of("_q", 1, "Graveto", 2, "Ferro", 1, "Vegetação", 1),
+
+            "Tocha", Map.of("_q", 1, "Graveto", 2, "Carvão", 1)
     );
 
     public final Map<String, Map<String, Integer>> listaArmas = Map.of(
+            "Faca Improvisada", Map.of("_q", 1, "Graveto", 1, "Pedra", 1, "Vegetação", 1),
+            "Faca", Map.of("_q", 1, "Graveto", 1, "Ferro", 1, "Vegetação", 1),
+
+            "Graveto afiado", Map.of("_q",1, "Graveto", 2),
+
+            "Espada Improvisada", Map.of("_q", 1, "Graveto", 2, "Pedra", 2, "Vegetação", 1),
+            "Espada", Map.of("_q", 1, "Graveto", 2, "Ferro", 1, "Vegetação", 1),
+
+            "Lança Improvisada", Map.of("_q", 1, "Graveto", 2, "Pedra", 2, "Vegetação", 1),
+            "Lança", Map.of("_q", 1, "Graveto", 2, "Ferro", 1, "Vegetação", 1),
+
+            "Arco Improvisado", Map.of("_q", 1, "Graveto", 1, "Pedra", 1, "Vegetação", 2),
+            "Arco", Map.of("_q", 1, "Graveto", 1, "Ferro", 1, "Vegetação", 2)
 
     );
 
     public final Map<String, Map<String, Integer>> listaRecursos = Map.of(
-
+            "Graveto" , Map.of("_q",4, "Madeira", 1),
+            "Pedra" , Map.of("_q",4, "Rocha", 1),
+            "Vegetação" , Map.of("_q",3, "Vegetação densa", 1)
     );
 
     private boolean craftItem(String nome, String nomeClasse){

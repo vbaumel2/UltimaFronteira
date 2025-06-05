@@ -9,12 +9,11 @@ import jogo.Globals;
 public class Jogador {
     private String nome;
     private double vida;
-    private double maxVida = 100;
+    private double maxVida;
     private double fome;
-    private double maxFome = 100;
+    private double maxFome;
     private double sede;
-    private double maxSede = 100;
-    private double sanidade;
+    private double maxSede;
     private double visao;
     private int posX;
     private int posY;
@@ -29,11 +28,18 @@ public class Jogador {
     public Jogador(String nome, double vida, double capacidadeInventario, double fome, double sede, double multiplicadorSobrevivencia, double visao) {
         this.nome = nome;
         this.vida = vida;
+        this.maxVida = vida;
         this.fome = fome;
+        this.maxFome = fome;
         this.sede = sede;
+        this.maxSede = sede;
         this.inventario = new Inventario(this, capacidadeInventario);
         this.multiplicadorSobrevivencia = multiplicadorSobrevivencia;
         this.visao = visao;
+
+        Globals.getMainWindow().getTextoFome().setText(String.format("PONTOS DE FOME: %.1f/%.1f",fome, maxFome));
+        Globals.getMainWindow().getTextoSede().setText(String.format("PONTOS DE SEDE: %.1f/%.1f",sede, maxSede));
+        Globals.getMainWindow().getTextoVida().setText(String.format("PONTOS DE VIDA: %.1f/%.1f",vida, maxVida));
     }
 
     private void acabarJogo(){
@@ -51,6 +57,7 @@ public class Jogador {
     }
 
     public void addFome(double valorFome){
+        if(valorFome < 0) valorFome*= multiplicadorSobrevivencia;
         fome =  Math.min(maxFome, fome+valorFome);
         Globals.getMainWindow().getTextoFome().setText(String.format("PONTOS DE FOME: %.1f/%.1f",fome, maxFome));
         if(fome<=0) acabarJogo();
@@ -65,7 +72,7 @@ public class Jogador {
 
 
     public void addSede(double valorSede){
-
+        if(valorSede < 0) valorSede*= multiplicadorSobrevivencia;
         sede =  Math.min( maxSede, sede+valorSede);
         Globals.getMainWindow().getTextoSede().setText(String.format("PONTOS DE SEDE: %.1f/%.1f",sede, maxSede));
         if(sede<=0) acabarJogo();
@@ -115,8 +122,8 @@ public class Jogador {
         armaEquipada = arma;
         if(arma != null){
             arma.setEquipado(true);
-            Globals.getMainWindow().getTextoFerramenta().setText("ARMA EQUIPADA: "+arma.getNome());
-        } else Globals.getMainWindow().getTextoFerramenta().setText("ARMA EQUIPADA:");
+            Globals.getMainWindow().getTextoArma().setText("ARMA EQUIPADA: "+arma.getNome());
+        } else Globals.getMainWindow().getTextoArma().setText("ARMA EQUIPADA:");
     }
 
     public double getFome(){

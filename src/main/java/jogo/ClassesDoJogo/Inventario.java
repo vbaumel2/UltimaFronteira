@@ -14,8 +14,8 @@ public class Inventario {
     private List<Item> arrayItens;
     private double pesoMaximo;
     private double pesoAtual;
-    final InventoryManager inventoryManager;
-    final Crafter crafter;
+    private final InventoryManager inventoryManager;
+    private final Crafter crafter;
 
     public Inventario(Jogador jogador, double pesoMaximo) {
         this.jogador = jogador;
@@ -23,6 +23,7 @@ public class Inventario {
         this.pesoMaximo = pesoMaximo;
         this.pesoAtual = 0;
         this.inventoryManager = new InventoryManager(this);
+        inventoryManager.atualizarCapacidade();
         this.crafter = new Crafter(this);
     }
 
@@ -118,6 +119,10 @@ public class Inventario {
 
     public double getPesoAtual(){
         return pesoAtual;
+    }
+
+    public void atualizarItem(Item item){
+        inventoryManager.atualizarItem(item);
     }
 
 }

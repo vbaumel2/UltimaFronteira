@@ -53,5 +53,16 @@ public class InventoryManager {
                 inventario.getPesoAtual(), inventario.getPesoMaximo()));
     }
 
+    public void atualizarItem(Item item){
+        Button button = buttonMap.get(item);
+        if(button == null) return;
+        button.setText(item.toString());
+    }
+
+    public void atualizarCapacidade(){
+        Globals.getMainWindow().getTextoInventario().setText(String.format("Inventario | Capacidade: %.1f/%.1f",
+                inventario.getPesoAtual(), inventario.getPesoMaximo()));
+    }
+
 
 }

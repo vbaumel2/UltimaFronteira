@@ -209,7 +209,17 @@ public class MainWindow {
     }
 
     @FXML private void medicoCurar(ActionEvent event){
+        jogador.addVida(5, "Curando 5 de pontos vida, consumindo 5 pontos de fome e sede");
+        jogador.addFome(-5);
+        jogador.addSede(-5);
+    }
 
+    @FXML private void desequiparFerramenta(ActionEvent event){
+        jogador.setFerramentaEquipada(null);
+    }
+
+    @FXML private void desequiparArma(ActionEvent event){
+        jogador.setArmaEquipada(null);
     }
 
     @FXML private void selectRastreador(ActionEvent event){
@@ -222,11 +232,16 @@ public class MainWindow {
 
     @FXML private void selectMedico(ActionEvent event){
         botaoMedico.setVisible(true);
+        botaoMedico.setManaged(true);
         startGame(new Jogador("Médico", 100, 20, 100, 100, 1, 3.5));
     }
 
     @FXML private void selectSobrevivente(ActionEvent event){
         startGame(new Jogador("Sobrevivente", 100, 20, 100, 100, 0.75, 3.5));
+    }
+
+    @FXML private void selectSemideus(ActionEvent event){
+        startGame(new Jogador("Semideus", 5000, 100, 5000, 5000, 1, 5));
     }
 
     private void startGame(Jogador jogador){
@@ -245,6 +260,8 @@ public class MainWindow {
         jogador.getInventario().gerarCrafts();
 
         addTexto("Bem vindo ao jogo!");
+
+        botaoMedico.setManaged(false);
 
         Platform.runLater(()->{
             mapa.exibirMapa(jogador.getPosX(), jogador.getPosY());

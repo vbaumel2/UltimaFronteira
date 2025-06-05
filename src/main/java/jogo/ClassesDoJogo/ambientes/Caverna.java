@@ -24,17 +24,21 @@ public class Caverna extends Ambiente {
     public List<Item> getNewItems(){
         return getItemsFromProbability(Map.of(
             Globals.Alimentos.criar("Cogumelo"), 0.5,
-            Globals.Alimentos.criar("Raiz_comestível"), 0.3,
+            Globals.Alimentos.criar("Raiz comestível"), 0.3,
             Globals.Bebidas.criar("Agua"), 0.4,
             Globals.Bebidas.criar("Seiva"), 0.3,
             Globals.Recursos.criar("Pedra"), 0.7,
-            Globals.Recursos.criar("Ferro"), 0.1
+                Globals.Recursos.criar("Rocha"), 0.7,
+                Globals.Recursos.criar("Carvão"), 0.9,
+            Globals.Recursos.criar("Ferro"), 0.4
         ));
     }
 
     @Override
     public List<Evento> getNewEventos(){
         return getEventsFromProbability(Map.of(
+                Globals.EventosCriatura.criar("Morcego"), 0.6,
+                Globals.EventosExploracao.criar("Local secreto"), 0.3,
                 Globals.EventosClimaticos.criar("Deslizamento"), 0.5
         ));
     }

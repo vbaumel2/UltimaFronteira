@@ -22,11 +22,12 @@ public class Montanha extends Ambiente {
     public List<Item> getNewItems(){
         return getItemsFromProbability(Map.of(
             Globals.Alimentos.criar("Nozes"), 0.3,
-            Globals.Alimentos.criar("Carne_congelada"), 0.2,
+            Globals.Alimentos.criar("Carne congelada"), 0.2,
             Globals.Bebidas.criar("Agua"), 0.5,
-            Globals.Bebidas.criar("Agua_grande"), 0.2,
+            Globals.Bebidas.criar("Agua grande"), 0.2,
+            Globals.Remedios.criar("Ervas medicinais"), 0.4,
             Globals.Recursos.criar("Pedra"), 0.7,
-            Globals.Recursos.criar("Ferro"), 0.3
+            Globals.Recursos.criar("Carvão"), 0.3
         ));
     }
 
@@ -34,7 +35,9 @@ public class Montanha extends Ambiente {
     public List<Evento> getNewEventos(){
         return getEventsFromProbability(Map.of(
                 Globals.EventosClimaticos.criar("Nevasca"), 0.8,
-                Globals.EventosClimaticos.criar("Deslizamento"), 0.2
+                Globals.EventosClimaticos.criar("Deslizamento"), 0.3,
+                Globals.EventosCriatura.criar("Lobo"), 0.1,
+                Globals.EventosExploracao.criar("Local secreto"), 0.2
         ));
     }
 

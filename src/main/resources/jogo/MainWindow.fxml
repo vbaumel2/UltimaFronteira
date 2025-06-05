@@ -12,7 +12,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo.ClassesDaInterface.janelaPrincipal.MainWindow">
    <children>
-      <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0">
+      <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" visible="false">
          <children>
             <GridPane fx:id="gridMap" alignment="CENTER" layoutX="511.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-width: 1; -fx-border-color: black;">
               <rowConstraints>
@@ -80,6 +80,8 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#craftMostrar" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Criar Items" />
                         <Button fx:id="botaoMedico" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#medicoCurar" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Curar 5 pontos de vida | Custo: 5 fome , 5 sede" visible="false" />
+                        <Button layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#desequiparFerramenta" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Desequipar Ferramenta" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#desequiparArma" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Desequipar Arma" />
                      </children>
                   </VBox>
                </content>
@@ -124,7 +126,7 @@
             <Button layoutX="670.0" layoutY="824.0" mnemonicParsing="false" onAction="#craftVoltar" prefHeight="25.0" prefWidth="261.0" text="Voltar" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="selectPane" layoutX="-6.0" prefHeight="900.0" prefWidth="1600.0" visible="false">
+      <AnchorPane fx:id="selectPane" layoutX="-6.0" prefHeight="900.0" prefWidth="1600.0">
          <children>
             <Label alignment="CENTER" layoutX="558.0" layoutY="14.0" prefHeight="129.0" prefWidth="484.0" text="ULTIMA FRONTEIRA">
                <font>
@@ -152,6 +154,11 @@
                </font>
             </Button>
             <Button layoutX="500.0" layoutY="450.0" mnemonicParsing="false" onAction="#selectSobrevivente" prefHeight="70.0" prefWidth="600.0" text="Sobrevivente: Menos fome e sede.">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="500.0" layoutY="542.0" mnemonicParsing="false" onAction="#selectSemideus" prefHeight="70.0" prefWidth="600.0" text="Semideus: Quase invencível, para testar o jogo">
                <font>
                   <Font size="24.0" />
                </font>

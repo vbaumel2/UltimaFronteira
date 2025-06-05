@@ -30,7 +30,7 @@ public class Inicio extends Ambiente {
     public List<Item> getNewItems() {
         return new ArrayList<>(List.of(
                 Globals.Alimentos.criar("Maçã"),
-                Globals.Alimentos.criar("Frutas_Silvestres"),
+                Globals.Alimentos.criar("Frutas Silvestres"),
                 Globals.Bebidas.criar("Agua"),
                 Globals.Bebidas.criar("Coco"),
                 Globals.Armas.criar("Faca"),

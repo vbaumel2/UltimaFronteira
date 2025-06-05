@@ -27,7 +27,9 @@ public class Floresta extends Ambiente {
                 Globals.Alimentos.criar("Banana"), 0.4,
                 Globals.Recursos.criar("Madeira"), 0.9,
                 Globals.Recursos.criar("Graveto"), 0.4,
-                Globals.Recursos.criar("Graveto"), 0.4
+                Globals.Recursos.criar("Graveto"), 0.4,
+                Globals.Recursos.criar("Vegetação"), 0.4,
+                Globals.Recursos.criar("Vegetação densa"), 0.4
         ));
     }
 
@@ -35,9 +37,11 @@ public class Floresta extends Ambiente {
     public List<Evento> getNewEventos(){
         return getEventsFromProbability(Map.of(
                 Globals.EventosClimaticos.criar("Chuva intensa"), 0.7,
-                Globals.EventosClimaticos.criar("Armardilhas"), 0.2,
+                Globals.EventosClimaticos.criar("Armardilhas"), 0.1,
                 Globals.EventosDoencas.criar("Infecção"), 0.3,
-                Globals.EventosExploracao.criar("Explorador_morto"), 0.18
+                Globals.EventosCriatura.criar("Lobo"), 0.4,
+                Globals.EventosCriatura.criar("Urso"), 0.1,
+                Globals.EventosExploracao.criar("Explorador morto"), 0.18
 
         ));
     }

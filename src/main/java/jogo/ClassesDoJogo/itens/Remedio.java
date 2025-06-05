@@ -9,7 +9,7 @@ public class Remedio extends Item implements Usavel{
         getInventario().getJogador().addVida(this.valorCura);
         Globals.getMainWindow().addTexto("Usando " + getNome() + ", restaurando " + valorCura + " pontos de vida.", "green");
         removeDurabilidade(1);
-
+        if(getInventario()!=null) getInventario().atualizarItem(this);
     }
 
     public Remedio(String nome, double peso, int durabilidade, int valorCura){
