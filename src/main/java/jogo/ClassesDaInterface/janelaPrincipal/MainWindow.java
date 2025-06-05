@@ -33,6 +33,8 @@ public class MainWindow {
 
     @FXML private AnchorPane selectPane; public AnchorPane getSelectPane() { return selectPane; }
 
+    @FXML private AnchorPane fimPane; public AnchorPane getFimPane() { return  fimPane; }
+
     @FXML private VBox caixaInventario; public VBox getCaixaInventario(){ return caixaInventario; }
 
     @FXML private ScrollPane scroll_inv;
@@ -64,6 +66,12 @@ public class MainWindow {
     @FXML private Text textoArma; public Text getTextoArma(){ return textoArma; }
 
     @FXML private Text textoRodada; public Text getTextoRodada(){ return textoRodada; }
+
+    @FXML private Label fimTexto;
+
+    @FXML private Label fimRazao;
+
+    @FXML private Button botaoAbrigo; public Button getBotaoAbrigo(){return  botaoAbrigo;}
 
     @FXML private Button botaoMedico; public Button getBotaoMedico(){return  botaoMedico;}
 
@@ -223,21 +231,21 @@ public class MainWindow {
     }
 
     @FXML private void selectRastreador(ActionEvent event){
-        startGame(new Jogador("Rastreador", 100, 20, 100, 100, 1, 5));
+        startGame(new Jogador("Rastreador", 100, 25, 100, 100, 1, 5));
     }
 
     @FXML private void selectSaqueador(ActionEvent event){
-        startGame(new Jogador("Saqueador", 100, 32, 100, 100, 1, 3.5));
+        startGame(new Jogador("Saqueador", 100, 40, 100, 100, 1, 3.5));
     }
 
     @FXML private void selectMedico(ActionEvent event){
         botaoMedico.setVisible(true);
         botaoMedico.setManaged(true);
-        startGame(new Jogador("Médico", 100, 20, 100, 100, 1, 3.5));
+        startGame(new Jogador("Médico", 100, 25, 100, 100, 1, 3.5));
     }
 
     @FXML private void selectSobrevivente(ActionEvent event){
-        startGame(new Jogador("Sobrevivente", 100, 20, 100, 100, 0.75, 3.5));
+        startGame(new Jogador("Sobrevivente", 100, 25, 100, 100, 0.75, 3.5));
     }
 
     @FXML private void selectSemideus(ActionEvent event){
@@ -246,6 +254,8 @@ public class MainWindow {
 
     private void startGame(Jogador jogador){
         selectPane.setVisible(false);
+        craftPane.setVisible(false);
+        fimPane.setVisible(false);
         mainPane.setVisible(true);
         currentPane = mainPane;
 
@@ -253,7 +263,7 @@ public class MainWindow {
         Mapa mapa = new Mapa(jogador);
         this.mapa = mapa;
 
-        mapa.centrarJogador(jogador);
+        mapa.iniciarJogador(jogador);
         mapa.gerarMapa();
         mapa.carregarAmbienteAtual();
 
@@ -266,6 +276,14 @@ public class MainWindow {
         Platform.runLater(()->{
             mapa.exibirMapa(jogador.getPosX(), jogador.getPosY());
         });
+    }
+
+    public void endGame(boolean win, String razao){
+        currentPane.setVisible(false);
+        currentPane = fimPane;
+        fimPane.setVisible(true);
+        if(win){fimTexto.setText("Você venceu!");} else {fimTexto.setText("Você perdeu!");}
+        fimRazao.setText(razao);
     }
 
     public void initialize(){

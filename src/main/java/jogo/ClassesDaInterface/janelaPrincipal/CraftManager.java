@@ -104,6 +104,33 @@ public class CraftManager {
                 crafter.craftRecurso(nome);
             });
         }
+
+        Map<String, Integer> receitaAbrigo = Map.of(
+                "_q",1,
+                "Madeira",2,
+                "Graveto", 4,
+                "Rocha",1,
+                "Pedra", 2,
+                "Vegetação densa", 1,
+                "Vegetação",1,
+                "Ferro", 1
+        );
+
+        String textoAbrigo = "Criar abrigo permanente (Vence o jogo!)";
+        for(Map.Entry<String,Integer> entry:receitaAbrigo.entrySet()){
+            String key = entry.getKey();
+            int val = entry.getValue();
+            if(key.equals("_q")) continue;
+            textoAbrigo+="\nx"+val+" "+key;
+        }
+
+        Globals.getMainWindow().getBotaoAbrigo().setText(textoAbrigo);
+
+        Globals.getMainWindow().getBotaoAbrigo().setOnMouseClicked(event ->{
+            if (crafter.craftItem("Abrigo", "Ferramenta", receitaAbrigo)){
+                Globals.getMainWindow().endGame(true, "Fez um abrigo permanente!");
+            }
+        });
     }
 
 

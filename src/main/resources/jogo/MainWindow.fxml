@@ -103,7 +103,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="craftPane" prefHeight="900.0" prefWidth="1600.0" visible="false">
+      <AnchorPane fx:id="craftPane" prefHeight="900.0" prefWidth="1600.0">
          <children>
             <ScrollPane fitToWidth="true" layoutX="584.0" layoutY="83.0" prefHeight="200.0" prefWidth="432.0">
                <content>
@@ -124,9 +124,10 @@
             <Label layoutX="769.0" layoutY="304.0" text="Criar Armas" />
             <Label layoutX="769.0" layoutY="550.0" text="Criar Recursos" />
             <Button layoutX="670.0" layoutY="824.0" mnemonicParsing="false" onAction="#craftVoltar" prefHeight="25.0" prefWidth="261.0" text="Voltar" />
+            <Button fx:id="botaoAbrigo" layoutX="160.0" layoutY="567.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="249.0" text="Button" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="selectPane" layoutX="-6.0" prefHeight="900.0" prefWidth="1600.0">
+      <AnchorPane fx:id="selectPane" layoutX="-6.0" prefHeight="900.0" prefWidth="1600.0" visible="false">
          <children>
             <Label alignment="CENTER" layoutX="558.0" layoutY="14.0" prefHeight="129.0" prefWidth="484.0" text="ULTIMA FRONTEIRA">
                <font>
@@ -163,6 +164,20 @@
                   <Font size="24.0" />
                </font>
             </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="fimPane" prefHeight="900.0" prefWidth="1600.0" visible="false">
+         <children>
+            <Label fx:id="fimTexto" alignment="CENTER" layoutY="64.0" prefHeight="96.0" prefWidth="1608.0" text="VOCÊ VENCEU!">
+               <font>
+                  <Font size="96.0" />
+               </font>
+            </Label>
+            <Label fx:id="fimRazao" alignment="CENTER" layoutY="205.0" prefHeight="35.0" prefWidth="1608.0" text="RAZÃO:">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

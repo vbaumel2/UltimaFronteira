@@ -49,19 +49,8 @@ public class Crafter {
             "Vegetação" , Map.of("_q",3, "Vegetação densa", 1)
     );
 
-    private boolean craftItem(String nome, String nomeClasse){
-        System.out.println("Nome: "+nome);
-        System.out.println("Nome classe: "+nomeClasse);
-        Map<String, Map<String, Integer>> listaReceitas;
-        switch (nomeClasse){
-            case "Ferramenta": listaReceitas = listaFerramentas; break;
-            case "Arma": listaReceitas = listaArmas; break;
-            case "Material": listaReceitas = listaRecursos; break;
-            default: return false;
-        }
-        Map<String,Integer> receita = listaReceitas.get(nome);
+    public boolean craftItem(String nome, String nomeClasse, Map<String,Integer> receita){
         if(receita == null) return false;
-
         List<Item> craftItens = new ArrayList<Item>();
 
         for(Map.Entry<String, Integer> dupla: receita.entrySet()){
@@ -93,9 +82,9 @@ public class Crafter {
 
     }
 
-    public boolean craftFerramenta(String nome){return craftItem(nome, "Ferramenta");}
-    public boolean craftArma(String nome){return craftItem(nome, "Arma");}
-    public boolean craftRecurso(String nome){return craftItem(nome, "Material");}
+    public boolean craftFerramenta(String nome){return craftItem(nome, "Ferramenta", listaFerramentas.get(nome));}
+    public boolean craftArma(String nome){return craftItem(nome, "Arma", listaArmas.get(nome));}
+    public boolean craftRecurso(String nome){return craftItem(nome, "Material", listaRecursos.get(nome));}
 
     public Crafter(Inventario inventario){
         this.inventario = inventario;

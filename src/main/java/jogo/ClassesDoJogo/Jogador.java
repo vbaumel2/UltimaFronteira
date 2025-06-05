@@ -17,6 +17,7 @@ public class Jogador {
     private double visao;
     private int posX;
     private int posY;
+    private Mapa mapa;
 
     private double multiplicadorSobrevivencia;
 
@@ -43,9 +44,7 @@ public class Jogador {
     }
 
     private void acabarJogo(){
-        System.out.println("acabando jogo!");
-       Stage stage = (Stage) Globals.getMainWindow().getMainPane().getScene().getWindow();
-       stage.close();
+
     }
 
     public void exibirStatus() {
@@ -60,7 +59,7 @@ public class Jogador {
         if(valorFome < 0) valorFome*= multiplicadorSobrevivencia;
         fome =  Math.min(maxFome, fome+valorFome);
         Globals.getMainWindow().getTextoFome().setText(String.format("PONTOS DE FOME: %.1f/%.1f",fome, maxFome));
-        if(fome<=0) acabarJogo();
+        if(fome<=0) Globals.getMainWindow().endGame(false, "Morreu de fome");
     }
 
     public void addFome(double valor, String mensagem){
@@ -75,7 +74,7 @@ public class Jogador {
         if(valorSede < 0) valorSede*= multiplicadorSobrevivencia;
         sede =  Math.min( maxSede, sede+valorSede);
         Globals.getMainWindow().getTextoSede().setText(String.format("PONTOS DE SEDE: %.1f/%.1f",sede, maxSede));
-        if(sede<=0) acabarJogo();
+        if(sede<=0) Globals.getMainWindow().endGame(false, "Morreu de sede");
     }
 
     public void addSede(double valor, String mensagem){
@@ -88,7 +87,7 @@ public class Jogador {
     public void addVida(double valorVida){
         vida = Math.min(maxVida, vida+valorVida);
         Globals.getMainWindow().getTextoVida().setText(String.format("PONTOS DE VIDA: %.1f/%.1f",vida, maxVida));
-        if(vida<=0) acabarJogo();
+        if(vida<=0) Globals.getMainWindow().endGame(false, "Vida chegou a 0");
     }
 
     public void addVida(double valor, String mensagem){
@@ -124,6 +123,14 @@ public class Jogador {
             arma.setEquipado(true);
             Globals.getMainWindow().getTextoArma().setText("ARMA EQUIPADA: "+arma.getNome());
         } else Globals.getMainWindow().getTextoArma().setText("ARMA EQUIPADA:");
+    }
+
+    public void setMapa(Mapa mapa) {
+        this.mapa = mapa;
+    }
+
+    public Mapa getMapa() {
+        return mapa;
     }
 
     public double getFome(){

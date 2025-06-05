@@ -8,6 +8,7 @@ import java.util.Map;
 
 import jogo.ClassesDaInterface.janelaPrincipal.MapManager;
 import jogo.ClassesDoJogo.eventos.GerenciadorEventos;
+import jogo.ClassesDoJogo.itens.Rastreador;
 import jogo.Globals;
 
 public class Mapa {
@@ -43,10 +44,11 @@ public class Mapa {
        pesoSede-=d;
     }
 
-    public void centrarJogador(Jogador jogador){
+    public void iniciarJogador(Jogador jogador){
         int xf = (int) Math.floor(((double) maxX -1)/2);
         int yf = (int) Math.floor(((double) maxY -1)/2);
         jogador.setPos(xf, yf);
+        jogador.setMapa(this);
     }
 
     private Ambiente ambienteAleaotorio(){
@@ -92,11 +94,15 @@ public class Mapa {
         int yf = (int) Math.floor(((double) maxY -1)/2);
         matrizAmbientes[xf][yf] = new Inicio();
 
+        matrizAmbientes[0][0] = new Refugio();
+
         for(int i = 0; i < maxX; i++){
             for(int j = 0; j < maxY; j++){
                 if(matrizAmbientes[i][j] == null) matrizAmbientes[i][j] = ambienteAleaotorio();
             }
         }
+
+        matrizAmbientes[maxX-1][maxY-1].addItems(List.of(new Rastreador()));
 
         mapManager.gerarMapa();
     }
@@ -114,6 +120,7 @@ public class Mapa {
             mudarClima();
             rodada++;
             Globals.getMainWindow().getTextoRodada().setText("RODADA: "+rodada);
+            if(rodada >= 255) Globals.getMainWindow().endGame(true, "Sobreviveu 255 rodadas!");
         } else {
             System.out.println("Posição fora do mapa!");
             Globals.getMainWindow().addTexto("Local fora do mapa!", "red");

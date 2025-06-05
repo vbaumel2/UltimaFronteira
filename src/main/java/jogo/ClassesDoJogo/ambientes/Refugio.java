@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Inicio extends Ambiente {
-    public Inicio() {
-        super("Inicio", "Ponto inicial da aventura");
+public class Refugio extends Ambiente {
+    public Refugio() {
+        super("Refúgio", "Chegue aqui para vencer o jogo!");
         setVisitado(true);
     }
 
@@ -36,6 +36,7 @@ public class Inicio extends Ambiente {
                 Globals.Bebidas.criar("Coco"),
                 Globals.Armas.criar("Faca"),
                 Globals.Remedios.criar("Bandagem"),
+                new Rastreador(),
                 new Antidoto()
         ));
     }
@@ -47,11 +48,11 @@ public class Inicio extends Ambiente {
 
     @Override
     public String getAparencia() {
-        return "-fx-background-color: #e0e0e0; -fx-border-color: #888; -fx-border-width: 2px;";
+        return "-fx-background-color: red; -fx-border-color: yellow; -fx-border-width: 2px;";
     }
 
     @Override
     public void explorar(Jogador jogador, Mapa mapa) {
-        super.explorar(jogador, mapa);
+        Globals.getMainWindow().endGame(true, "Achou um refugio seguro!");
     }
 }
