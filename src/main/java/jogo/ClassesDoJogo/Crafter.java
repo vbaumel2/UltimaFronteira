@@ -27,6 +27,8 @@ public class Crafter {
     );
 
     private boolean craftItem(String nome, String nomeClasse){
+        System.out.println("Nome: "+nome);
+        System.out.println("Nome classe: "+nomeClasse);
         Map<String, Map<String, Integer>> listaReceitas;
         switch (nomeClasse){
             case "Ferramenta": listaReceitas = listaFerramentas; break;

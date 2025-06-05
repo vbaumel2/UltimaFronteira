@@ -22,6 +22,6 @@ public class Arma extends Item {
     }
 
     public String toString(){
-        return "Ferramenta: "+getNome()+ " | Peso: " + getPeso() + " | Usos: " + getDurabilidade()+ " | Dano: "+dano;
+        return "Arma: "+getNome()+ " | Peso: " + getPeso() + " | Usos: " + getDurabilidade()+ " | Dano: "+dano;
     }
 }

@@ -19,9 +19,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <ScrollPane fx:id="scroll_inv" fitToWidth="true" layoutX="17.0" layoutY="190.0" prefHeight="337.0" prefWidth="432.0">
+            <ScrollPane fx:id="scroll_inv" fitToWidth="true" layoutX="17.0" layoutY="190.0" prefHeight="337.0" prefWidth="484.0">
                <content>
-                  <VBox fx:id="caixaInventario" alignment="TOP_CENTER" prefHeight="199.0" prefWidth="388.0" spacing="3.0" />
+                  <VBox fx:id="caixaInventario" alignment="TOP_CENTER" prefHeight="199.0" prefWidth="529.0" spacing="3.0" />
                </content>
             </ScrollPane>
             <Button layoutX="1368.0" layoutY="699.0" mnemonicParsing="false" onAction="#moveDown" prefHeight="69.0" prefWidth="80.0" rotate="90.0" text="&gt;">
@@ -74,9 +74,9 @@
                   <Font size="36.0" />
                </font>
             </Button>
-            <ScrollPane hbarPolicy="NEVER" layoutX="19.0" layoutY="561.0" prefHeight="300.0" prefWidth="443.0">
+            <ScrollPane hbarPolicy="NEVER" layoutX="19.0" layoutY="561.0" prefHeight="300.0" prefWidth="484.0">
                <content>
-                  <VBox fx:id="caixaAcoes" prefHeight="300.0" prefWidth="428.0" spacing="2.0">
+                  <VBox fx:id="caixaAcoes" prefHeight="300.0" prefWidth="467.0" spacing="2.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#craftMostrar" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Criar Items" />
                         <Button fx:id="botaoMedico" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#medicoCurar" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Curar 5 pontos de vida | Custo: 5 fome , 5 sede" visible="false" />
@@ -89,13 +89,13 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="17.0" layoutY="19.0" prefHeight="141.0" prefWidth="432.0" style="-fx-border-color: black;">
+            <AnchorPane layoutX="14.0" layoutY="19.0" prefHeight="141.0" prefWidth="484.0" style="-fx-border-color: black;">
                <children>
                   <Text fx:id="textoFome" layoutX="7.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE FOME: 100/100" wrappingWidth="179.8466796875" />
                   <Text fx:id="textoSede" layoutX="7.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE SEDE: 100/100" wrappingWidth="179.8466796875" />
                   <Text fx:id="textoVida" layoutX="7.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PONTOS DE VIDA: 100/100" wrappingWidth="219.13671875" />
-                  <Text fx:id="textoFerramenta" layoutX="187.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FERRAMENTA EQUIPADA:" wrappingWidth="205.8466796875" />
-                  <Text fx:id="textoArma" layoutX="187.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ARMA EQUIPADA:" wrappingWidth="205.8466796875" />
+                  <Text fx:id="textoFerramenta" layoutX="187.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FERRAMENTA EQUIPADA:" wrappingWidth="282.8466796875" />
+                  <Text fx:id="textoArma" layoutX="187.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ARMA EQUIPADA:" wrappingWidth="282.8466796875" />
                   <Text fx:id="textoRodada" layoutX="187.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RODADA: 0" wrappingWidth="205.8466796875" />
                </children>
             </AnchorPane>

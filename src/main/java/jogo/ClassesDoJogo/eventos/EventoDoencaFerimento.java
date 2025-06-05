@@ -28,6 +28,7 @@ public class EventoDoencaFerimento extends Evento {
 
 
         Runnable task = ()->{
+            if(button == null) return;
             duracao-=1;
             button.setText("Curar "+getNome()+" | Rodadas restantes: "+ duracao + " | Requer antidoto.");
             Globals.getMainWindow().addTexto(getNome()+ " continua a afetar você.");

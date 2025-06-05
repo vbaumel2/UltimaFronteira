@@ -11,7 +11,6 @@ public class Antidoto extends Item implements  Usavel{
 
     public Antidoto(){
         super("Antidoto", 0.3, 1);
-        this.getButtonActions().put("Usar", this::usar);
     }
 
 

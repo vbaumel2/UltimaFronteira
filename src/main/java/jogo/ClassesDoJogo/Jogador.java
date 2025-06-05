@@ -100,7 +100,7 @@ public class Jogador {
     }
 
     public void setFerramentaEquipada(Ferramenta ferramenta){
-        ferramentaEquipada.setEquipado(false);
+        if(ferramentaEquipada!=null) ferramentaEquipada.setEquipado(false);
         ferramentaEquipada = ferramenta;
         if(ferramentaEquipada != null){
             ferramentaEquipada.setEquipado(true);
@@ -111,7 +111,7 @@ public class Jogador {
     }
 
     public void setArmaEquipada(Arma arma){
-        armaEquipada.setEquipado(false);
+        if(armaEquipada!=null) armaEquipada.setEquipado(false);
         armaEquipada = arma;
         if(arma != null){
             arma.setEquipado(true);

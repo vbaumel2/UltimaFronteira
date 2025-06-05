@@ -37,10 +37,9 @@ public class CraftManager {
         VBox boxRecursos = mainWindow.getCaixaCraftRecursos();
 
         for(Map.Entry<String, Map<String,Integer>> entry:crafter.listaFerramentas.entrySet()){
-            String nome = Globals.Ferramentas.criar(entry.getKey()).getNome();
+            String nome = entry.getKey();
             Map<String,Integer> receita = entry.getValue();
-            String labelText = nome+" | "+descreverReceita(receita);
-            Runnable runnable;
+            String labelText = Globals.Ferramentas.criar(nome).getNome()+" | "+descreverReceita(receita);
 
             Button line = new Button();
             line.setPrefWidth(4096);
