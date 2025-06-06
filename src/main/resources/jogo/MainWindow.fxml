@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo.ClassesDaInterface.janelaPrincipal.MainWindow">
    <children>
-      <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" visible="false">
+      <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0">
          <children>
             <GridPane fx:id="gridMap" alignment="CENTER" layoutX="511.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-width: 1; -fx-border-color: black;">
               <rowConstraints>
@@ -79,7 +79,6 @@
                   <VBox fx:id="caixaAcoes" prefHeight="300.0" prefWidth="467.0" spacing="2.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#craftMostrar" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Criar Items" />
-                        <Button fx:id="botaoMedico" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#medicoCurar" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Curar 5 pontos de vida | Custo: 5 fome , 5 sede" visible="false" />
                         <Button layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#desequiparFerramenta" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Desequipar Ferramenta" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#desequiparArma" prefWidth="4096.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Desequipar Arma" />
                      </children>
@@ -101,9 +100,10 @@
                   <Text fx:id="textoRodada" layoutX="187.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RODADA: 0" wrappingWidth="205.8466796875" />
                </children>
             </AnchorPane>
+            <Button fx:id="botaoMedico" layoutX="481.0" layoutY="527.0" mnemonicParsing="false" onAction="#medicoCurar" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 5;" text="Curar 5 pontos de vida | Custo: 5 fome , 5 sede" visible="false" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="craftPane" prefHeight="900.0" prefWidth="1600.0">
+      <AnchorPane fx:id="craftPane" prefHeight="900.0" prefWidth="1600.0" visible="false">
          <children>
             <ScrollPane fitToWidth="true" layoutX="584.0" layoutY="83.0" prefHeight="200.0" prefWidth="432.0">
                <content>

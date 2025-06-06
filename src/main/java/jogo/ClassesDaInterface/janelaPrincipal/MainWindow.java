@@ -239,8 +239,9 @@ public class MainWindow {
 
     @FXML private void selectMedico(ActionEvent event){
         botaoMedico.setVisible(true);
-        botaoMedico.setManaged(true);
-        startGame(new Jogador("Médico", 100, 25, 100, 100, 1, 3.5));
+        caixaAcoes.getChildren().add(botaoMedico);
+        botaoMedico.setPrefWidth(4096);
+        startGame(new Jogador("Médico", 1000, 25, 1000, 1000, 1, 3.5));
     }
 
     @FXML private void selectSobrevivente(ActionEvent event){
@@ -270,7 +271,6 @@ public class MainWindow {
 
         addTexto("Bem vindo ao jogo!");
 
-        botaoMedico.setManaged(false);
 
         Platform.runLater(()->{
             mapa.exibirMapa(jogador.getPosX(), jogador.getPosY());
