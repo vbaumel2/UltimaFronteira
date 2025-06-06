@@ -7,7 +7,6 @@ public class Antidoto extends Item implements  Usavel{
     public void usar(){
         Globals.getMainWindow().addTexto("Usando "+getNome(), "green");
         removeDurabilidade(1);
-        if(getInventario()!=null) getInventario().atualizarItem(this);
     }
 
     public Antidoto(){

@@ -1,6 +1,6 @@
 package jogo.ClassesDoJogo.itens;
 
-public class Arma extends Item {
+public class Arma extends Item implements Usavel {
     private double dano;
     private boolean equipado = false;
 
@@ -19,6 +19,10 @@ public class Arma extends Item {
 
     public double getDano() {
         return dano;
+    }
+
+    @Override public void usar(){
+        this.removeDurabilidade(1);
     }
 
     public String toString(){

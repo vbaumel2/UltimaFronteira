@@ -51,6 +51,7 @@ public abstract class Item {
 
     public void removeDurabilidade(int usos){
         durabilidade -= usos;
+        inventario.atualizarItem(this);
         if(durabilidade < 1) selfDestruir();
     }
 

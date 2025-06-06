@@ -28,7 +28,6 @@ public class Ferramenta extends Item implements Usavel {
         jogador.addFome(7/eficiencia);
         jogador.addSede(7/eficiencia);
         this.removeDurabilidade(1);
-        if(getInventario()!=null) getInventario().atualizarItem(this);
     }
 
     @Override

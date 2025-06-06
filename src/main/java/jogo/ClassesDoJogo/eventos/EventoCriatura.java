@@ -30,7 +30,7 @@ public class EventoCriatura extends Evento {
 
     private boolean checkMorrer(Ambiente ambiente, Mapa mapa){
         if(vida<=0){
-            Globals.getMainWindow().addTexto("Você matou o(a)"+getNome(), "orange");
+            Globals.getMainWindow().addTexto("Você matou o(a) "+getNome(), "orange");
             if(drop!=null){
                 Globals.getMainWindow().addTexto("A criatura deixou "+ drop.getNome()+" no ambiente");
                 ambiente.addItems(List.of(drop));
@@ -45,10 +45,13 @@ public class EventoCriatura extends Evento {
     private void combate(Ambiente ambiente, Jogador jogador, Mapa mapa){
         Arma arma = jogador.getArmaEquipada();
         double danoArma =1;
-        if(arma!=null) danoArma = arma.getDano();
+        if(arma!=null) {
+            danoArma = arma.getDano();
+            arma.usar();
+        }
         vida-=danoArma;
         Globals.getMainWindow().addTexto("Você encontra um(a) "+ getNome()+ ". Você a ataca por \n"+
-                danoArma+"de dano. Agora ela esta com "+vida+" pontos de vida.", "orange"
+                danoArma+" de dano. Agora ela esta com "+vida+" pontos de vida.", "orange"
         );
         if(!checkMorrer(ambiente, mapa)){
             jogador.addVida(-dano, getNome()+" te ataca por "+dano+" pontos de vida!");
