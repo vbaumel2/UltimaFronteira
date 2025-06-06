@@ -97,7 +97,6 @@ public class MainWindow {
         vbox.setLayoutX(localPoint.getX());
         vbox.setLayoutY(localPoint.getY() + 10);
         for (Map.Entry<String, Runnable> entry : actions.entrySet()) {
-            System.out.println(entry.getKey());
             Button b = new Button(entry.getKey());
             b.setOnAction(e -> {
                 entry.getValue().run();
@@ -287,7 +286,6 @@ public class MainWindow {
     }
 
     public void initialize(){
-        System.out.println("init");
         Globals.setMainWindow(this);
         mainPane.setVisible(false);
         craftPane.setVisible(false);

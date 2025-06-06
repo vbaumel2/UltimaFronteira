@@ -122,7 +122,6 @@ public class Mapa {
             Globals.getMainWindow().getTextoRodada().setText("RODADA: "+rodada);
             if(rodada >= 255) Globals.getMainWindow().endGame(true, "Sobreviveu 255 rodadas!");
         } else {
-            System.out.println("Posição fora do mapa!");
             Globals.getMainWindow().addTexto("Local fora do mapa!", "red");
         }
     }

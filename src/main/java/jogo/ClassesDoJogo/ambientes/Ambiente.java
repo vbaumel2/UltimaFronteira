@@ -85,8 +85,6 @@ public abstract class Ambiente {
         jogador.addFome(-danoFome, "Você perde "+ danoFome +" pontos de fome.");
         jogador.addSede(-danoSede, "Você perde "+ danoSede+ " pontos de sede.");
         difficuldade = Math.max(getMinDiff(), difficuldade*0.8);
-
-        System.out.println(eventos.size());
     }
 
     public void addDifficuldade(double valorDiff){

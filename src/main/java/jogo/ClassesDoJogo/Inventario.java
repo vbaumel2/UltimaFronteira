@@ -36,7 +36,6 @@ public class Inventario {
             item.atualizarInventario(this, this.arrayItens.size());
             arrayItens.add(item);
             pesoAtual += item.getPeso();
-            System.out.println(item.getNome() + " adicionado ao inventário.");
             if(item instanceof Ferramenta){
                 item.getButtonActions().put("Equipar", ()->jogador.setFerramentaEquipada((Ferramenta) item));
             } else if (item instanceof Arma) {
@@ -45,7 +44,6 @@ public class Inventario {
             inventoryManager.adicionarItem(item);
             return true;
         } else {
-            System.out.println("Inventário cheio! Não é possível adicionar " + item.getNome());
             Globals.getMainWindow().addTexto("Inventário cheio! Não é possível adicionar " + item.getNome(), "red");
             return false;
         }
@@ -58,7 +56,6 @@ public class Inventario {
             inventoryManager.removerItem(itemRemovido);
             arrayItens.remove(pos);
             itemRemovido.atualizarInventario(null, 0);
-            System.out.println("Item " + itemRemovido.getNome() + " removido do inventario!");
             for(int i = pos; i < arrayItens.size(); i++){
                 arrayItens.get(i).setPosicao(i);
             }
@@ -68,17 +65,6 @@ public class Inventario {
         }
         System.out.println("Indice do inventario invalido!");
         return false;
-    }
-
-    public void listarItens() {
-        if (arrayItens.isEmpty()) {
-            System.out.println("Inventário vazio.");
-        } else {
-            System.out.println("Itens no Inventário:");
-            for(int i = 0; i< arrayItens.size(); i++){
-                System.out.println((i+1)+" - " + arrayItens.get(i).getNome());
-            }
-        }
     }
 
     public List<Item> procurarItensPorNome(String nome, int quantidade){

@@ -47,14 +47,6 @@ public class Jogador {
 
     }
 
-    public void exibirStatus() {
-        System.out.println("Status de " + nome +
-                ": \n-Vida: " + vida + "/" + maxVida +
-                "\n-Fome: " + fome + "/" + maxFome +
-                "\n-Sede: " + sede + "/" + maxSede +
-                "\n-Inventario: " + inventario.getPesoAtual() + "/" + inventario.getPesoMaximo());
-    }
-
     public void addFome(double valorFome){
         if(valorFome < 0) valorFome*= multiplicadorSobrevivencia;
         fome =  Math.min(maxFome, fome+valorFome);

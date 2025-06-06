@@ -15,21 +15,18 @@ import java.util.Scanner;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        System.out.println("oi");
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainWindow.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setTitle("Ultima Fronteira");
         stage.setScene(scene);
         stage.show();
 
-        System.out.println("start pronto");
     }
 
     public static void main(String[] args) {
 
         launch(args);
 
-        System.out.println("main acabou");
 
 
     }
